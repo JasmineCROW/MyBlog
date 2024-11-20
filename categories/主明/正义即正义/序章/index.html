@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-    <!-- title -->
-<!-- keywords -->
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="Jasmine">
-    <meta name="renderer" content="webkit">
-    <meta name="copyright" content="Jasmine">
-        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
-    <meta name="description" content="Welcome to JasmineCrow' Blog">
-    <meta name="description" content="Welcome to JasmineCrow&#39; Blog">
+  <meta charset="utf-8">
+  
+  <title>Category: 序章 | JasmineCrow&#39; Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Welcome to JasmineCrow&#39; Blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="JasmineCrow&#39; Blog">
 <meta property="og:url" content="https://jasminecrow.github.io/MyBlog/categories/%E4%B8%BB%E6%98%8E/%E6%AD%A3%E4%B9%89%E5%8D%B3%E6%AD%A3%E4%B9%89/%E5%BA%8F%E7%AB%A0/index.html">
@@ -20,706 +19,494 @@
 <meta property="article:author" content="Jasmine">
 <meta property="article:tag" content="JasmineCrow">
 <meta name="twitter:card" content="summary">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="icon" href="/MyBlog/assets/crow.png">
-    <title>jasmineCROW&#39;s Blog</title>
-    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-/* This file is meant as a standalone workflow for
-- testing support for link[rel=preload]
-- enabling async CSS loading in browsers that do not support rel=preload
-- applying rel preload css once loaded, whether supported or not.
-*/ -->
-<script>
-    (function (w) {
-        'use strict'
-        // rel=preload support test
-        if (!w.loadCSS) {
-            w.loadCSS = function () {}
-        }
-        // define on the loadCSS obj
-        var rp = (loadCSS.relpreload = {})
-        // rel=preload feature support test
-        // runs once and returns a function for compat purposes
-        rp.support = (function () {
-            var ret
-            try {
-                ret = w.document.createElement('link').relList.supports('preload')
-            } catch (e) {
-                ret = false
-            }
-            return function () {
-                return ret
-            }
-        })()
+  
+  <link rel="icon" href="/MyBlog/css/images/favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
 
-        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-        // then change that media back to its intended value on load
-        rp.bindMediaToggle = function (link) {
-            // remember existing media attr for ultimate state, or default to 'all'
-            var finalMedia = link.media || 'all'
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/MyBlog/css/style.css">
 
-            function enableStylesheet() {
-                link.media = finalMedia
-            }
 
-            // bind load handlers to enable media
-            if (link.addEventListener) {
-                link.addEventListener('load', enableStylesheet)
-            } else if (link.attachEvent) {
-                link.attachEvent('onload', enableStylesheet)
-            }
+  
+<script src="/MyBlog/js/jquery-3.1.1.min.js"></script>
 
-            // Set rel and non-applicable media type to start an async request
-            // note: timeout allows this to happen async to let rendering continue in IE
-            setTimeout(function () {
-                link.rel = 'stylesheet'
-                link.media = 'only x'
-            })
-            // also enable media after 3 seconds,
-            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-            setTimeout(enableStylesheet, 3000)
-        }
 
-        // loop through link elements in DOM
-        rp.poly = function () {
-            // double check this to prevent external calls from running
-            if (rp.support()) {
-                return
-            }
-            var links = w.document.getElementsByTagName('link')
-            for (var i = 0; i < links.length; i++) {
-                var link = links[i]
-                // qualify links to those with rel=preload and as=style attrs
-                if (
-                    link.rel === 'preload' &&
-                    link.getAttribute('as') === 'style' &&
-                    !link.getAttribute('data-loadcss')
-                ) {
-                    // prevent rerunning on link
-                    link.setAttribute('data-loadcss', true)
-                    // bind listeners to toggle media back
-                    rp.bindMediaToggle(link)
-                }
-            }
-        }
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/MyBlog/css/bootstrap.css" >
+  <link rel="stylesheet" href="/MyBlog/css/fashion.css" >
+  <link rel="stylesheet" href="/MyBlog/css/glyphs.css" >
 
-        // if unsupported, run the polyfill
-        if (!rp.support()) {
-            // run once at least
-            rp.poly()
-
-            // rerun poly on an interval until onload
-            var run = w.setInterval(rp.poly, 500)
-            if (w.addEventListener) {
-                w.addEventListener('load', function () {
-                    rp.poly()
-                    w.clearInterval(run)
-                })
-            } else if (w.attachEvent) {
-                w.attachEvent('onload', function () {
-                    rp.poly()
-                    w.clearInterval(run)
-                })
-            }
-        }
-
-        // commonjs
-        if (typeof exports !== 'undefined') {
-            exports.loadCSS = loadCSS
-        } else {
-            w.loadCSS = loadCSS
-        }
-    })(typeof global !== 'undefined' ? global : this)
-</script>
-
-    <style type="text/css">
-    @font-face {
-        font-family: 'Oswald-Regular';
-        src: url("/MyBlog/font/Oswald-Regular.ttf");
-    }
-
-    body {
-        margin: 0;
-    }
-
-    header,
-    footer,
-    .footer-fixed-btn,
-    .sidebar,
-    .container,
-    .site-intro-meta,
-    .toc-wrapper {
-        display: none;
-    }
-
-    .site-intro {
-        position: relative;
-        z-index: 3;
-        width: 100%;
-        /* height: 50vh; */
-        overflow: hidden;
-    }
-
-    .site-intro-placeholder {
-        position: absolute;
-        z-index: -2;
-        top: 0;
-        left: 0;
-        width: calc(100% + 300px);
-        height: 100%;
-        background: repeating-linear-gradient(
-            -45deg,
-            #444 0,
-            #444 80px,
-            #333 80px,
-            #333 160px
-        );
-        background-position: center center;
-        transform: translate3d(-226px, 0, 0);
-        animation: gradient-move 2.5s ease-out 0s infinite;
-    }
-
-    @keyframes gradient-move {
-        0% {
-            transform: translate3d(-226px, 0, 0);
-        }
-        100% {
-            transform: translate3d(0, 0, 0);
-        }
-    }
-</style>
-
-    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link id="stylesheet-base" rel="preload" href="/MyBlog/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link id="stylesheet-mobile" rel="preload" href="/MyBlog/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
-    <link id="stylesheet-theme-dark" rel="preload" href="/MyBlog/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
-    <link rel="preload" href="/MyBlog/scripts/main.js" as="script">
-    <link rel="preload" href="/MyBlog/font/Oswald-Regular.ttf" as="font" crossorigin>
-    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
-    <!-- algolia -->
-    <!-- 百度统计  -->
-    <!-- 谷歌统计  -->
-    <!-- Google tag (gtag.js) -->
 <meta name="generator" content="Hexo 7.3.0"></head>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        if (typeof window.$ == undefined) {
-            console.warn('jquery load from jsdelivr failed, will load local script')
-            document.write('<script src="/MyBlog/lib/jquery.min.js" />')
-        }
-    </script>
-        <!-- header -->
-        <header class="header header-mobile">
-    <!-- top read progress line -->
-    <div class="header-element">
-        <div class="read-progress"></div>
-    </div>
-    <!-- sidebar menu button -->
-    <div class="header-element">
-        <div class="header-sidebar-menu">
-            <div style="padding-left: 1px;">&#xe775;</div>
-        </div>
-    </div>
-    <!-- header actions -->
-    <div class="header-actions">
-        <!-- theme mode switch button -->
-        <span class="header-theme-btn header-element">
-            <i class="fas fa-adjust"></i>
-        </span>
-        <!-- back to home page text -->
-        <span class="home-link header-element">
-            <a href="/MyBlog/">jasmineCROW's Blog.</a>
-        </span>
-    </div>
-    <!-- toggle banner -->
-    <div class="banner">
-        <div class="blog-title header-element">
-            <a href="/MyBlog/">jasmineCROW&#39;s Blog.</a>
-        </div>
-        <div class="post-title header-element">
-            <a href="#" class="post-name"></a>
-        </div>
-    </div>
+
+
+  <body>
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/MyBlog/" title="JasmineCrow&#39; Blog" rel="home"> JasmineCrow&#39; Blog </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">Welcome to JasmineCrow&#39; Blog</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/MyBlog/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/MyBlog/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/MyBlog/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="tags"> <a class="" href="/MyBlog/tags">Tags</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
 </header>
 
-        <!-- fixed footer -->
-        <footer class="footer-fixed">
-    <!-- donate button -->
 
-    <!-- back to top button -->
-    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
-        <div>&#xe639;</div>
-    </div>
-</footer>
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main">
+  
+  
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <h1><a href="/MyBlog/archives/2024" class="archive-year">2024</a></h1>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
 
-        <!-- wrapper -->
-        <div class="wrapper">
-            <div class="site-intro" style="">
-    <!-- 主页  -->
-    <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/MyBlog/)"></div>
-    <div class="site-intro-meta">
-        <!-- 标题  -->
-        <h1 class="intro-title">
-            <!-- 主页  -->
-        </h1>
-        <!-- 副标题 -->
-        <p class="intro-subtitle">
-            <!-- 主页副标题  -->
-        </p>
-        <!-- 文章页 meta -->
+      <a href="/MyBlog/2024/11/20/CHAPTER.3%20%E9%9B%A8%E5%AE%AB%E8%8E%B2/" class="archive-article-date">
+		  <time datetime="2024-11-19T23:37:40.000Z" itemprop="datePublished">Nov 20, 2024</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/MyBlog/2024/11/20/CHAPTER.3%20%E9%9B%A8%E5%AE%AB%E8%8E%B2/">CHAPTER.3 雨宫莲</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/MyBlog/2024/11/20/CHAPTER.2%20%E8%BF%B7%E9%80%94%E4%B9%8B%E7%8C%AB/" class="archive-article-date">
+		  <time datetime="2024-11-19T23:36:40.000Z" itemprop="datePublished">Nov 20, 2024</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/MyBlog/2024/11/20/CHAPTER.2%20%E8%BF%B7%E9%80%94%E4%B9%8B%E7%8C%AB/">CHAPTER.2 迷途之猫</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+
+      <a href="/MyBlog/2024/11/20/CHAPTER.1%20%E4%BD%90%E8%97%A4%E7%BE%8E%E5%92%B2/" class="archive-article-date">
+		  <time datetime="2024-11-19T23:35:40.000Z" itemprop="datePublished">Nov 20, 2024</time>
+	  </a>
+      
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/MyBlog/2024/11/20/CHAPTER.1%20%E4%BD%90%E8%97%A4%E7%BE%8E%E5%92%B2/">CHAPTER.1 佐藤美咲</a>
+    </h1>
+  
+
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
+  
+
+
+</section>
+          <aside id="sidebar">
+  
+    <div style="margin: 20px 0;">
+	<div id="search-form-wrap">
+
+    <form class="search-form">
+        <label style="width: 72%;">
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
+        </label>
+        <input type="submit" class="search-form-submit" value="Search">
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
 </div>
-
-            <script>
-  // get user agent
-  function getBrowserVersions() {
-    var u = window.navigator.userAgent
-    return {
-      userAgent: u,
-      trident: u.indexOf('Trident') > -1, //IE内核
-      presto: u.indexOf('Presto') > -1, //opera内核
-      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-      iPad: u.indexOf('iPad') > -1, //是否为iPad
-      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
-      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
-    }
-  }
-  var browser = {
-    versions: getBrowserVersions(),
-  }
-  console.log('userAgent: ' + browser.versions.userAgent)
-
-  // callback
-  function fontLoaded() {
-    console.log('font loaded')
-    if (document.getElementsByClassName('site-intro-meta')) {
-      document
-        .getElementsByClassName('intro-title')[0]
-        .classList.add('intro-fade-in')
-      document
-        .getElementsByClassName('intro-subtitle')[0]
-        .classList.add('intro-fade-in')
-      var postIntros = document.getElementsByClassName('post-intros')[0]
-      if (postIntros) {
-        postIntros.classList.add('post-fade-in')
-      }
-    }
-  }
-
-  // UC不支持跨域，所以直接显示
-  function asyncCb() {
-    if (browser.versions.uc) {
-      console.log('UCBrowser')
-      fontLoaded()
-    } else {
-      WebFont.load({
-        custom: {
-          families: ['Oswald-Regular'],
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
         },
-        loading: function () {
-          // 所有字体开始加载
-          // console.log('font loading');
-        },
-        active: function () {
-          // 所有字体已渲染
-          fontLoaded()
-        },
-        inactive: function () {
-          // 字体预加载失败，无效字体或浏览器不支持加载
-          console.log('inactive: timeout')
-          fontLoaded()
-        },
-        timeout: 5000, // Set the timeout to two seconds
-      })
-    }
-  }
-
-  function asyncErr() {
-    console.warn('script load from CDN failed, will load local script')
-  }
-
-  // load webfont-loader async, and add callback function
-  function async(u, cb, err) {
-    var d = document,
-      t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0]
-    o.src = u
-    if (cb) {
-      o.addEventListener(
-        'load',
-        function (e) {
-          cb(null, e)
-        },
-        false
-      )
-    }
-    if (err) {
-      o.addEventListener(
-        'error',
-        function (e) {
-          err(null, e)
-        },
-        false
-      )
-    }
-    s.parentNode.insertBefore(o, s)
-  }
-
-  var asyncLoadWithFallBack = function (arr, success, reject) {
-    var currReject = function () {
-      reject()
-      arr.shift()
-      if (arr.length) async(arr[0], success, currReject)
-    }
-
-    async(arr[0], success, currReject)
-  }
-
-  asyncLoadWithFallBack(
-    [
-      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
-      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
-      "/MyBlog/lib/webfontloader.min.js",
-    ],
-    asyncCb,
-    asyncErr
-  )
+        ROOT_URL: '/MyBlog/',
+        CONTENT_URL: '/MyBlog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
 </script>
 
-            <img class="loading" src="/MyBlog/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
-            <div class="container container-unloaded">
-                <main class="main index-page">
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/MyBlog/2024/11/20/CHAPTER.3%20%E9%9B%A8%E5%AE%AB%E8%8E%B2/">
-                <span class="abstract-title-text">CHAPTER.3 雨宫莲</span>
-            </a>
-            <div class="abstract-content">
-                “卢布朗……”明智收起手机，“是这里。”
-明智拐进一个小巷，看见一个面积不大的店面。店门上用英文花体字写着“卢布朗”，窗上挂着一个木质牌子，很幸运，“OPEN”那一面朝外。
-雨宫莲现在正处于保护观察处分阶段，监护人佐仓惣治郎住在四轩茶屋，是这家咖啡店的老板。这个时间点是下班高峰期，原本安静的街道也多了几分烟火气，上班族和学生步履匆匆或神态疲倦地从地铁口进进出出。
-明智开门进入，门框上的风铃随风发出悦耳的敲击声。
-“欢迎光临。”
-「卢布朗」的老板是一名留着山羊胡，身材瘦高，穿着时尚却驼着背的中年男子，他正靠在工作台后，态度散漫地看了他一眼，“来点什么？”
-“请问是佐仓惣治郎先生吗？”明智开...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/20">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/20</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="主明">主明</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="P5R">P5R</a>
+<script src="/MyBlog/js/insight.js"></script>
+
+
 </div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/MyBlog/2024/11/20/CHAPTER.2%20%E8%BF%B7%E9%80%94%E4%B9%8B%E7%8C%AB/">
-                <span class="abstract-title-text">CHAPTER.2 迷途之猫</span>
-            </a>
-            <div class="abstract-content">
-                从静冈回来时已是晚上，没想到又是追赶末班车的一天。因为雨宫莲的遭遇，明智心情有点低落。快速地穿过已经打烊的小巷，一声微弱的猫叫突然传来。
-这地方还有猫？明智驻足，四下张望，却没再听到第二声。
-“听错了？”明智眉头微蹙，摇了摇头后继续往前走。
-这时，又传来一声虚弱的猫叫。
-这下明智确定是真的猫了。而且从叫声来看，情况似乎不太妙。
-他循着猫叫声找了好一会儿，终于在路旁的草丛中找到了叫声的来源。
-明智忍不住倒吸一口冷气。
-一个黑白相间的奶牛猫倒在草丛里，浑身是血，正发出痛苦难耐的无言。感知到有人前来，它似乎想抬起头来，但最后只是动了动耳朵。
-“怎么会伤成这样？”明智赶紧放下手提箱，将里头的毛巾...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/20">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/20</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="主明">主明</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="P5R">P5R</a>
 </div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/MyBlog/2024/11/20/CHAPTER.1%20%E4%BD%90%E8%97%A4%E7%BE%8E%E5%92%B2/">
-                <span class="abstract-title-text">CHAPTER.1 佐藤美咲</span>
-            </a>
-            <div class="abstract-content">
-                4月9日，晚7点，银座。
-东京半岛酒店的门口围了一圈看热闹的路人，三辆警车停在了大门口，红蓝灯交替闪烁，把对面的高楼镀上了一层颜色。
-“咦？怎么有警车……？”
-“出了什么事了吗？”
-“这世道真可怕啊……”
-“听说发生了杀人案件？”
-……
-“叮——”
-酒店的高级电梯到达目的楼层后发出清晰的提示音。一名身着浅褐色西服的棕发少年步履匆匆地走了出来。少年面庞秀丽，皮肤白净，对于男生来说似乎长得过于漂亮了一点。不过此时他神情严肃，周围散发着的低气压揭示着生人勿进的气场。
-“前方是事件现场，无关人员请留步。”
-当少年正欲走进一间客房时，驻守在房门外的警官看到他后，直接伸手拦住了他，态度恶劣。
-少年不...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2024/11/20">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2024/11/20</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="主明">主明</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="P5R">P5R</a>
-</div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    <!-- paginator  -->
-</main>
-
-                <!-- profile -->
-            </div>
-            <footer class="footer footer-unloaded">
-    <!-- social  -->
-        <div class="social">
-                            <a href="mailto:chenyuye.YCY@gmail.com" class="iconfont-archer email" title="email" ></a>
-                <a href="https://github.com/JasmineCROW/MyBlog.git" class="iconfont-archer github" target="_blank" title="github"></a>
-                <span class="iconfont-archer wechat" title="wechat">
-                    <img class="profile-qr" src="/MyBlog/assets/wechat.png" />
-                </span>
-                <span class="iconfont-archer qq" title="qq">
-                    <img class="profile-qr" src="/MyBlog/assets/qq.png" />
-                </span>
-
-        </div>
-    <!-- powered by Hexo  -->
-    <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
-    </div>
-    <!-- website approve for Chinese user -->
-    <!-- 不蒜子  -->
-        <div class="busuanzi-container">
-                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
-        </div>
-</footer>
-
-        </div>
-        <!-- toc -->
-        <!-- sidebar -->
-        <div class="sidebar sidebar-hide">
-    <ul class="sidebar-tabs sidebar-tabs-active-0">
-        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
-        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
-        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+  
+    
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>Recent Posts</a></li>
     </ul>
-    <div class="sidebar-content sidebar-content-show-archive">
-        <div class="sidebar-panel-archives">
-    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    <div class="widget">
+      <ul>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2024/11/20/CHAPTER.3%20%E9%9B%A8%E5%AE%AB%E8%8E%B2/">CHAPTER.3 雨宫莲</a></h6>
+              <span>November 20, 2024</span>
+            </div>
+
+          </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2024/11/20/CHAPTER.2%20%E8%BF%B7%E9%80%94%E4%B9%8B%E7%8C%AB/">CHAPTER.2 迷途之猫</a></h6>
+              <span>November 20, 2024</span>
+            </div>
+
+          </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2024/11/20/CHAPTER.1%20%E4%BD%90%E8%97%A4%E7%BE%8E%E5%92%B2/">CHAPTER.1 佐藤美咲</a></h6>
+              <span>November 20, 2024</span>
+            </div>
+
+          </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2024/11/19/2.%20%E5%A4%84%E5%88%91%E9%98%9F%E7%9A%84%E7%9C%9F%E5%BF%83%E8%AF%9D%E5%A4%A7%E5%86%92%E9%99%A9/">处刑队的真心话大冒险</a></h6>
+              <span>November 19, 2024</span>
+            </div>
+
+          </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2023/12/07/DeadWarrior%EF%BC%88%E5%85%AB%EF%BC%89/">DeadWarrior（八）</a></h6>
+              <span>December 7, 2023</span>
+            </div>
+
+          </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2023/12/06/DeadWarrior%EF%BC%88%E4%B8%83%EF%BC%89/">DeadWarrior（七）</a></h6>
+              <span>December 6, 2023</span>
+            </div>
+
+          </li>
         
-        
-        
-        
-        
-        
-    <div class="total-and-search">
-        <div class="total-archive">
-        Total : 12
-        </div>
-        <!-- search  -->
+      </ul>
     </div>
-    <div class="post-archive">
-            <div class="archive-year"> 2024 </div>
-            <ul class="year-list">
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/20</span>
-            <a class="archive-post-title" href="/MyBlog/2024/11/20/CHAPTER.1%20%E4%BD%90%E8%97%A4%E7%BE%8E%E5%92%B2/">CHAPTER.1 佐藤美咲</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/20</span>
-            <a class="archive-post-title" href="/MyBlog/2024/11/20/CHAPTER.2%20%E8%BF%B7%E9%80%94%E4%B9%8B%E7%8C%AB/">CHAPTER.2 迷途之猫</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/20</span>
-            <a class="archive-post-title" href="/MyBlog/2024/11/20/CHAPTER.3%20%E9%9B%A8%E5%AE%AB%E8%8E%B2/">CHAPTER.3 雨宫莲</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/19</span>
-            <a class="archive-post-title" href="/MyBlog/2024/11/19/2.%20%E5%A4%84%E5%88%91%E9%98%9F%E7%9A%84%E7%9C%9F%E5%BF%83%E8%AF%9D%E5%A4%A7%E5%86%92%E9%99%A9/">处刑队的真心话大冒险</a>
-        </li>
-                </ul>
-            <div class="archive-year"> 2023 </div>
-            <ul class="year-list">
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/07</span>
-            <a class="archive-post-title" href="/MyBlog/2023/12/07/DeadWarrior%EF%BC%88%E5%85%AB%EF%BC%89/">DeadWarrior（八）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/06</span>
-            <a class="archive-post-title" href="/MyBlog/2023/12/06/DeadWarrior%EF%BC%88%E4%B8%83%EF%BC%89/">DeadWarrior（七）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/05</span>
-            <a class="archive-post-title" href="/MyBlog/2023/12/05/Dead%20Warrior%EF%BC%88%E5%85%AD%EF%BC%89/">DeadWarrior（六）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/04</span>
-            <a class="archive-post-title" href="/MyBlog/2023/12/04/Dead%20Warrior%EF%BC%88%E4%BA%94%EF%BC%89/">Dead Warrior（五）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/11</span>
-            <a class="archive-post-title" href="/MyBlog/2023/11/11/Dead%20Warrior%EF%BC%88%E5%9B%9B%EF%BC%89/">Dead Warrior（四）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/10</span>
-            <a class="archive-post-title" href="/MyBlog/2023/11/10/Dead%20Warrior%EF%BC%88%E4%B8%89%EF%BC%89/">Dead Warrior（三）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/09</span>
-            <a class="archive-post-title" href="/MyBlog/2023/11/09/Dead%20Warrior%EF%BC%88%E4%BA%8C%EF%BC%89/">Dead Warrior（二）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/08</span>
-            <a class="archive-post-title" href="/MyBlog/2023/11/08/Dead%20Warrior%EF%BC%88%E4%B8%80%EF%BC%89/">Dead Warrior（一）</a>
-        </li>
-            </ul>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/MyBlog/categories/%E4%B8%BB%E6%98%8E/">主明</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/MyBlog/categories/%E4%B8%BB%E6%98%8E/%E6%AD%A3%E4%B9%89%E5%8D%B3%E6%AD%A3%E4%B9%89/">正义即正义</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/MyBlog/categories/%E4%B8%BB%E6%98%8E/%E6%AD%A3%E4%B9%89%E5%8D%B3%E6%AD%A3%E4%B9%89/%E5%BA%8F%E7%AB%A0/">序章</a><span class="category-list-count">3</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/">伦克</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/Dead-Warrior/">Dead Warrior</a><span class="category-list-count">8</span></li></ul></li></ul>
     </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/HP/" rel="tag">HP</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/P5R/" rel="tag">P5R</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/%E4%B8%BB%E6%98%8E/" rel="tag">主明</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/%E4%BC%A6%E5%85%8B/" rel="tag">伦克</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/%E6%AD%A3%E4%B9%89%E5%8D%B3%E6%AD%A3%E4%B9%89/" rel="tag">正义即正义</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/%E7%95%AA%E5%A4%96/" rel="tag">番外</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/%E8%AF%A1%E7%A7%98%E4%B9%8B%E4%B8%BB/" rel="tag">诡秘之主</a><span class="tag-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/MyBlog/tags/HP/" style="font-size: 20px;">HP</a> <a href="/MyBlog/tags/P5R/" style="font-size: 13.33px;">P5R</a> <a href="/MyBlog/tags/%E4%B8%BB%E6%98%8E/" style="font-size: 16.67px;">主明</a> <a href="/MyBlog/tags/%E4%BC%A6%E5%85%8B/" style="font-size: 20px;">伦克</a> <a href="/MyBlog/tags/%E6%AD%A3%E4%B9%89%E5%8D%B3%E6%AD%A3%E4%B9%89/" style="font-size: 10px;">正义即正义</a> <a href="/MyBlog/tags/%E7%95%AA%E5%A4%96/" style="font-size: 10px;">番外</a> <a href="/MyBlog/tags/%E8%AF%A1%E7%A7%98%E4%B9%8B%E4%B8%BB/" style="font-size: 20px;">诡秘之主</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/MyBlog/archives/2024/11/">November 2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/MyBlog/archives/2023/12/">December 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/MyBlog/archives/2023/11/">November 2023</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Connect With Us</h3>
+    <div class="widget widget_athemes_social_icons">
+
+    	<ul class="clearfix widget-social-icons">   
+    	
+   			<li><a target="_blank" rel="noopener" href="https://github.com/JasmineCROW" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+
+   		
+   		</ul>
+
+
+   		<!--
+   		<ul class="clearfix widget-social-icons">   		
+   		<li class="widget-si-twitter"><a target="_blank" rel="noopener" href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
+		<li class="widget-si-facebook"><a target="_blank" rel="noopener" href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
+			<li class="widget-si-gplus"><a target="_blank" rel="noopener" href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
+			<li class="widget-si-pinterest"><a target="_blank" rel="noopener" href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
+			<li class="widget-si-flickr"><a target="_blank" rel="noopener" href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
+			<li class="widget-si-instagram"><a target="_blank" rel="noopener" href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
+		</ul> -->
+
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/MyBlog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/MyBlog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/MyBlog/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/MyBlog/tags" class="mobile-nav-link">Tags</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2024 JasmineCrow&#39; Blog All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
 </div>
 
-        <div class="sidebar-panel-tags">
-    <div class="sidebar-tags-name">
-            <span class="sidebar-tag-name" data-tags="主明">
-                <span class="iconfont-archer">&#xe606;</span>
-                主明
-            </span>
-            <span class="sidebar-tag-name" data-tags="P5R">
-                <span class="iconfont-archer">&#xe606;</span>
-                P5R
-            </span>
-            <span class="sidebar-tag-name" data-tags="番外">
-                <span class="iconfont-archer">&#xe606;</span>
-                番外
-            </span>
-            <span class="sidebar-tag-name" data-tags="伦克">
-                <span class="iconfont-archer">&#xe606;</span>
-                伦克
-            </span>
-            <span class="sidebar-tag-name" data-tags="诡秘之主">
-                <span class="iconfont-archer">&#xe606;</span>
-                诡秘之主
-            </span>
-            <span class="sidebar-tag-name" data-tags="HP">
-                <span class="iconfont-archer">&#xe606;</span>
-                HP
-            </span>
-    </div>
-    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
-    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
-    </div> 
-    <div class="sidebar-tags-list"></div>
-</div>
+<!-- mathjax config similar to math.stackexchange -->
 
-        <div class="sidebar-panel-categories">
-    <div class="sidebar-categories-name">
-        <span class="sidebar-category-name" data-categories="主明">
-            <span class="iconfont-archer">&#xe60a;</span>
-            主明
-        </span>
-        <span class="sidebar-category-name" data-categories="伦克">
-            <span class="iconfont-archer">&#xe60a;</span>
-            伦克
-        </span>
-        <span class="sidebar-category-name" data-categories="正义即正义">
-            <span class="iconfont-archer">&#xe60a;</span>
-            正义即正义
-        </span>
-        <span class="sidebar-category-name" data-categories="Dead Warrior">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Dead Warrior
-        </span>
-        <span class="sidebar-category-name" data-categories="序章">
-            <span class="iconfont-archer">&#xe60a;</span>
-            序章
-        </span>
-    </div>
-    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
-    <div class="sidebar-categories-list"></div>
-</div>
-
-    </div>
-</div>
-
-        <!-- site-meta -->
-        <script>
-    var siteMetaRoot = "/MyBlog/"
-    if (siteMetaRoot === "undefined") {
-        siteMetaRoot = '/'
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
     }
-    var siteMeta = {
-        url: "https://jasminecrow.github.io/MyBlog",
-        root: siteMetaRoot,
-        author: "Jasmine"
-    }
+  });
 </script>
 
-        <!-- import experimental options here -->
-        <!-- Custom Font -->
-    <!-- Check browser compatibility of CSS variables -->
-    <script>
-        if (browserSupportCSSVariables === undefined) {
-            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
-        }
-    </script>
-    <script>
-        if (browserSupportCSSVariables) {
-            var customFontName = 'SourceHanSerifSC-VF:n3,n4,n5,n7'
-            var customFontUrl = 'https://github.com/adobe-fonts/source-han-serif/raw/release/Variable/TTF/SourceHanSerifSC-VF.ttf'
-            if (!customFontName) {
-                console.log('Custom font name is not set or read failed');
-            }
-            if (!customFontUrl) {
-                console.log('Custom font url is not set or read failed');
-            }
-        } else {
-            console.error('Current browser doesn\'t support custom font.')
-        }
-    </script>
-    <script src="/MyBlog/scripts/customFontLoader.js" defer></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
 
-        <!-- main func -->
-        <script src="/MyBlog/scripts/main.js"></script>
-        <!-- fancybox -->
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
-        <!-- algolia -->
-        <!-- busuanzi -->
-            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
-        <!-- async load share.js -->
-        <!-- mermaid -->
-    </body>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/MyBlog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/MyBlog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/MyBlog/js/script.js"></script>
+
+
+<script src="/MyBlog/js/bootstrap.js"></script>
+
+
+<script src="/MyBlog/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
 </html>

@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-    <!-- title -->
-<!-- keywords -->
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="author" content="Jasmine">
-    <meta name="renderer" content="webkit">
-    <meta name="copyright" content="Jasmine">
-        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
-    <meta name="description" content="Welcome to JasmineCrow' Blog">
-    <meta name="description" content="Welcome to JasmineCrow&#39; Blog">
+  <meta charset="utf-8">
+  
+  <title>Page 2 | JasmineCrow&#39; Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="Welcome to JasmineCrow&#39; Blog">
 <meta property="og:type" content="website">
 <meta property="og:title" content="JasmineCrow&#39; Blog">
 <meta property="og:url" content="https://jasminecrow.github.io/MyBlog/page/2/index.html">
@@ -20,689 +19,532 @@
 <meta property="article:author" content="Jasmine">
 <meta property="article:tag" content="JasmineCrow">
 <meta name="twitter:card" content="summary">
-    <meta http-equiv="Cache-control" content="no-cache">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <link rel="icon" href="/MyBlog/assets/crow.png">
-    <title>jasmineCROW&#39;s Blog</title>
-    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
-/* This file is meant as a standalone workflow for
-- testing support for link[rel=preload]
-- enabling async CSS loading in browsers that do not support rel=preload
-- applying rel preload css once loaded, whether supported or not.
-*/ -->
-<script>
-    (function (w) {
-        'use strict'
-        // rel=preload support test
-        if (!w.loadCSS) {
-            w.loadCSS = function () {}
-        }
-        // define on the loadCSS obj
-        var rp = (loadCSS.relpreload = {})
-        // rel=preload feature support test
-        // runs once and returns a function for compat purposes
-        rp.support = (function () {
-            var ret
-            try {
-                ret = w.document.createElement('link').relList.supports('preload')
-            } catch (e) {
-                ret = false
-            }
-            return function () {
-                return ret
-            }
-        })()
+  
+  <link rel="icon" href="/MyBlog/css/images/favicon.ico">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
 
-        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
-        // then change that media back to its intended value on load
-        rp.bindMediaToggle = function (link) {
-            // remember existing media attr for ultimate state, or default to 'all'
-            var finalMedia = link.media || 'all'
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Oswald%3A300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  
+<link rel="stylesheet" href="/MyBlog/css/style.css">
 
-            function enableStylesheet() {
-                link.media = finalMedia
-            }
 
-            // bind load handlers to enable media
-            if (link.addEventListener) {
-                link.addEventListener('load', enableStylesheet)
-            } else if (link.attachEvent) {
-                link.attachEvent('onload', enableStylesheet)
-            }
+  
+<script src="/MyBlog/js/jquery-3.1.1.min.js"></script>
 
-            // Set rel and non-applicable media type to start an async request
-            // note: timeout allows this to happen async to let rendering continue in IE
-            setTimeout(function () {
-                link.rel = 'stylesheet'
-                link.media = 'only x'
-            })
-            // also enable media after 3 seconds,
-            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
-            setTimeout(enableStylesheet, 3000)
-        }
 
-        // loop through link elements in DOM
-        rp.poly = function () {
-            // double check this to prevent external calls from running
-            if (rp.support()) {
-                return
-            }
-            var links = w.document.getElementsByTagName('link')
-            for (var i = 0; i < links.length; i++) {
-                var link = links[i]
-                // qualify links to those with rel=preload and as=style attrs
-                if (
-                    link.rel === 'preload' &&
-                    link.getAttribute('as') === 'style' &&
-                    !link.getAttribute('data-loadcss')
-                ) {
-                    // prevent rerunning on link
-                    link.setAttribute('data-loadcss', true)
-                    // bind listeners to toggle media back
-                    rp.bindMediaToggle(link)
-                }
-            }
-        }
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/MyBlog/css/bootstrap.css" >
+  <link rel="stylesheet" href="/MyBlog/css/fashion.css" >
+  <link rel="stylesheet" href="/MyBlog/css/glyphs.css" >
 
-        // if unsupported, run the polyfill
-        if (!rp.support()) {
-            // run once at least
-            rp.poly()
-
-            // rerun poly on an interval until onload
-            var run = w.setInterval(rp.poly, 500)
-            if (w.addEventListener) {
-                w.addEventListener('load', function () {
-                    rp.poly()
-                    w.clearInterval(run)
-                })
-            } else if (w.attachEvent) {
-                w.attachEvent('onload', function () {
-                    rp.poly()
-                    w.clearInterval(run)
-                })
-            }
-        }
-
-        // commonjs
-        if (typeof exports !== 'undefined') {
-            exports.loadCSS = loadCSS
-        } else {
-            w.loadCSS = loadCSS
-        }
-    })(typeof global !== 'undefined' ? global : this)
-</script>
-
-    <style type="text/css">
-    @font-face {
-        font-family: 'Oswald-Regular';
-        src: url("/MyBlog/font/Oswald-Regular.ttf");
-    }
-
-    body {
-        margin: 0;
-    }
-
-    header,
-    footer,
-    .footer-fixed-btn,
-    .sidebar,
-    .container,
-    .site-intro-meta,
-    .toc-wrapper {
-        display: none;
-    }
-
-    .site-intro {
-        position: relative;
-        z-index: 3;
-        width: 100%;
-        /* height: 50vh; */
-        overflow: hidden;
-    }
-
-    .site-intro-placeholder {
-        position: absolute;
-        z-index: -2;
-        top: 0;
-        left: 0;
-        width: calc(100% + 300px);
-        height: 100%;
-        background: repeating-linear-gradient(
-            -45deg,
-            #444 0,
-            #444 80px,
-            #333 80px,
-            #333 160px
-        );
-        background-position: center center;
-        transform: translate3d(-226px, 0, 0);
-        animation: gradient-move 2.5s ease-out 0s infinite;
-    }
-
-    @keyframes gradient-move {
-        0% {
-            transform: translate3d(-226px, 0, 0);
-        }
-        100% {
-            transform: translate3d(0, 0, 0);
-        }
-    }
-</style>
-
-    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link id="stylesheet-base" rel="preload" href="/MyBlog/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link id="stylesheet-mobile" rel="preload" href="/MyBlog/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
-    <link id="stylesheet-theme-dark" rel="preload" href="/MyBlog/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
-    <link rel="preload" href="/MyBlog/scripts/main.js" as="script">
-    <link rel="preload" href="/MyBlog/font/Oswald-Regular.ttf" as="font" crossorigin>
-    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
-    <!-- algolia -->
-    <!-- 百度统计  -->
-    <!-- 谷歌统计  -->
-    <!-- Google tag (gtag.js) -->
 <meta name="generator" content="Hexo 7.3.0"></head>
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <script type="text/javascript">
-        if (typeof window.$ == undefined) {
-            console.warn('jquery load from jsdelivr failed, will load local script')
-            document.write('<script src="/MyBlog/lib/jquery.min.js" />')
-        }
-    </script>
-        <body class="home-body">
-        <!-- header -->
-        <header class="header header-mobile index-header">
-    <!-- top read progress line -->
-    <div class="header-element">
-        <div class="read-progress"></div>
-    </div>
-    <!-- sidebar menu button -->
-    <div class="header-element">
-        <div class="header-sidebar-menu">
-            <div style="padding-left: 1px;">&#xe775;</div>
-        </div>
-    </div>
-    <!-- header actions -->
-    <div class="header-actions">
-        <!-- theme mode switch button -->
-        <span class="header-theme-btn header-element">
-            <i class="fas fa-adjust"></i>
-        </span>
-        <!-- back to home page text -->
-        <span class="home-link header-element">
-            <a href="/MyBlog/">jasmineCROW's Blog.</a>
-        </span>
-    </div>
-    <!-- toggle banner -->
-    <div class="banner">
-        <div class="blog-title header-element">
-            <a href="/MyBlog/">jasmineCROW&#39;s Blog.</a>
-        </div>
-        <div class="post-title header-element">
-            <a href="#" class="post-name"></a>
-        </div>
-    </div>
+
+
+  <body>
+
+
+  
+
+
+<header id="allheader" class="site-header" role="banner" 
+   >
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/MyBlog/" title="JasmineCrow&#39; Blog" rel="home"> JasmineCrow&#39; Blog </a>
+            
+          </h1>
+          
+          
+            <div class="site-description">Welcome to JasmineCrow&#39; Blog</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+
+            <div class="clearfix sf-menu">
+              <ul id="main-nav" class="menu sf-js-enabled sf-arrows"  style="touch-action: pan-y;">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="/"> <a class="" href="/MyBlog/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="archives"> <a class="" href="/MyBlog/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="categories"> <a class="" href="/MyBlog/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663" linktext="tags"> <a class="" href="/MyBlog/tags">Tags</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+      </div>
+  </div>
 </header>
 
-        <!-- fixed footer -->
-        <footer class="footer-fixed index-footer-fixed">
-    <!-- donate button -->
 
-    <!-- back to top button -->
-    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
-        <div>&#xe639;</div>
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main">
+  
+    <article id="post-Dead Warrior（二）"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/MyBlog/2023/11/09/Dead%20Warrior%EF%BC%88%E4%BA%8C%EF%BC%89/">Dead Warrior（二）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/MyBlog/2023/11/09/Dead%20Warrior%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+	  <time datetime="2023-11-08T23:15:40.000Z" itemprop="datePublished">November 9, 2023</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/">伦克</a>, <a class="article-category-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/Dead-Warrior/">Dead Warrior</a>
+ 
+      
     </div>
-</footer>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&emsp;&emsp;伦纳德一个人盘腿坐在天文塔的屋顶上，低着头。太阳缓慢下坠，夕阳的余晖打在他的侧脸。<br>&emsp;&emsp;他的右手手腕上垂着一条黄水晶手链，在落日的照耀下闪着耀眼的光。伦纳德看着这条手链发呆，他还记得这是克莱恩每天戴在身上的。<br>&emsp;&emsp;伦纳德最后得知了事件的全貌。<br>&emsp;&emsp;这是一场有计划的袭击。因斯·赞格威尔故意选在霍格莫德现身，就是为了将霍格沃兹的教授们引去霍格莫德。恰逢邓布利多当时不在霍格沃兹，而他身上带的某件神奇物品骗过了城堡的防护，他顺利地潜入了霍格沃兹并偷走了某件东西。<br>&emsp;&emsp;伦纳德当时确实中了爆破咒，但他身上的索罗亚斯德家族魔法抵挡了这次致命的攻击。这个强大的魔法“偷”走了爆破咒带来的伤害，将其转移到了他挂着的吊坠上。爆炸的伤害被偷走了，但炸伤带来的疼痛却没有，伦纳德觉得自己的身体就是被细线拼着的一堆尸块，只剩一口气吊着。而爆炸产生的余波让他被压在了倒塌的房屋底下，也正是因为如此，他侥幸逃脱了背叛者的补刀。<br>&emsp;&emsp;而克莱恩中了索命咒。<br>&emsp;&emsp;他的尸体孤单地倒在了三把扫帚的门口，魔杖被折断，被随意地扔在了他的脚边。当教授们赶到时，他的身体甚至还是温暖的。他一直佩戴在手腕上的黄水晶手链从宽大的外袍里掉落，如同他本人一般，无力地垂下，无论如何转动，也无法再告知占卜结果了。<br>&emsp;&emsp;这条黄水晶手链最后也到了伦纳德手上，出于私心，他并没有将这个遗物一同埋入墓中。<br>&emsp;&emsp;不远处的钟声敲响，意味着一整天的课程都结束了。<br>&emsp;&emsp;伦纳德缓慢地回过神，他有些呆愣地眨了眨眼，过了一会儿才揉了揉眉心，苦笑一声。<br>&emsp;&emsp;“我又想起你了。”他突然转头，对空荡荡的身侧笑道，“你这条手链现在都变成废品了。又不值钱，卖掉的价格连十包巧克力蛙都买不到。”<br>&emsp;&emsp;伦纳德侧头静了几秒钟，似乎是在听人说话。<br>&emsp;&emsp;“我又没说错。”他站起身，将黄水晶手链收起，“我不会占卜，要不是卖不出去，我留着干嘛？”<br>&emsp;&emsp;伦纳德慢悠悠地走下天文塔，细不可闻地低声呢喃：“这可是你唯一留给我的东西……”<br>&emsp;&emsp;今天布斯巴顿和德姆斯特朗的学生们就要来了，每个学生都被要求必须前往礼堂。最近这段时间，所有人都很兴奋，路上全是学生们高声谈论的吵闹声。伦纳德散漫地走在走廊上，迎面碰上了几位赫奇帕奇的学生。<br>&emsp;&emsp;“嗨，罗珊。”他朝其中一位女生打了个招呼。<br>&emsp;&emsp;与好友们走在一起的一名棕发女孩子看见伦纳德，脸上先是露出了欣喜的表情，但似乎又想起了什么，笑容僵住，随即露出一个带着悲伤的微笑，“哈喽，伦纳德。你现在是准备去礼堂吗？”<br>&emsp;&emsp;伦纳德点了点头，“你不去吗？”<br>&emsp;&emsp;“我刚下课，打算先回一趟宿舍。”罗珊回答道，“你……嗯……你准备参加三强争霸赛吗？”<br>&emsp;&emsp;她本是随便一问，却没想到这位格兰芬多的朋友思考了几秒钟，竟点了点头，“我会去参加。”<br>&emsp;&emsp;“——什么？！你会参加！！”罗珊震惊地大叫道，发现自己太过引人注目后，不好意思地捂住了嘴巴，“呃，抱歉。我还以为……你现在……对这些不感兴趣。”<br>&emsp;&emsp;她说到最后，声音小了很多。<br>&emsp;&emsp;“我本是这样想的，但这也是一个提升自己的机会，不是吗？”伦纳德无奈地笑了笑。<br>&emsp;&emsp;“是的……嗯……”罗珊欲言又止，“伦纳德，即使是三强争霸赛，你也要小心。我知道这个比赛十分危险。”<br>&emsp;&emsp;“不不，罗珊。”伦纳德摇了摇头，“还不一定是我被选上呢。”<br>&emsp;&emsp;“如果你要去参加，这个学校没有比你更适合的人了。”罗珊说道。她的朋友催促她回宿舍，伦纳德便不再解释，与罗珊告别。<br>&emsp;&emsp;他顺着热情高涨的人流来到大礼堂，已经有很多学生坐在位子上聊天了。他越过高声谈论三强争霸赛的低年级学生，找了个安静的位子坐了下来，打开了《黑魔法防御：四阶》。<br>&emsp;&emsp;“伦纳德。”过了几分钟，有人拍了拍他的肩膀。伦纳德抬头看去，见格兰芬多魁地奇队队长邓恩·史密斯朝他招了招手。<br>&emsp;&emsp;“你也太用功了，今天可是全校大放假的日子……嗯，比圣诞节还热闹。”<br>&emsp;&emsp;伦纳德无奈地笑了笑，“反正现在也没事干。”<br>&emsp;&emsp;邓恩算是他的童年玩伴，在进入霍格沃兹之前，他就认识邓恩了。他比伦纳德大两岁，每当放假时，帕列斯总会打发他去和邓恩一块学习。对伦纳德来说，邓恩不仅是个学长，还是一个兄长般的角色。<br>&emsp;&emsp;邓恩在他旁边坐了下来，语重心长地说道：“伦纳德，你有的时候也应该放松一点，给自己放个假。我不是在劝你回魁地奇队，不过如果你哪天想在空中飞一飞，直接告诉我一声，我帮你向霍琦夫人借场地。”<br>&emsp;&emsp;“谢谢，队长。”伦纳德真心实意地对他说道。克莱恩去世后，伦纳德的精神状况十分糟糕，他也没有心情再继续待下去。邓恩听到他要退队，什么也没说，只是安慰地拍了拍他的肩膀。<br>&emsp;&emsp;“你怎么还叫我队长。”邓恩失笑地摇了摇头，“……伦纳德，只要你愿意，你随时可以回来当追球手。”<br>&emsp;&emsp;“谢谢，队长。不过我……还是算了。”伦纳德说道，“抱歉。”<br>&emsp;&emsp;“别说对不起，不是你的错。”邓恩说道。<br>&emsp;&emsp;“别说我了。”伦纳德看似轻松地笑了笑，转移了话题，“你最近和戴莉学姐进展怎么样了？”<br>&emsp;&emsp;“啊……咳咳。”邓恩不自然地握着拳头咳嗽几声，“……什么进展？”<br>&emsp;&emsp;“你还没去告白吗，队长？”伦纳德说道，“你都七年级了，再拖下去都要毕业了。你要等到什么时候？”<br>&emsp;&emsp;“我……嗯，我并不适合戴莉。”邓恩说道，“她太优秀了，而我……十分平庸。”<br>&emsp;&emsp;伦纳德刚想反驳，麦格教授步履匆匆地走向格兰芬多的长桌，让所有人跟着她，去霍格沃兹的前门迎接贵宾。<br>&emsp;&emsp;“……只要你们两个人往前迈一步，说不定一毕业孩子都有了。”伦纳德嘀咕了一声，不过邓恩并没有听见。<br>&emsp;&emsp;他懒洋洋地走在队伍的最后面。他其实对什么布斯巴顿和德姆斯特朗没有半点兴趣，但没办法，即使是学生会主席，这时候也得听从安排跟着前往前门。霍格沃兹的学生们鱼贯而出，现在是个寒冷的、空气清新的傍晚，白色的月亮已经高高地挂在了天上。伦纳德看着那一轮明月发呆，不知在想些什么。<br>&emsp;&emsp;“你怎么了？”邓恩注意到了他的异常，转头问道。<br>&emsp;&emsp;伦纳德摇了摇头，示意自己什么事也没有。<br>&emsp;&emsp;“听说在遥远的东方，明月是用来传递思念的。”一个声音在伦纳德身边响起。格兰芬多的两个少年都转头看去，见一名涂着夸张蓝色眼影和口红的斯莱特林女生站到了邓恩身侧。她注意到伦纳德的目光，嘴角勾起一个妩媚的微笑，很是迷人，调侃道：“怎么？你难道不是这样想的？”<br>&emsp;&emsp;“戴莉学姐。”伦纳德问了声好，“好久不见，最近过得好吗？”<br>&emsp;&emsp;“拙劣的问候技巧。如果你不会问好的话，还是别开口说话好了，小男孩。”戴莉不客气地说道，伦纳德尴尬地咳嗽了一声。<br>&emsp;&emsp;“我们竟然要在这种天气里迎接不知哪里来的贵客，唉，要是有对象就另当别论了，完全可以一边拥抱着互相取暖。呵，现在？”戴莉毫不掩饰地撇了撇嘴。伦纳德抬眼看了看邓恩，见这个魁地奇队长红了耳朵，却不知如何接戴莉的话茬。他在心里叹了口气，懒洋洋地开口：“戴莉学姐，我推荐你身边这位学长，你们完全可以试一试。”<br>&emsp;&emsp;邓恩不敢置信地看着他的朋友，“伦纳德！你——”<br>&emsp;&emsp;“呵呵，这倒是个好主意。你说呢？格兰芬多的魁地奇队队长？”<br>&emsp;&emsp;戴莉笑眯眯地说道，而邓恩抿了抿嘴，纠结了好久，还是泄气地转移了话题，“不知那两个学校的人会怎么来霍格沃兹？”<br>&emsp;&emsp;队长啊……伦纳德叹了一口气。<br>&emsp;&emsp;戴莉翻了个白眼，很明显是在嘲笑邓恩转移话题的能力，“门钥匙吧，我想。”她气呼呼地说道，“这是最方便的方式了，但谁知道那些人会不会采用一个更加戏剧性的出场呢？”<br>&emsp;&emsp;她话音刚落，便听见站在最前头的邓布利多突然喊道：“噢，看来布斯巴顿的人已经来了！”<br>&emsp;&emsp;人群骚动起来，所有人伸长了脖子，却没看见哪里多出了人。<br>&emsp;&emsp;“在哪儿呢？”<br>&emsp;&emsp;伦纳德抬头，看见了空中逐渐变大了黑点。<br>&emsp;&emsp;“……那是什么？龙？”<br>&emsp;&emsp;“我不认为其他学校会用珍贵的龙拉马车。”戴莉嗤笑一声，驳回了他的疑问。很快，大家都看清了那是些什么东西——一群“千纸鹤”——没错，数不清的用纸折成的千纸鹤在最前面扑腾着翅膀，拉着几辆通体雪白的马车！<br>&emsp;&emsp;“真酷！”人群中有人忍不住喊道。<br>&emsp;&emsp;“这看上去真浪漫。”几个女孩子兴奋地窃窃私语。<br>&emsp;&emsp;马车离他们越来越近，所有人都发现他们正在急促下落。站在最前排的同学们开始惊恐地后退，不过想象中的撞击并没有来临，那些千纸鹤就像降落伞一样，吊着这些马车缓缓下降，最后平稳地降落在了地面上。<br>&emsp;&emsp;伦纳德还没看清马车上的标志，最前头的那辆车门就被打开了。令所有人都意外的是，马车里跳下了一个男孩——看上去只有四岁左右。<br>&emsp;&emsp;……这是什么？布斯巴顿的人还会带小孩子来看热闹？伦纳德忍不住在心里腹诽。<br>&emsp;&emsp;那名有着银白色卷发的男孩完全不在意周围人看着他的好奇目光，他的眼神扫到了那些教授们，当即高举右手挥了挥，“嘿！邓布利多！”<br>&emsp;&emsp;在所有人愕然的注视下，邓布利多走上前去，俏皮地朝这名小孩眨了眨眼，“噢，威尔！这么多年不见，你怎么变成这样了？”<br>&emsp;&emsp;“偶尔也想当个小屁孩。”威尔·昂赛汀高仰着头，“小孩的身份可比成年人有趣多了。你自己看看，你现在变成一个白花花的老头了。”<br>&emsp;&emsp;“呵呵，谁说老年人就不能活出有意思的生活了？”邓布利多笑眯眯地说道。<br>&emsp;&emsp;“哈，随你便吧。”威尔·昂赛汀不在意地摆了摆手，头往后偏了偏，“我的学生。”<br>&emsp;&emsp;布斯巴顿的学生们已经陆续从马车上走了下来，他们大约有二十个人，穿着做工精致的校服，戴着厚厚的围巾。大部分人都把脸藏在了围巾下，这里的温度对他们来说似乎太冷了，但也有几个人没有佩戴围巾，似乎是想保持着体面，不过他们抱着双臂颤抖的样子很是有趣。<br>&emsp;&emsp;“德姆斯特朗的来了没有啊？”威尔·昂赛汀随口问道。<br>&emsp;&emsp;“还没呢，可能还得等一会儿。”邓布利多说道，“你是要跟着站在这里迎接，还是先去里头暖和暖和？”<br>&emsp;&emsp;“先进去吧，我有几个学生快被冻死了。”威尔说道，打了个响指，那些千纸鹤化作如萤火虫般的光点，消散在空中。没见过这种场面的学生们发出了此起彼伏的“哇——”声。<br>&emsp;&emsp;“哦，我忘了，这些马车怎么办？”<br>&emsp;&emsp;“别担心，我会把它们安置到合适的地方的。”<br>&emsp;&emsp;“行。”威尔高傲地点了点头，便不客气地直接带着身后的学生们越过了邓布利多，麦格教授带着他们前往了礼堂。<br>&emsp;&emsp;“真不敢相信，那个小屁孩竟然是布斯巴顿的校长。”邓恩惊奇地说道，“这是……返老还童？”<br>&emsp;&emsp;“时间可是最难被攻克的魔法之一。”戴莉说道，“呵呵，不过那位是布斯巴顿的校长，也不足为奇了。”<br>&emsp;&emsp;所有学生都在谈论布斯巴顿的登场，从绚丽的千纸鹤拉马车，到一个小孩子校长。即使每个人的脸都冻得通红，他们却越发地兴奋，更加期待德姆斯特朗的人会给予怎样的惊喜。<br>&emsp;&emsp;他们没有等多久。很快，一个古怪的声音，类似古代机械的沉重轰鸣从远处传来，似乎是从地底深处发出的远古的轰鸣。就在所有人都在寻找声音的来源时，人群中有人高呼了一声——宛如轮船上第一个看见美洲大陆的那个人——“看！湖面上！”<br>&emsp;&emsp;湖水开始朝中间流动——一个巨大的漩涡出现在正中央，就像一个巨大的塞子突然从水中被拔了起来。紧接着，有什么漆黑的东西从水中冲出，带出了几十米高的浪花，站在最前边的同学们都遭了殃，被冰冷的湖水浸了一身。在一片尖叫声中，所有人都看到了这个庞然大物是什么。<br>&emsp;&emsp;一艘巨大的、通体漆黑的轮船，长近百米，风帆高挂，侧面有一门门舷炮，周围区域仿佛获得了一轮黑太阳。印有德姆斯特朗徽章的旗子随风飘舞，这个巨轮缓慢地靠近了霍格沃兹。随着刺耳的鸣笛声，轮船停了下来，整片土地仿佛都重重地颤抖了一下。<br>&emsp;&emsp;霍格沃兹的同学们看到十几个人就这样从船上跳了下来，接着稳稳地落在了地上。走在最前头的是一名褐色皮肤、黑色长发、戴着丝绸礼帽、握着手杖的男子。他笑呵呵地走上前来，“好久不见，邓布利多。”<br>&emsp;&emsp;“阿兹克！”邓布利多张开双臂，同德姆斯特朗的代表拥抱了一下，“呵呵，我们多久没见了？有十年了吧？你最近过得如何？”<br>&emsp;&emsp;“老样子。”阿兹克温和地说道。他五官柔和，没有留须，眼中总带着一股沧桑感。他似乎不愿多聊这个话题，转而问道：“威尔来了吗？”<br>&emsp;&emsp;“刚到，他怕冷，就先进去了。”邓布利多笑嘻嘻地说道，“明明他那么爱吃冰淇凌。”<br>&emsp;&emsp;“小孩子嘛，对温度的感知肯定会比大人敏感一点。”阿兹克了然地点了点头，<br>&emsp;&emsp;两人哈哈大笑，邓布利多带着阿兹克往礼堂方向走去。阿兹克往他身后点了点头，德姆斯特朗的学生们便跟在他的脚步之后。<br>&emsp;&emsp;霍格沃兹的学生让贵宾们先走。德姆斯特朗的学生跟布斯巴顿的又不一样，他们似乎没有特定的校服，每个人都穿得花里胡哨的。队伍中有几个人毫不掩饰地打量着这座魔法城堡，脸上带着满满的好奇。<br>&emsp;&emsp;“喂，达尼兹！快看，你的心上人就在这里念书呢！”<br>&emsp;&emsp;“狗屎！闭嘴！安德森！”<br>&emsp;&emsp;德姆斯特朗队伍里传来打闹声，但最后没有引起更大的骚动。伦纳德注意到头上带着红色三角巾的一名德姆斯特朗学生正对着他身后的一个金发少年呲牙咧嘴，并做了一个不怎么友好的手势，后者则毫不在意地耸了耸肩。<br>&emsp;&emsp;走在达尼兹前面的另一名德姆斯特朗学生则平静地回头看了他们一眼，注意到他的目光 ，打闹的两人立刻噤声了。安德森笑嘻嘻地比了个安静的手势，而达尼兹则一脸惊恐的低下了头，嘴巴似乎嘀咕了几句。<br>&emsp;&emsp;那名学生回过头来。他脸庞消瘦，棱角分明，黑色的短发向后固定，戴着一副金边眼镜，身着黑色长风衣，左手戴着一只黑色手套，右手则插在风衣的口袋里。深棕色的双眼像鹰一般扫视着周围，接着在人群中，与伦纳德对上了视线。<br>&emsp;&emsp;不知为何，伦纳德心头猛地一紧。<br>&emsp;&emsp;但那个人并没有看多久，短暂地停顿了一秒钟后，便转开了头。<br>&emsp;</p>
+<hr>
+<p>&emsp;&emsp;霍格沃兹今天的晚餐格外好，似乎厨房里的家养小精灵们也卯足了劲要给远道而来的客人们展示一番。伦纳德在餐桌上看到了他从未见过的美食，听别人说，这些是法国菜。<br>&emsp;&emsp;德姆斯特朗和布斯巴顿的学生们分散在各个学院的长桌，伦纳德身边也坐着几个布斯巴顿的学生。他们大部分对晚餐赞不绝口，只有坐在他身侧的一个长相十分精致的男生，精神萎靡地垂着头，百无聊赖地看着琳琅满目的餐桌，却动都没动他眼前的叉子。<br>&emsp;&emsp;伦纳德本不想掺和，其他人跟他没关系，更何况是布斯巴顿的。但最终他还是没抵挡住自己的好奇心，便开口问道：“霍格沃兹的晚餐不合你的口味吗？”<br>&emsp;&emsp;“呃？！什么？！”那个帅气的男生吓了一大跳，似乎是没想到伦纳德会突然和他搭话，“哦，不是，你们学校的晚餐挺不错，我是说，看上去还行。”<br>&emsp;&emsp;“那你为什么……？”伦纳德微皱眉头，而另一名布斯巴顿的学生开口解了围：“别在意，他不能吃这些东西，这家伙的口味很挑剔，现在你们的厨师正在着急寻找适合他的食材呢。”<br>&emsp;&emsp;说话的是一名棕发女生，气质十分慵懒，面容较好，她说话声音也慢慢的。伦纳德听懂了，但他更不理解了。不能吃这些东西？这不是正常的人类食物吗？他的忌口是不是太多了？<br>&emsp;&emsp;伦纳德这时才注意到那个男生的双眼是血红色的，他还未细想，一只家养小精灵突然出现在身边。<br>&emsp;&emsp;“尊敬的客人！让您久等了，这是您要的晚餐，请慢用！”<br>&emsp;&emsp;它把一个装着鲜红色液体的高脚杯递了过来，而那名布斯巴顿的男生双眼一亮，迫不及待地接过仰头喝了一口，脸上露出了满足的表情，甚至意犹未尽地舔了舔嘴唇，露出了两颗尖牙。<br>&emsp;&emsp;伦纳德闻到了高脚杯里液体的味道，淡淡的铁锈味，这是——他的表情一变，不敢置信地上下打量了那个男生几眼，说道：“你是吸血鬼？！”<br>&emsp;&emsp;“血！族！！”那个男生一呛，差点把他嘴巴里的血吐出来，他气急败坏地放下高脚杯纠正道，“是血族！高贵的血族！别把我和那些肮脏的没脑子的下等生物混为一谈！听着，那些只会哇哇叫的怪物和我们没有任何关系！”<br>&emsp;&emsp;“哦，好吧，抱歉。”伦纳德点了点头。其他格兰芬多本来用一种惧怕的眼神看着那名男生，但听他这么说后，又小心翼翼地放下了心来。几名格兰芬多女生好奇地问道：“那你们也会吸人血吗？”<br>&emsp;&emsp;“不，我们很有道德的。”那名男生微蹙眉头，扬起下巴，冷哼一声，“我们和人类有过协议，不会随意去伤害普通人。”<br>&emsp;&emsp;“那你们又要如何获得鲜血？你们喝的是动物的血吗？”<br>&emsp;&emsp;“人血是最好的……我们有合法的获取渠道。”男生回答道，又喝了一口血。<br>&emsp;&emsp;伦纳德与这些布斯巴顿的学生们又简单聊了一会儿天，那个血族男生叫做埃姆林·怀特，与他搭话的棕发女学生是佛尔思·沃尔，她身边还坐着一名小个子金发女生，叫做休·迪斯查。<br>&emsp;&emsp;“你们都要参加三强争霸赛吗？”伦纳德随口问道。<br>&emsp;&emsp;“不，我可不打算参加。”佛尔思怠惰地说道，优雅地拿起高脚杯喝了一口红酒，“我来到霍格沃兹只是……嗯，寻找一些素材。但休是打算试试看的，对吧？”<br>&emsp;&emsp;那名小个子金发女孩平静地点了点头，没有多说。<br>&emsp;&emsp;“我倒是随便……”埃姆林嘟囔了一句，“主要是，我还不知道这三强争霸赛究竟是怎么进行的呢。”<br>&emsp;&emsp;“你的意思是如果太危险，你就不参加？”佛尔思懒洋洋地问道。<br>&emsp;&emsp;“请不要说得我很无能的样子，女士。这只是最基本的审时度势。“<br>&emsp;&emsp;伦纳德不再参与布斯巴顿学生们的谈话，他从餐桌上拿了一碗沙拉，用于饭后解腻。<br>&emsp;&emsp;在晚餐的这段时间里，他一直注意到了一道视线，时不时地看向他的方向。<br>&emsp;&emsp;伦纳德天生就对类似的视线比较敏感，这可能来源于他过于敏锐的第六感。其实除此之外，他还有其他天生带着的能力，这让他一度觉得自己是时代的主角。但最后发现，这可能只能说明他身为巫师的魔力比其他人要强一点罢了。<br>&emsp;&emsp;他一开始并没有太在意这道视线，从小到大他受过各种各样善意的、嫉妒的、崇拜的眼神，但这次的感觉持续了太长时间，于是他忍不住转过头去，想看看究竟是谁一直在看着他。<br>&emsp;&emsp;坐在他身后的是拉文克劳和斯莱特林的学生。其中，布斯巴顿的几名同学混在了拉文克劳里，而有几个德姆斯特朗正在和斯莱特林的学生聊天。伦纳德微皱着眉头看了一圈，没有发现有人看向他的方向。<br>&emsp;&emsp;“真敏锐……”伦纳德撇了撇嘴，嘀咕了一句。<br>&emsp;&emsp;当所有人差不多都吃完时，邓布利多从教师席上站起身，用银质汤勺敲了敲桌上的金杯，礼堂顿时寂静了下来。<br>&emsp;&emsp;“真是个令人兴奋的时刻。”邓布利多笑眯眯地说道，“三强争霸赛马上就要开始了。在把盒子拿进来之前，我想先解释几句——”<br>&emsp;&emsp;盒子？伦纳德听到了这个名词。<br>&emsp;&emsp;“——首先，请允许我介绍两位来宾。”邓布利多说道，“分别是阿里安娜女士，魔法部国际合作司司长。以及艾斯·斯内克先生，魔法部法律执行队队长。”<br>&emsp;&emsp;礼堂里响起了掌声。邓布利多过了几秒钟后继续说道：“在过去的几个月里，阿里安娜女士和艾斯先生参与了三强争霸赛的辛勤工作，他们将和我、阿兹克教授以及威尔教授组成裁判团，对勇士们的努力做出评判——费尔奇先生，请把盒子拿上来。”<br>&emsp;&emsp;费尔奇一直潜伏在礼堂的一个角落里，他朝邓布利多走来，手里捧着一只镶嵌着珠宝的大木盒子，并将其小心地放在了正中间的桌子上。<br>&emsp;&emsp;“三强争霸赛一共有三个项目。”邓布利多朝费尔奇点了点头后说道，“阿里安娜女士和艾斯先生已经仔细审查过了，这三个项目分别在整个学年的不同时间进行，他们将从不同方面考研勇士——包括魔法方面的才能、他们的胆量、智慧，以及战胜危险的能力。”<br>&emsp;&emsp;“将有三位勇士参加比赛。”老校长继续说道，“分别代表一个参赛学校，裁判团将会根据他们完成项目的质量给予评分。三个项目结束后，得分最高的勇士将赢得三强杯。至于选出勇士的方法——我们将采取一个绝对公正的方式。”<br>&emsp;&emsp;邓布利多说完后，掏出魔杖，在盒子盖上敲了三下，盖子缓慢地打开了。他从那个盒子里掏出了一只看上去很破旧的巨大高脚杯，杯子里跳动着蓝白色的火焰。<br>&emsp;&emsp;“每一位想要竞选勇士的同学，都必须将他的姓名和学校写在一张羊皮纸上，扔进这个高脚杯。”邓布利多说，“有志成为勇士的同学可在二十四小时内报名。明天晚上——也就是万圣节的晚上，高脚杯将选出它认为最能代表三个学校的三位同学的名字。”<br>&emsp;&emsp;礼堂的每个人都开始兴奋起来。他们交头接耳，猜测会有谁将名字投进火焰杯里，又是谁会被选中成为勇士。<br>&emsp;&emsp;“最后，我想请每一位要参加竞选的同学注意，这场争霸赛不是儿戏。一旦勇士被火焰杯选定，他就必须将比赛坚持到底。谁把自己的名字投进杯子，实际上就形成了一道必须遵守的、神奇的契约。一旦成为勇士，就不允许再改变主意。因此，请千万三思而行，弄清自己确实一心一意想参加比赛，再把名字投进杯子里。”邓布利多最后强调了几句，便拍了拍手，“好了，我认为大家该回寝室了，晚安。”<br>&emsp;&emsp;同学们陆续从礼堂离开。伦纳德看了看时间，现在才八点半，对他来说，晚上才刚开始。他准备先去一趟图书馆，将手里的书放回位置上，再来礼堂将自己的名字投进火焰杯里。<br>&emsp;&emsp;当伦纳德从图书馆里出来时，走廊上已经没有什么人了。<br>&emsp;&emsp;他走进礼堂，这个硕大的场地现在静悄悄的，但伦纳德惊讶地发现有一个人站在火焰杯前。<br>&emsp;&emsp;听到脚步声，那名同学转过身来。黑色短发，带着金边眼镜，面无表情。那个德姆斯特朗，伦纳德有印象，他当时走在学校队伍的第一个，与他对上了视线。<br>&emsp;&emsp;伦纳德总觉得这个人有些熟悉，但他很确信自己从来没见过他。<br>&emsp;&emsp;“……咳。”伦纳德将拳头抵在嘴边，咳嗽了一声，“你来将名字投进火焰杯里吗？”<br>&emsp;&emsp;那名学生表情没有任何变化，但伦纳德听见他闷哼一声，气音从鼻子里喷出来。<br>&emsp;&emsp;“显而易见。”他淡淡地开口。<br>&emsp;&emsp;……我刚刚不会被他嘲笑了吧？伦纳德表情一僵。好吧，我的问题确实有点蠢。<br>&emsp;&emsp;他懒得与其他学校的起冲突，只是耸了耸肩，“行，你能劳驾让开吗？我也要投。”<br>&emsp;&emsp;“你？”那名同学似乎有些惊讶，但还是往旁边靠了靠，“你准备参加三强争霸赛？”<br>&emsp;&emsp;“怎么，你认为只有德姆斯特朗的学生配参赛？还是你觉得我根本没资格参加？”伦纳德把羊皮纸揉成团，漫不经心地扔进了火焰杯里，蓝白色的火焰瞬间吞没了那团纸。他转过身子，不客气地用失礼的目光上下打量面前的学生，“不过说到底，关你什么事？”<br>&emsp;&emsp;“……你误会了，我并没有恶意。”学生垂了垂眼，平静地回复道，“只是……你看上去是对这种比赛没兴趣的那类人。”<br>&emsp;&emsp;“我一开始是没有什么兴趣。”伦纳德说道，却没有继续多说，“德姆斯特朗就你一人参加？”<br>&emsp;&emsp;“不，我想有几个人也会报名的。”<br>&emsp;&emsp;“那这里怎么就你一个人？”<br>&emsp;&emsp;“他们回去睡觉了，可能明天才会将名字投进来吧。”<br>&emsp;&emsp;“是吗？那你可真心急。”伦纳德瞥了那名德姆斯特朗学生一眼，微皱眉头。<br>&emsp;&emsp;真奇怪，我确实是第一次见他，我也不记得曾经在什么地方看见过他，他的性格也不是我喜欢的类型……但我怎么总觉得哪里怪怪的？难道我的记忆被老头偷走过？不不，怎么可能……<br>&emsp;&emsp;伦纳德忍不住问道：“我之前认识你吗？”<br>&emsp;&emsp;他身旁的学生转过头来，面无表情地看着他的脸，深棕色的眼睛仿佛看进了他的内心深处。<br>&emsp;&emsp;伦纳德心脏一紧，忍不住后退了一步。<br>&emsp;&emsp;“——不认识。”那个学生摇了摇头，“我想，今天是我们第一次见面。”<br>&emsp;&emsp;“……是吗？”伦纳德低声自言自语，“好吧，确实是……难道有问题的是我的脑子……？”<br>&emsp;&emsp;“你说什么？”德姆斯特朗的学生微微偏头。<br>&emsp;&emsp;“没什么。”伦纳德说道，“你叫什么名字？”<br>&emsp;&emsp;那名学生沉默了三秒钟后，平静地开口了：<br>&emsp;&emsp;“格尔曼·斯帕罗。”<br>&emsp;&emsp;</p>
 
-        <!-- wrapper -->
-        <div class="wrapper">
-            <div class="site-intro" style="    height:50vh;
-">
-    <!-- 主页  -->
-    <!-- 文章页  -->
-    <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/MyBlog/intro/home.jpg)"></div>
-    <div class="site-intro-meta">
-        <!-- 标题  -->
-        <h1 class="intro-title">
-            <!-- 主页  -->
-                jasmineCROW's Blog.
-            <!-- 文章页  -->
-        </h1>
-        <!-- 副标题 -->
-        <p class="intro-subtitle">
-            <!-- 主页副标题  -->
-                    Your confusion is my betrayal.
-            <!-- 文章页  -->
-        </p>
-        <!-- 文章页 meta -->
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/">伦克</a>, <a class="article-category-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/Dead-Warrior/">Dead Warrior</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MyBlog/tags/HP/" rel="tag">HP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MyBlog/tags/%E4%BC%A6%E5%85%8B/" rel="tag">伦克</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MyBlog/tags/%E8%AF%A1%E7%A7%98%E4%B9%8B%E4%B8%BB/" rel="tag">诡秘之主</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+    <article id="post-Dead Warrior（一）"  class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/MyBlog/2023/11/08/Dead%20Warrior%EF%BC%88%E4%B8%80%EF%BC%89/">Dead Warrior（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/MyBlog/2023/11/08/Dead%20Warrior%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+	  <time datetime="2023-11-08T22:46:17.000Z" itemprop="datePublished">November 8, 2023</time>
+	</a>
+
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/">伦克</a>, <a class="article-category-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/Dead-Warrior/">Dead Warrior</a>
+ 
+      
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>&emsp;&emsp;“请留步，索罗亚斯德先生。”<br>&emsp;&emsp;抱着一摞书的少年停下脚步，转过头来。他一头黑色的半长卷发，乱糟糟的头发有一种凌乱的美感，长得十分英俊，表情却带着一丝漠然。他看见叫住他的来人后，好看的祖母绿眼瞳里闪过一丝惊讶的神情。<br>&emsp;&emsp;“邓布利多教授。”伦纳德·索罗亚斯德微微低头，问候道，“下午好。请问有什么事？”<br>&emsp;&emsp;阿不思·邓布利多笑眯眯地走到他面前，从口袋里掏出一包零食，“你喜欢吃比比多味豆吗？想要来一个吗？”<br>&emsp;&emsp;伦纳德犹豫了一秒钟，还是点了点头。他没有拒绝邓布利多的好意，这名老教授也愉快地将几粒怪味豆倒在他的手上。伦纳德小心翼翼地尝了一个，很快便酸得皱起了整张脸——超级酸柠檬味，不过好在并不是什么奇怪的味道。<br>&emsp;&emsp;邓布利多“咯咯”笑了几声，很快步入了正题：“我听弗立维教授说，你已经自学到了七年级的内容？”<br>&emsp;&emsp;“是的。”伦纳德轻轻颔首，这不是什么需要隐瞒的事。<br>&emsp;&emsp;“呵呵，很优秀，索罗亚斯德先生。”邓布利多弯了弯眼睛，“不过，注意保重身体，比如不要再在凌晨三点躲在图书馆里学习了。”<br>&emsp;&emsp;“……咳咳！”伦纳德刚把另一颗怪味豆丢进嘴里，听到这话便呛了好几口，“呃、咳咳、教授……？呃……这个……我很抱歉——”<br>&emsp;&emsp;伦纳德下意识地打算找个借口糊弄过去，但一想到对面是邓布利多，他便知道一切语言都十分乏力，便毫不犹豫地承认了错误。不过老校长却笑呵呵地摆了摆手。<br>&emsp;&emsp;“别紧张，索罗亚斯德先生。”他说道，“我不会扣格兰芬多的分——暂时。如果你还不遵守宵禁规则的话。”他朝英俊的少年眨了眨眼，“我只是想说——有时别把自己逼得太紧。”<br>&emsp;&emsp;伦纳德脸上维持的笑容一顿，“……好的，邓布利多教授。”伦纳德脸上表情不变，声音毫无起伏地点了点头。<br>&emsp;&emsp;邓布利多担忧地看了他一眼，轻轻叹了口气，拍了拍他的肩膀。<br>&emsp;&emsp;“好吧，好吧，索罗亚斯德先生。所以……你打算参加三强争霸赛吗？”<br>&emsp;&emsp;“什么？”伦纳德一愣，话题转变得太快，他甚至没有反应过来。他想起之前邓布利多公布的这个好消息，当时全校的人都在鼓掌，欢呼，为不用考试而兴奋。伦纳德却没有其他人那么开心，他对这所谓的三强争霸赛没有兴趣。<br>&emsp;&emsp;“我不打算参加三强争霸赛，邓布利多教授。”伦纳德摇了摇头，“我不想占用选取的名额，有人会更乐意参加。”<br>&emsp;&emsp;邓布利多不赞成地摇了摇头。<br>&emsp;&emsp;“你错了，索罗亚斯德先生，三强争霸赛是个很好的学习机会。”他说道，“我知道你在担忧什么……不过我想告诉你，三强争霸赛并没有你想象得那么简单。事实上，这个比赛已经有好几十年没有举办了，原因是死亡率过高。你可以学到很多东西，试问平常会有多少实战的机会？”<br>&emsp;&emsp;邓布利多不再多说，他笑呵呵地与伦纳德告别。<br>&emsp;&emsp;不得不说，短短这句话确实打动了伦纳德。<br>&emsp;&emsp;他想变强，通过任何方式。<br>&emsp;&emsp;整个四年级，伦纳德都一直在想，如果他再强一点，如果他之前没有吊儿郎当地混日子，如果他再努力一点，是不是——<br>&emsp;&emsp;克莱恩就不会死了。<br></p>
+<hr>
+<p>&emsp;&emsp;伦纳德·索罗亚斯德和克莱恩·莫雷蒂成为朋友完全是基于巧合，却又充满了缘分。两人被分到了同一个学院，同一个寝室。他们第一天就成为了朋友。而让关系更近一步的，源于某个夜晚。<br>&emsp;&emsp;伦纳德有个天赋，那就是天生亲近黑暗。他不需要普通人那么多的睡眠，一天只需要睡两个小时，并且，夜越深，他的精力就越充沛。小时候三更半夜都是在屋外疯跑的，而这所魔法学校居然有该死的宵禁！他当然不会乖乖地躺在床上看着床板发呆，只忍受了三天不到，他就一个人偷偷地溜出了休息室，开始了他的夜游之旅。<br>&emsp;&emsp;只是没想到，不止他一个人夜游。某一次探险途中，他意外遇见了他的好室友克莱恩，这才发现对方也是个夜游惯犯。<br>&emsp;&emsp;“……你不睡觉的吗？”当时克莱恩无奈地问道。<br>&emsp;&emsp;伦纳德耸了耸肩，调侃道：“你不也没睡？”<br>&emsp;&emsp;两人相视一笑，就像两名共犯。从此他们拥有了一个共同的秘密。<br>&emsp;&emsp;他们无忧无虑的校园生活只持续了三年——三年级时，克莱恩•莫雷蒂死于一场邪教徒的恐怖袭击。<br>&emsp;&emsp;三年级的学生们准许进入霍格莫德村。每到周六，这个小村子总是人满为患。不过伦纳德和克莱恩知道其他秘密通道，于是，他们总会选个没有多少人的日子去三把扫帚喝一杯黄油啤酒。<br>&emsp;&emsp;“这个酒馆还是这个时候最可爱。”伦纳德将长腿架在桌子上，翘着椅子，手里晃着满是气泡的黄油啤酒，懒洋洋地说道，“要是周六来，全是人的汗臭味。每到那个时候，我都不想踏进来。”<br>&emsp;&emsp;“在老板面前说不想进入我的店，可不是什么礼貌的行为，小同学。”三把扫帚的酒把老板罗斯默塔女士一边挥舞着魔杖清洗杯子，一边笑盈盈地说道。<br>&emsp;&emsp;“我只是说周六，女士。”伦纳德笑嘻嘻地举了举杯子，“当然，平常，这是我最喜欢光顾的地方。”<br>&emsp;&emsp;“呵呵，那你说说，你为什么最喜欢光顾这家店？”<br>&emsp;&emsp;罗斯默塔向前倾了倾身子，妩媚地朝伦纳德抛了一个媚眼。<br>&emsp;&emsp;“嗯？”伦纳德表情古怪地一僵，将身子往后靠了靠，“呃，因为黄油啤酒很好喝啊？”<br>&emsp;&emsp;克莱恩一个没忍住，发出一声嗤笑。<br>&emsp;&emsp;“哈哈！”罗斯默塔女士捂着嘴笑了，“什么嘛！你果然还是个小男生！”<br>&emsp;&emsp;伦纳德看着哈哈大笑的老板，以及正在努力憋笑的好友，脸上忍不住攀上了一层红晕。<br>&emsp;&emsp;“……到底有什么好笑的。”伦纳德不自然地换了姿势，掩饰性地喝了一口啤酒，嘀咕道。<br>&emsp;&emsp;就在这时，一名女士在门口张望。<br>&emsp;&emsp;“嘿，罗斯默塔，忙吗？”她拿手扇了扇风，“过来帮个忙呗！我店里的那些小动物们突然开始闹腾。”<br>&emsp;&emsp;“为什么找我啊？你难道没看到这里有两位客人吗？”罗斯默塔抱怨道。<br>&emsp;&emsp;“别这样嘛，这条街我就跟你比较熟。而且他们今天挺聒噪的，真是奇怪，他们从不这样……”<br>&emsp;&emsp;“你这小妖精……”罗斯默塔嗔怪了一句，转头抱歉地对两人说道：“抱歉，两位先生，我去去就回。”<br>&emsp;&emsp;“没事，放心去吧，罗斯默塔女士。”克莱恩善解人意地说道。<br>&emsp;&emsp;“你真好，男孩。”罗斯默塔抛了个飞吻，克莱恩尴尬地咳嗽一声，这下轮到伦纳德拍着桌子哈哈大笑。<br>&emsp;&emsp;“你果然是个小男生，克莱恩！”伦纳德学着罗斯默塔女士调侃道。<br>&emsp;&emsp;“闭嘴吧，诗人同学！别忘了，你和我同样年纪！”克莱恩叫道。<br>&emsp;&emsp;伦纳德轻松地笑了几声，克莱恩憋了几秒后，也释然地笑了。<br>&emsp;&emsp;克莱恩很少这么哈哈大笑，他大多时间都是矜持地抿着嘴，浑身浸满了书香气的少年似乎总是秉持着一种所谓的礼貌——在他看来，当面嘲笑友人是一种不合乎礼仪的行为。<br>&emsp;&emsp;不过，伦纳德一想到克莱恩内心肯定在嘟嘟囔囔地腹诽，脸上不禁带上层柔和的神色，他看着克莱恩深棕色的眼睛，如同手中微微摇晃的黄油啤酒，琥珀色的眼瞳里似乎可以映出他自己的模样。<br>&emsp;&emsp;“——克莱恩……”伦纳德忍不住笑着开口，“有没有人曾经对你说过，你的眼——”<br>&emsp;&emsp;——悲剧就在这时发生了。<br>&emsp;&emsp;这家温馨的酒馆突然出现了第三个人。<br>&emsp;&emsp;——伦纳德永远不会忘记那张脸。<br>&emsp;&emsp;暗金色的头发，毫无皱纹的脸，深蓝色近乎于黑色的眼睛，瞎了一只眼。<br>&emsp;&emsp;——因斯•赞格威尔！<br>&emsp;&emsp;在几个星期前，预言家日报曾发出了这份通缉令，他是一名叛逃到黑巫师阵营的傲罗！<br>&emsp;&emsp;他在看见他们两人时毫不犹豫地拔出了魔杖。<br>&emsp;&emsp;他们都愣住了，而这时克莱恩最先反应了过来。他一把踹开了伦纳德身下的椅子！<br>&emsp;&emsp;“阿瓦达索命！”<br>&emsp;&emsp;伦纳德重重地摔到了地上，他手中的酒杯没能幸免，有几片玻璃碎片甚至扎进了他的手掌里。<br>&emsp;&emsp;绿光打在了他方才待着的地方，他身后的桌子立刻被劈成了两半！<br>&emsp;&emsp;克莱恩一秒也没有耽搁，举着魔杖高喊：“速速救援！”<br>&emsp;&emsp;红光射向天空，在行至最高点时炸开，刺眼的“SOS”出现在昏暗的天空中。<br>&emsp;&emsp;克莱恩深知几个还没毕业的霍格沃滋学生肯定不是资深傲罗的对手，所以他毫不犹豫地请求支援！<br>&emsp;&emsp;没有人敢恋战，几乎是同一时间，伦纳德甩出一道通通石化并大吼道：“跑！！”<br>&emsp;&emsp;可这一切在因斯•赞格威尔就像是小孩子过家家。<br>&emsp;&emsp;克莱恩的判断是对的，两个三年级的小屁孩完全不是傲罗的对手。<br>&emsp;&emsp;因斯•赞格威尔表情没有任何变化，他就像正在捕食耗子的野猫，等着可怜的猎物跑出这间屋子，才再次举起了魔杖：“爆破咒！”<br>&emsp;&emsp;“躲开！克莱恩！”伦纳德一把撞开自己的好友，与此同时，那道咒语落在了他的身上。<br>&emsp;&emsp;砰！！<br>&emsp;&emsp;巨大的爆炸声在霍格莫德村响起。撕裂般的疼痛隔绝了伦纳德的知觉。<br>&emsp;&emsp;在失去意识之前，伦纳德的脑海中甚至还闪过一个想法。<br>&emsp;&emsp;还好我把克莱恩推开了……<br>&emsp;&emsp;他以为自己肯定是死了，可他却在圣芒戈睁开了眼睛。<br>&emsp;&emsp;他的大脑一片混沌，睁开眼时，看到收留自己十年的帕列斯•索罗亚斯德正待在他的床边。<br>&emsp;&emsp;“……老头……？”伦纳德艰难地发出声音，他发现自己声音嘶哑得厉害，“克莱恩……克莱恩……”<br>&emsp;&emsp;帕列斯叹了一口气，拍了拍他的被子。<br>&emsp;&emsp;“先睡一觉吧，小子。”他低沉着声音说道，“你现在状态很不好。”<br>&emsp;&emsp;医生八成给他用了什么镇定剂或是安睡剂，伦纳德再次昏迷了过去。等他下一次醒来后，发现身边的人变成了邓布利多和麦格教授。邓布利多坐在一旁的椅子上，而麦格教授双眼通红，在两人旁边还站着罗斯默塔女士，她已经泣不成声了。<br>&emsp;&emsp;“……邓布利多……麦格……教授？罗斯默塔女士？”伦纳德虚弱地喘着气，“我……我在哪儿？我记得……我记得我刚刚在……三把扫帚……我……我……遇见了……”<br>&emsp;&emsp;“对不起……对不起……孩子……”罗斯默塔抽泣着，抹着眼泪，“如果……如果我当时没走开……就好了……我……我不该离开的……不然……不然就不会……”<br>&emsp;&emsp;伦纳德的大脑仿佛被用针扎了一般刺痛，“……克莱恩……”他的心脏一阵钝痛，“克莱恩呢？克莱恩……他在哪里？”<br>&emsp;&emsp;他的嘴角牵扯出一个难看的笑容，他希冀地看着面前地三人：“我……我记得很清楚，我当时把克莱恩推开了……所以……克莱恩……他……”他的声音在三人悲痛的表情下慢慢变小，最后变成了自欺欺人的呢喃。<br>&emsp;&emsp;“克莱恩……他在哪里？”<br>&emsp;&emsp;邓布利多伸手轻轻地搭在他的肩膀上，轻叹一口气。<br>&emsp;&emsp;“……我很抱歉，孩子。”邓布利多悲伤地看着他，“我来得太晚了。”<br>&emsp;&emsp;伦纳德表情空白地看着老校长，本就因受伤而苍白的脸变得毫无血色。<br>&emsp;&emsp;“不……不可能！”伦纳德吼道，挣扎地起身，声音喑哑如同被掐住了咽喉。<br>&emsp;&emsp;我明明推开了克莱恩……我把他推开了！死掉的难道不应该是我吗！<br>&emsp;&emsp;被爆破咒打中的明明是我——！<br>&emsp;&emsp;“为什么是克莱恩……为什么是克莱恩……？为什么？为什么？为什么？为什么！”<br>&emsp;&emsp;梅丽莎才刚上一年级！他们甚至来之前还在决定，要到蜂蜜公爵糖果店里带什么好吃的回去！<br>&emsp;&emsp;他想起两人手里举着的黄油啤酒，玻璃杯轻轻一碰，发出清脆的响声。<br>&emsp;&emsp;他想起友人的深棕色眼瞳，他还记得那双眼里满溢出的笑意。<br>&emsp;&emsp;伦纳德双手捂住了面孔，把黑发揪成了一团，苍白的皮肤暴起根根明显的青筋。他头疼欲裂，死死地咬着牙齿，他好想哭泣，但是眼眶却灼烧般地干涸，流不出一滴泪水。<br>&emsp;&emsp;“为什么！”他吼道，“为什么是克莱恩！为什么不是我！我不是中了爆破咒吗！”<br>&emsp;&emsp;“为什么我现在一点事也没有！我明明——我明明——为什么——为什么不是我……而是克莱恩……”<br>&emsp;&emsp;愤怒的声音在最后持续转低，变成了低哑的嘶吼，变成了无助的哭腔。<br>&emsp;&emsp;“别这样想，索罗亚斯德先生。”麦格教授轻柔地按住伦纳德乱动的肩膀，她的眼眶微微泛红，“索罗亚斯德的血缘魔法救了你一命。”<br>&emsp;&emsp;“……什么？”<br>&emsp;&emsp;“具体是怎么回事，你可以问问帕列斯·索罗亚斯德先生。”邓布利多说道，“很抱歉这个时候来问你问题，索罗亚斯德先生。不过能否告诉我们，当时究竟发生了什么事？”<br>&emsp;&emsp;伦纳德先是双眼无神地看着邓布利多，接着视线慢慢聚焦，他扭曲了整张脸，沉重地深呼吸，压抑着愤怒——死死地咬着牙——将声音从牙缝里挤了出来——<br>&emsp;&emsp;“……因斯……赞格威尔！”伦纳德低吼道，“那个混账……魔法部的叛徒！巫师界的败类！我——永远——也不会忘记那张脸——”<br>&emsp;&emsp;邓布利多严肃地点了点头。两位教授无言地安慰了伦纳德一会儿，麦格教授还是忍不住哭了。伦纳德知道她一直很欣赏克莱恩这个学生，一名天生的易容马格斯，他非常擅长变形术。<br>&emsp;&emsp;等麦格和邓布利多离开后，帕列斯走了进来。这名平常经常精神抖擞地和他对骂的老人此刻面容憔悴，似乎更加苍老了。<br>&emsp;&emsp;“老头……”伦纳德低下头，紧紧地闭上了眼睛，“不……索罗亚斯德……前辈……”<br>&emsp;&emsp;帕列斯没有说话，他静静地覆手站在床边。<br>&emsp;&emsp;“……我要学习索罗亚斯德的家族魔法。”伦纳德慢慢低下了头颅，近乎是恳求般地哀告，“拜托您……”<br>&emsp;&emsp;帕列斯·索罗亚斯德叹了一口气。<br>&emsp;&emsp;“你早该学习了，小子。”</p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/">伦克</a>, <a class="article-category-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/Dead-Warrior/">Dead Warrior</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MyBlog/tags/HP/" rel="tag">HP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MyBlog/tags/%E4%BC%A6%E5%85%8B/" rel="tag">伦克</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/MyBlog/tags/%E8%AF%A1%E7%A7%98%E4%B9%8B%E4%B8%BB/" rel="tag">诡秘之主</a></li></ul>
+
+      
+    </footer>
+    <hr class="entry-footer-hr">
+  </div>
+  
+</article>
+
+<!-- Table of Contents -->
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/MyBlog/">Prev</a><a class="page-number" href="/MyBlog/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+          <aside id="sidebar">
+  
+    <div style="margin: 20px 0;">
+	<div id="search-form-wrap">
+
+    <form class="search-form">
+        <label style="width: 72%;">
+            <span class="screen-reader-text">Search for:</span>
+            <input type="search" class="search-field" style="height: 36px; width: 100%;" placeholder=" Search…" value="" name="s" title="Search for:">
+        </label>
+        <input type="submit" class="search-form-submit" value="Search">
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
     </div>
 </div>
-
-            <script>
-  // get user agent
-  function getBrowserVersions() {
-    var u = window.navigator.userAgent
-    return {
-      userAgent: u,
-      trident: u.indexOf('Trident') > -1, //IE内核
-      presto: u.indexOf('Presto') > -1, //opera内核
-      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-      iPad: u.indexOf('iPad') > -1, //是否为iPad
-      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
-      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
-      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
-    }
-  }
-  var browser = {
-    versions: getBrowserVersions(),
-  }
-  console.log('userAgent: ' + browser.versions.userAgent)
-
-  // callback
-  function fontLoaded() {
-    console.log('font loaded')
-    if (document.getElementsByClassName('site-intro-meta')) {
-      document
-        .getElementsByClassName('intro-title')[0]
-        .classList.add('intro-fade-in')
-      document
-        .getElementsByClassName('intro-subtitle')[0]
-        .classList.add('intro-fade-in')
-      var postIntros = document.getElementsByClassName('post-intros')[0]
-      if (postIntros) {
-        postIntros.classList.add('post-fade-in')
-      }
-    }
-  }
-
-  // UC不支持跨域，所以直接显示
-  function asyncCb() {
-    if (browser.versions.uc) {
-      console.log('UCBrowser')
-      fontLoaded()
-    } else {
-      WebFont.load({
-        custom: {
-          families: ['Oswald-Regular'],
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
         },
-        loading: function () {
-          // 所有字体开始加载
-          // console.log('font loading');
-        },
-        active: function () {
-          // 所有字体已渲染
-          fontLoaded()
-        },
-        inactive: function () {
-          // 字体预加载失败，无效字体或浏览器不支持加载
-          console.log('inactive: timeout')
-          fontLoaded()
-        },
-        timeout: 5000, // Set the timeout to two seconds
-      })
-    }
-  }
-
-  function asyncErr() {
-    console.warn('script load from CDN failed, will load local script')
-  }
-
-  // load webfont-loader async, and add callback function
-  function async(u, cb, err) {
-    var d = document,
-      t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0]
-    o.src = u
-    if (cb) {
-      o.addEventListener(
-        'load',
-        function (e) {
-          cb(null, e)
-        },
-        false
-      )
-    }
-    if (err) {
-      o.addEventListener(
-        'error',
-        function (e) {
-          err(null, e)
-        },
-        false
-      )
-    }
-    s.parentNode.insertBefore(o, s)
-  }
-
-  var asyncLoadWithFallBack = function (arr, success, reject) {
-    var currReject = function () {
-      reject()
-      arr.shift()
-      if (arr.length) async(arr[0], success, currReject)
-    }
-
-    async(arr[0], success, currReject)
-  }
-
-  asyncLoadWithFallBack(
-    [
-      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
-      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
-      "/MyBlog/lib/webfontloader.min.js",
-    ],
-    asyncCb,
-    asyncErr
-  )
+        ROOT_URL: '/MyBlog/',
+        CONTENT_URL: '/MyBlog/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
 </script>
 
-            <img class="loading" src="/MyBlog/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
-            <div class="container container-unloaded">
-                <main class="main index-page">
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/MyBlog/2023/11/09/Dead%20Warrior%EF%BC%88%E4%BA%8C%EF%BC%89/">
-                <span class="abstract-title-text">Dead Warrior（二）</span>
-            </a>
-            <div class="abstract-content">
-                &emsp;&emsp;伦纳德一个人盘腿坐在天文塔的屋顶上，低着头。太阳缓慢下坠，夕阳的余晖打在他的侧脸。&emsp;&emsp;他的右手手腕上垂着一条黄水晶手链，在落日的照耀下闪着耀眼的光。伦纳德看着这条手链发呆，他还记得这是克莱恩每天戴在身上的。&emsp;&emsp;伦纳德最后得知了事件的全貌。&emsp;&emsp;这是一场有计划的袭击。因斯·赞格威尔故意选在霍格莫德现身，就是为了将霍格沃兹的教授们引去霍格莫德。恰逢邓布利多当时不在霍格沃兹，而他身上带的某件神奇物品骗过了城堡的防护，他顺利地潜入了霍格沃兹并偷走了某件东西。&emsp;&emsp;伦纳德当时确实中了爆破咒，但他身上...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/12/02">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/09</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="伦克">伦克</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="诡秘之主">诡秘之主</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="HP">HP</a>
+<script src="/MyBlog/js/insight.js"></script>
+
+
 </div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-            
-        <article class="index-post">
-            <a class="abstract-title" href="/MyBlog/2023/11/08/Dead%20Warrior%EF%BC%88%E4%B8%80%EF%BC%89/">
-                <span class="abstract-title-text">Dead Warrior（一）</span>
-            </a>
-            <div class="abstract-content">
-                &emsp;&emsp;“请留步，索罗亚斯德先生。”&emsp;&emsp;抱着一摞书的少年停下脚步，转过头来。他一头黑色的半长卷发，乱糟糟的头发有一种凌乱的美感，长得十分英俊，表情却带着一丝漠然。他看见叫住他的来人后，好看的祖母绿眼瞳里闪过一丝惊讶的神情。&emsp;&emsp;“邓布利多教授。”伦纳德·索罗亚斯德微微低头，问候道，“下午好。请问有什么事？”&emsp;&emsp;阿不思·邓布利多笑眯眯地走到他面前，从口袋里掏出一包零食，“你喜欢吃比比多味豆吗？想要来一个吗？”&emsp;&emsp;伦纳德犹豫了一秒钟，还是点了点头。他没有拒绝邓布利多的好意，这名老教授也愉快地将几粒怪...
-            </div>
-            <!-- read more -->
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date" title="Last updated: 2023/12/02">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/08</span>
-                </div>
-                <!-- tags -->
-                    <div class="abstract-tags" >
-        <a class="post-tag" href="javascript:void(0);" data-tags="伦克">伦克</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="诡秘之主">诡秘之主</a>
-        <a class="post-tag" href="javascript:void(0);" data-tags="HP">HP</a>
 </div>
-
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    <!-- paginator  -->
-        <nav class="page-nav">
-            <a class="extend prev" rel="prev" href="/MyBlog/">&lt; PREV</a><a class="page-number" href="/MyBlog/">1</a><span class="page-number current">2</span>
-        </nav>
-</main>
-
-                <!-- profile -->
-                    <div class="profile">
-    <img class="profile-avatar" alt="avatar" src="/MyBlog/assets/crow.png" >
-    <div class="profile-name">jasmineCROW</div>
-        <div class="profile-signature">
-            witness me
-        </div>
-        <div class="profile-social">
-                            <a href="mailto:chenyuye.YCY@gmail.com" class="iconfont-archer email" title="email" ></a>
-                <a href="https://github.com/JasmineCROW/MyBlog.git" class="iconfont-archer github" target="_blank" title="github"></a>
-                <span class="iconfont-archer wechat" title="wechat">
-                    <img class="profile-qr" src="/MyBlog/assets/wechat.png" />
-                </span>
-                <span class="iconfont-archer qq" title="qq">
-                    <img class="profile-qr" src="/MyBlog/assets/qq.png" />
-                </span>
-
-        </div>
-</div>
-
-            </div>
-            <footer class="footer footer-unloaded">
-    <!-- social  -->
-        <div class="social">
-                            <a href="mailto:chenyuye.YCY@gmail.com" class="iconfont-archer email" title="email" ></a>
-                <a href="https://github.com/JasmineCROW/MyBlog.git" class="iconfont-archer github" target="_blank" title="github"></a>
-                <span class="iconfont-archer wechat" title="wechat">
-                    <img class="profile-qr" src="/MyBlog/assets/wechat.png" />
-                </span>
-                <span class="iconfont-archer qq" title="qq">
-                    <img class="profile-qr" src="/MyBlog/assets/qq.png" />
-                </span>
-
-        </div>
-    <!-- powered by Hexo  -->
-    <div class="copyright">
-        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
-    </div>
-    <!-- website approve for Chinese user -->
-    <!-- 不蒜子  -->
-        <div class="busuanzi-container">
-                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
-        </div>
-</footer>
-
-        </div>
-        <!-- toc -->
-        <!-- sidebar -->
-        <div class="sidebar sidebar-hide">
-    <ul class="sidebar-tabs sidebar-tabs-active-0">
-        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
-        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
-        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+  
+    
+  <div class="widget_athemes_tabs">
+    <ul id="widget-tab" class="clearfix widget-tab-nav">
+      <li class="active"><a>Recent Posts</a></li>
     </ul>
-    <div class="sidebar-content sidebar-content-show-archive">
-        <div class="sidebar-panel-archives">
-    <!-- 在 ejs 中将 archive 按照时间排序 -->
+    <div class="widget">
+      <ul>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2024/11/20/CHAPTER.3%20%E9%9B%A8%E5%AE%AB%E8%8E%B2/">CHAPTER.3 雨宫莲</a></h6>
+              <span>November 20, 2024</span>
+            </div>
+
+          </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2024/11/20/CHAPTER.2%20%E8%BF%B7%E9%80%94%E4%B9%8B%E7%8C%AB/">CHAPTER.2 迷途之猫</a></h6>
+              <span>November 20, 2024</span>
+            </div>
+
+          </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2024/11/20/CHAPTER.1%20%E4%BD%90%E8%97%A4%E7%BE%8E%E5%92%B2/">CHAPTER.1 佐藤美咲</a></h6>
+              <span>November 20, 2024</span>
+            </div>
+
+          </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2024/11/19/2.%20%E5%A4%84%E5%88%91%E9%98%9F%E7%9A%84%E7%9C%9F%E5%BF%83%E8%AF%9D%E5%A4%A7%E5%86%92%E9%99%A9/">处刑队的真心话大冒险</a></h6>
+              <span>November 19, 2024</span>
+            </div>
+
+          </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2023/12/07/DeadWarrior%EF%BC%88%E5%85%AB%EF%BC%89/">DeadWarrior（八）</a></h6>
+              <span>December 7, 2023</span>
+            </div>
+
+          </li>
         
+          <li class="clearfix">
+
+            
+              <div class="widget-entry-summary" style="margin: 0;">
+            
+
+              <h6 style="margin: 0;"><a href="/MyBlog/2023/12/06/DeadWarrior%EF%BC%88%E4%B8%83%EF%BC%89/">DeadWarrior（七）</a></h6>
+              <span>December 6, 2023</span>
+            </div>
+
+          </li>
         
-        
-        
-        
-        
-        
-    <div class="total-and-search">
-        <div class="total-archive">
-        Total : 12
-        </div>
-        <!-- search  -->
+      </ul>
     </div>
-    <div class="post-archive">
-            <div class="archive-year"> 2024 </div>
-            <ul class="year-list">
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/20</span>
-            <a class="archive-post-title" href="/MyBlog/2024/11/20/CHAPTER.1%20%E4%BD%90%E8%97%A4%E7%BE%8E%E5%92%B2/">CHAPTER.1 佐藤美咲</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/20</span>
-            <a class="archive-post-title" href="/MyBlog/2024/11/20/CHAPTER.2%20%E8%BF%B7%E9%80%94%E4%B9%8B%E7%8C%AB/">CHAPTER.2 迷途之猫</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/20</span>
-            <a class="archive-post-title" href="/MyBlog/2024/11/20/CHAPTER.3%20%E9%9B%A8%E5%AE%AB%E8%8E%B2/">CHAPTER.3 雨宫莲</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/19</span>
-            <a class="archive-post-title" href="/MyBlog/2024/11/19/2.%20%E5%A4%84%E5%88%91%E9%98%9F%E7%9A%84%E7%9C%9F%E5%BF%83%E8%AF%9D%E5%A4%A7%E5%86%92%E9%99%A9/">处刑队的真心话大冒险</a>
-        </li>
-                </ul>
-            <div class="archive-year"> 2023 </div>
-            <ul class="year-list">
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/07</span>
-            <a class="archive-post-title" href="/MyBlog/2023/12/07/DeadWarrior%EF%BC%88%E5%85%AB%EF%BC%89/">DeadWarrior（八）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/06</span>
-            <a class="archive-post-title" href="/MyBlog/2023/12/06/DeadWarrior%EF%BC%88%E4%B8%83%EF%BC%89/">DeadWarrior（七）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/05</span>
-            <a class="archive-post-title" href="/MyBlog/2023/12/05/Dead%20Warrior%EF%BC%88%E5%85%AD%EF%BC%89/">DeadWarrior（六）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">12/04</span>
-            <a class="archive-post-title" href="/MyBlog/2023/12/04/Dead%20Warrior%EF%BC%88%E4%BA%94%EF%BC%89/">Dead Warrior（五）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/11</span>
-            <a class="archive-post-title" href="/MyBlog/2023/11/11/Dead%20Warrior%EF%BC%88%E5%9B%9B%EF%BC%89/">Dead Warrior（四）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/10</span>
-            <a class="archive-post-title" href="/MyBlog/2023/11/10/Dead%20Warrior%EF%BC%88%E4%B8%89%EF%BC%89/">Dead Warrior（三）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/09</span>
-            <a class="archive-post-title" href="/MyBlog/2023/11/09/Dead%20Warrior%EF%BC%88%E4%BA%8C%EF%BC%89/">Dead Warrior（二）</a>
-        </li>
-        <li class="archive-post-item">
-            <span class="archive-post-date">11/08</span>
-            <a class="archive-post-title" href="/MyBlog/2023/11/08/Dead%20Warrior%EF%BC%88%E4%B8%80%EF%BC%89/">Dead Warrior（一）</a>
-        </li>
-            </ul>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/MyBlog/categories/%E4%B8%BB%E6%98%8E/">主明</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/MyBlog/categories/%E4%B8%BB%E6%98%8E/%E6%AD%A3%E4%B9%89%E5%8D%B3%E6%AD%A3%E4%B9%89/">正义即正义</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/MyBlog/categories/%E4%B8%BB%E6%98%8E/%E6%AD%A3%E4%B9%89%E5%8D%B3%E6%AD%A3%E4%B9%89/%E5%BA%8F%E7%AB%A0/">序章</a><span class="category-list-count">3</span></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/">伦克</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/MyBlog/categories/%E4%BC%A6%E5%85%8B/Dead-Warrior/">Dead Warrior</a><span class="category-list-count">8</span></li></ul></li></ul>
     </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/HP/" rel="tag">HP</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/P5R/" rel="tag">P5R</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/%E4%B8%BB%E6%98%8E/" rel="tag">主明</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/%E4%BC%A6%E5%85%8B/" rel="tag">伦克</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/%E6%AD%A3%E4%B9%89%E5%8D%B3%E6%AD%A3%E4%B9%89/" rel="tag">正义即正义</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/%E7%95%AA%E5%A4%96/" rel="tag">番外</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/MyBlog/tags/%E8%AF%A1%E7%A7%98%E4%B9%8B%E4%B8%BB/" rel="tag">诡秘之主</a><span class="tag-list-count">8</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/MyBlog/tags/HP/" style="font-size: 20px;">HP</a> <a href="/MyBlog/tags/P5R/" style="font-size: 13.33px;">P5R</a> <a href="/MyBlog/tags/%E4%B8%BB%E6%98%8E/" style="font-size: 16.67px;">主明</a> <a href="/MyBlog/tags/%E4%BC%A6%E5%85%8B/" style="font-size: 20px;">伦克</a> <a href="/MyBlog/tags/%E6%AD%A3%E4%B9%89%E5%8D%B3%E6%AD%A3%E4%B9%89/" style="font-size: 10px;">正义即正义</a> <a href="/MyBlog/tags/%E7%95%AA%E5%A4%96/" style="font-size: 10px;">番外</a> <a href="/MyBlog/tags/%E8%AF%A1%E7%A7%98%E4%B9%8B%E4%B8%BB/" style="font-size: 20px;">诡秘之主</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/MyBlog/archives/2024/11/">November 2024</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/MyBlog/archives/2023/12/">December 2023</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/MyBlog/archives/2023/11/">November 2023</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Connect With Us</h3>
+    <div class="widget widget_athemes_social_icons">
+
+    	<ul class="clearfix widget-social-icons">   
+    	
+   			<li><a target="_blank" rel="noopener" href="https://github.com/JasmineCROW" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+
+   		
+   		</ul>
+
+
+   		<!--
+   		<ul class="clearfix widget-social-icons">   		
+   		<li class="widget-si-twitter"><a target="_blank" rel="noopener" href="http://twitter.com" title="Twitter"><i class="ico-twitter"></i></a></li> 
+		<li class="widget-si-facebook"><a target="_blank" rel="noopener" href="http://facebook.com" title="Facebook"><i class="ico-facebook"></i></a></li>
+			<li class="widget-si-gplus"><a target="_blank" rel="noopener" href="http://plus.google.com" title="Google+"><i class="ico-gplus"></i></a></li>
+			<li class="widget-si-pinterest"><a target="_blank" rel="noopener" href="http://pinterest.com" title="Pinterest"><i class="ico-pinterest"></i></a></li>
+			<li class="widget-si-flickr"><a target="_blank" rel="noopener" href="http://flickr.com" title="Flickr"><i class="ico-flickr"></i></a></li>
+			<li class="widget-si-instagram"><a target="_blank" rel="noopener" href="http://instagram.com" title="Instagram"><i class="ico-instagram"></i></a></li>
+		</ul> -->
+
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/MyBlog/" class="mobile-nav-link">Home</a>
+  
+    <a href="/MyBlog/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/MyBlog/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/MyBlog/tags" class="mobile-nav-link">Tags</a>
+  
+</nav> -->
+    <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2024 JasmineCrow&#39; Blog All Rights Reserved.
+        
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+        Theme by <a href="https://github.com/iTimeTraveler/hexo-theme-hipaper" target="_blank">hipaper</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+
+
+    <!-- headerblur min height -->
+    
+    
+</script>
+    
+<div style="display: none;">
+  <script src="https://s11.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
 </div>
 
-        <div class="sidebar-panel-tags">
-    <div class="sidebar-tags-name">
-            <span class="sidebar-tag-name" data-tags="主明">
-                <span class="iconfont-archer">&#xe606;</span>
-                主明
-            </span>
-            <span class="sidebar-tag-name" data-tags="P5R">
-                <span class="iconfont-archer">&#xe606;</span>
-                P5R
-            </span>
-            <span class="sidebar-tag-name" data-tags="番外">
-                <span class="iconfont-archer">&#xe606;</span>
-                番外
-            </span>
-            <span class="sidebar-tag-name" data-tags="伦克">
-                <span class="iconfont-archer">&#xe606;</span>
-                伦克
-            </span>
-            <span class="sidebar-tag-name" data-tags="诡秘之主">
-                <span class="iconfont-archer">&#xe606;</span>
-                诡秘之主
-            </span>
-            <span class="sidebar-tag-name" data-tags="HP">
-                <span class="iconfont-archer">&#xe606;</span>
-                HP
-            </span>
-    </div>
-    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
-    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
-        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
-    </div> 
-    <div class="sidebar-tags-list"></div>
-</div>
+<!-- mathjax config similar to math.stackexchange -->
 
-        <div class="sidebar-panel-categories">
-    <div class="sidebar-categories-name">
-        <span class="sidebar-category-name" data-categories="主明">
-            <span class="iconfont-archer">&#xe60a;</span>
-            主明
-        </span>
-        <span class="sidebar-category-name" data-categories="伦克">
-            <span class="iconfont-archer">&#xe60a;</span>
-            伦克
-        </span>
-        <span class="sidebar-category-name" data-categories="正义即正义">
-            <span class="iconfont-archer">&#xe60a;</span>
-            正义即正义
-        </span>
-        <span class="sidebar-category-name" data-categories="Dead Warrior">
-            <span class="iconfont-archer">&#xe60a;</span>
-            Dead Warrior
-        </span>
-        <span class="sidebar-category-name" data-categories="序章">
-            <span class="iconfont-archer">&#xe60a;</span>
-            序章
-        </span>
-    </div>
-    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
-    <div class="sidebar-categories-list"></div>
-</div>
-
-    </div>
-</div>
-
-        <!-- site-meta -->
-        <script>
-    var siteMetaRoot = "/MyBlog/"
-    if (siteMetaRoot === "undefined") {
-        siteMetaRoot = '/'
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
     }
-    var siteMeta = {
-        url: "https://jasminecrow.github.io/MyBlog",
-        root: siteMetaRoot,
-        author: "Jasmine"
-    }
+  });
 </script>
 
-        <!-- import experimental options here -->
-        <!-- Custom Font -->
-    <!-- Check browser compatibility of CSS variables -->
-    <script>
-        if (browserSupportCSSVariables === undefined) {
-            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
-        }
-    </script>
-    <script>
-        if (browserSupportCSSVariables) {
-            var customFontName = 'SourceHanSerifSC-VF:n3,n4,n5,n7'
-            var customFontUrl = 'https://github.com/adobe-fonts/source-han-serif/raw/release/Variable/TTF/SourceHanSerifSC-VF.ttf'
-            if (!customFontName) {
-                console.log('Custom font name is not set or read failed');
-            }
-            if (!customFontUrl) {
-                console.log('Custom font url is not set or read failed');
-            }
-        } else {
-            console.error('Current browser doesn\'t support custom font.')
-        }
-    </script>
-    <script src="/MyBlog/scripts/customFontLoader.js" defer></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
 
-        <!-- main func -->
-        <script src="/MyBlog/scripts/main.js"></script>
-        <!-- fancybox -->
-        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
-        <!-- algolia -->
-        <!-- busuanzi -->
-            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
-        <!-- async load share.js -->
-        <!-- mermaid -->
-    </body>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  
+<link rel="stylesheet" href="/MyBlog/fancybox/jquery.fancybox.css">
+
+  
+<script src="/MyBlog/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/MyBlog/js/script.js"></script>
+
+
+<script src="/MyBlog/js/bootstrap.js"></script>
+
+
+<script src="/MyBlog/js/main.js"></script>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
 </html>
