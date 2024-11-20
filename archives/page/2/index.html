@@ -1,270 +1,682 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head prefix="og: https://ogp.me/ns#">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light dark">
-  
-  <title>Archives - JasmineCrow&#39; Blog</title>
-  
-    <link rel="shortcut icon" href="/MyBlog/crow.png">
-  
-  
-    <link rel='manifest' href='/manifest.json'>
-  
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="Jasmine">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="Jasmine">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="Welcome to JasmineCrow' Blog">
+    <meta name="description" content="Welcome to JasmineCrow&#39; Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JasmineCrow&#39; Blog">
+<meta property="og:url" content="https://jasminecrow.github.io/MyBlog/archives/page/2/index.html">
+<meta property="og:site_name" content="JasmineCrow&#39; Blog">
+<meta property="og:description" content="Welcome to JasmineCrow&#39; Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Jasmine">
+<meta property="article:tag" content="JasmineCrow">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/MyBlog/assets/crow.png">
+    <title>jasmineCROW&#39;s Blog</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
 
-  
-  
-  
-  <meta property="og:title" content="Archives - JasmineCrow&#39; Blog" />
-  
-  <meta property="og:type" content="website" />
-  
-  <meta property="og:url" content="https://jasminecrow.github.io/MyBlog/archives/page/2/index.html" />
-  
-  <meta property="og:image" content="/crow.png" />
-  
-  
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
 
-  
-<link rel="stylesheet" href="/MyBlog/css/var.css">
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
 
-  
-<link rel="stylesheet" href="/MyBlog/css/main.css">
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
 
-  
-<link rel="stylesheet" href="/MyBlog/css/typography.css">
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
 
-  
-<link rel="stylesheet" href="/MyBlog/css/code-highlighting.css">
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
 
-  
-<link rel="stylesheet" href="/MyBlog/css/components.css">
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
 
-  
-<link rel="stylesheet" href="/MyBlog/css/nav.css">
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
 
-  
-<link rel="stylesheet" href="/MyBlog/css/paginator.css">
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
 
-  
-<link rel="stylesheet" href="/MyBlog/css/footer.css">
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/MyBlog/font/Oswald-Regular.ttf");
+    }
 
-  
-<link rel="stylesheet" href="/MyBlog/css/post-list.css">
+    body {
+        margin: 0;
+    }
 
-  
-  
-<link rel="stylesheet" href="/MyBlog/css/rainbow-banner.css">
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
 
-  
-  
-  
-<link rel="stylesheet" href="/MyBlog/css/toc.css">
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
 
-  
-  
-  
-  
-  
-<link rel="stylesheet" href="/MyBlog/css/post.css">
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
 
-  
-  
-  
-<link rel="stylesheet" href="/MyBlog/css/archive.css">
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
 
-  
-  
-  
-  
-
-  
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/MyBlog/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/MyBlog/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/MyBlog/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/MyBlog/scripts/main.js" as="script">
+    <link rel="preload" href="/MyBlog/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
 <meta name="generator" content="Hexo 7.3.0"></head>
-    <body
-        data-color-scheme="auto"
-        data-uppercase-categories="true"
-        
-        data-rainbow-banner="true"
-        data-rainbow-banner-shown="auto"
-        data-rainbow-banner-month="6"
-        data-rainbow-banner-colors="#e50000,#ff8d00,#ffee00,#008121,#004cff,#760188"
-        
-        data-config-root="/MyBlog/"
-        
-        data-toc="true"
-        data-toc-max-depth="2"
-        
-        
-    >
-        <nav id="theme-nav">
-    <div class="inner">
-        <a class="title" href="/MyBlog/">Blog</a>
-        <div class="nav-arrow"></div>
-        <div class="nav-items">
-            <a class="nav-item nav-item-home" href="/MyBlog/">Home</a>
-            
-            
-            <a class="nav-item" href="/MyBlog/archives">Archives</a>
-            
-            
-            
-            <a class="nav-item" href="/MyBlog/tags">Tags</a>
-            
-            
-            
-            <a class="nav-item" href="/MyBlog/categories">Categories</a>
-            
-            
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/MyBlog/lib/jquery.min.js" />')
+        }
+    </script>
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
         </div>
     </div>
-</nav>
-        <div class="container">
-    <div class="meta">
-        <div class="type">
-            
-            
-        </div>
-
-        <h2 class="title">Archives</h2>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/MyBlog/">jasmineCROW's Blog.</a>
+        </span>
     </div>
-
-    <div class="divider"></div>
-
-    <div class="post-list archives">
-        
-        <article class="post-list-item">
-            <a href="/MyBlog/2023/11/09/Dead%20Warrior%EF%BC%88%E4%BA%8C%EF%BC%89/">
-                
-                <div class="content">
-                    
-                    <div class="categories text-uppercase">
-                    
-                        <span>伦克</span>
-                    
-                        <span>Dead Warrior</span>
-                    
-                    </div>
-                    
-                    <div class="title">
-                        Dead Warrior（二）
-                    </div>
-                    
-                    
-                    <div class="time">
-                        <span>November</span>
-                        <span>&nbsp;9,&nbsp;</span>
-                        <span>2023</span>
-                    </div>
-                    
-                </div>
-            </a>
-        </article>
-        
-        <article class="post-list-item">
-            <a href="/MyBlog/2023/11/08/Dead%20Warrior%EF%BC%88%E4%B8%80%EF%BC%89/">
-                
-                <div class="content">
-                    
-                    <div class="categories text-uppercase">
-                    
-                        <span>伦克</span>
-                    
-                        <span>Dead Warrior</span>
-                    
-                    </div>
-                    
-                    <div class="title">
-                        Dead Warrior（一）
-                    </div>
-                    
-                    
-                    <div class="time">
-                        <span>November</span>
-                        <span>&nbsp;8,&nbsp;</span>
-                        <span>2023</span>
-                    </div>
-                    
-                </div>
-            </a>
-        </article>
-        
-    </div>
-
-    
-<div class="paginator">
-    <a class="extend prev" rel="prev" href="/MyBlog/archives/">Prev</a><a class="page-number" href="/MyBlog/archives/">1</a><span class="page-number current">2</span>
-</div>
-
-</div>
-        <footer>
-    <div class="inner">
-        <div class="links">
-            
-            <div class="group">
-                <h2 class="title">Blog</h2>
-                
-                <a href="/" class="item">Blog</a>
-                
-                <a href="/MyBlog/archives" class="item">Archives</a>
-                
-                <a href="/MyBlog/tags" class="item">Tags</a>
-                
-                <a href="/MyBlog/categories" class="item">Categories</a>
-                
-                <a href="/MyBlog/search" class="item">Search</a>
-                
-            </div>
-            
-            <div class="group">
-                <h2 class="title">Me</h2>
-                
-                <a target="_blank" rel="noopener" href="https://github.com/JasmineCROW/MyBlog.git" class="item">GitHub</a>
-                
-                <a href="mailto:chenyuye.YCY@gmail.com" class="item">Email</a>
-                
-            </div>
-            
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/MyBlog/">jasmineCROW&#39;s Blog.</a>
         </div>
-        <span>&copy; 2024 Jasmine<br>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> </span>
-        
-        
-            <br>
-            <div class="color-scheme-toggle" role="radiogroup" id="theme-color-scheme-toggle">
-                <label>
-                    <input type="radio" value="light">
-                    <span>Light</span>
-                </label>
-                <label>
-                    <input type="radio" value="dark">
-                    <span>Dark</span>
-                </label>
-                <label>
-                    <input type="radio" value="auto">
-                    <span>Auto</span>
-                </label>
-            </div>
-        
+        <div class="post-title header-element">
+            <a href="#" class="post-name"></a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
     </div>
 </footer>
 
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="">
+    <!-- 主页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/MyBlog/)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+        </p>
+        <!-- 文章页 meta -->
+    </div>
+</div>
 
-        
-<script src="/MyBlog/js/main.js"></script>
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
 
-        
-        
-        
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
 
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/MyBlog/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/MyBlog/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main index-page">
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/MyBlog/2023/11/09/Dead%20Warrior%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                <span class="abstract-title-text">Dead Warrior（二）</span>
+            </a>
+            <div class="abstract-content">
+                &emsp;&emsp;伦纳德一个人盘腿坐在天文塔的屋顶上，低着头。太阳缓慢下坠，夕阳的余晖打在他的侧脸。&emsp;&emsp;他的右手手腕上垂着一条黄水晶手链，在落日的照耀下闪着耀眼的光。伦纳德看着这条手链发呆，他还记得这是克莱恩每天戴在身上的。&emsp;&emsp;伦纳德最后得知了事件的全貌。&emsp;&emsp;这是一场有计划的袭击。因斯·赞格威尔故意选在霍格莫德现身，就是为了将霍格沃兹的教授们引去霍格莫德。恰逢邓布利多当时不在霍格沃兹，而他身上带的某件神奇物品骗过了城堡的防护，他顺利地潜入了霍格沃兹并偷走了某件东西。&emsp;&emsp;伦纳德当时确实中了爆破咒，但他身上...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/12/02">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/09</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="伦克">伦克</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="诡秘之主">诡秘之主</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="HP">HP</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+            
+        <article class="index-post">
+            <a class="abstract-title" href="/MyBlog/2023/11/08/Dead%20Warrior%EF%BC%88%E4%B8%80%EF%BC%89/">
+                <span class="abstract-title-text">Dead Warrior（一）</span>
+            </a>
+            <div class="abstract-content">
+                &emsp;&emsp;“请留步，索罗亚斯德先生。”&emsp;&emsp;抱着一摞书的少年停下脚步，转过头来。他一头黑色的半长卷发，乱糟糟的头发有一种凌乱的美感，长得十分英俊，表情却带着一丝漠然。他看见叫住他的来人后，好看的祖母绿眼瞳里闪过一丝惊讶的神情。&emsp;&emsp;“邓布利多教授。”伦纳德·索罗亚斯德微微低头，问候道，“下午好。请问有什么事？”&emsp;&emsp;阿不思·邓布利多笑眯眯地走到他面前，从口袋里掏出一包零食，“你喜欢吃比比多味豆吗？想要来一个吗？”&emsp;&emsp;伦纳德犹豫了一秒钟，还是点了点头。他没有拒绝邓布利多的好意，这名老教授也愉快地将几粒怪...
+            </div>
+            <!-- read more -->
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date" title="Last updated: 2023/12/02">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2023/11/08</span>
+                </div>
+                <!-- tags -->
+                    <div class="abstract-tags" >
+        <a class="post-tag" href="javascript:void(0);" data-tags="伦克">伦克</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="诡秘之主">诡秘之主</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="HP">HP</a>
+</div>
+
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    <!-- paginator  -->
+        <nav class="page-nav">
+            <a class="extend prev" rel="prev" href="/MyBlog/archives/">&lt; PREV</a><a class="page-number" href="/MyBlog/archives/">1</a><span class="page-number current">2</span>
+        </nav>
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+        <div class="social">
+                            <a href="mailto:chenyuye.YCY@gmail.com" class="iconfont-archer email" title="email" ></a>
+                <a href="https://github.com/JasmineCROW/MyBlog.git" class="iconfont-archer github" target="_blank" title="github"></a>
+                <span class="iconfont-archer wechat" title="wechat">
+                    <img class="profile-qr" src="/MyBlog/assets/wechat.png" />
+                </span>
+                <span class="iconfont-archer qq" title="qq">
+                    <img class="profile-qr" src="/MyBlog/assets/qq.png" />
+                </span>
+
+        </div>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">Archer</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
         
-        <script src="https://unpkg.com/scrollreveal"></script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 12
+        </div>
+        <!-- search  -->
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> 2024 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/MyBlog/2024/11/20/CHAPTER.1%20%E4%BD%90%E8%97%A4%E7%BE%8E%E5%92%B2/">CHAPTER.1 佐藤美咲</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/MyBlog/2024/11/20/CHAPTER.2%20%E8%BF%B7%E9%80%94%E4%B9%8B%E7%8C%AB/">CHAPTER.2 迷途之猫</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/MyBlog/2024/11/20/CHAPTER.3%20%E9%9B%A8%E5%AE%AB%E8%8E%B2/">CHAPTER.3 雨宫莲</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/19</span>
+            <a class="archive-post-title" href="/MyBlog/2024/11/19/2.%20%E5%A4%84%E5%88%91%E9%98%9F%E7%9A%84%E7%9C%9F%E5%BF%83%E8%AF%9D%E5%A4%A7%E5%86%92%E9%99%A9/">处刑队的真心话大冒险</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2023 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/07</span>
+            <a class="archive-post-title" href="/MyBlog/2023/12/07/DeadWarrior%EF%BC%88%E5%85%AB%EF%BC%89/">DeadWarrior（八）</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/06</span>
+            <a class="archive-post-title" href="/MyBlog/2023/12/06/DeadWarrior%EF%BC%88%E4%B8%83%EF%BC%89/">DeadWarrior（七）</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/05</span>
+            <a class="archive-post-title" href="/MyBlog/2023/12/05/Dead%20Warrior%EF%BC%88%E5%85%AD%EF%BC%89/">DeadWarrior（六）</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/04</span>
+            <a class="archive-post-title" href="/MyBlog/2023/12/04/Dead%20Warrior%EF%BC%88%E4%BA%94%EF%BC%89/">Dead Warrior（五）</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/11</span>
+            <a class="archive-post-title" href="/MyBlog/2023/11/11/Dead%20Warrior%EF%BC%88%E5%9B%9B%EF%BC%89/">Dead Warrior（四）</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/10</span>
+            <a class="archive-post-title" href="/MyBlog/2023/11/10/Dead%20Warrior%EF%BC%88%E4%B8%89%EF%BC%89/">Dead Warrior（三）</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/09</span>
+            <a class="archive-post-title" href="/MyBlog/2023/11/09/Dead%20Warrior%EF%BC%88%E4%BA%8C%EF%BC%89/">Dead Warrior（二）</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/08</span>
+            <a class="archive-post-title" href="/MyBlog/2023/11/08/Dead%20Warrior%EF%BC%88%E4%B8%80%EF%BC%89/">Dead Warrior（一）</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="主明">
+                <span class="iconfont-archer">&#xe606;</span>
+                主明
+            </span>
+            <span class="sidebar-tag-name" data-tags="P5R">
+                <span class="iconfont-archer">&#xe606;</span>
+                P5R
+            </span>
+            <span class="sidebar-tag-name" data-tags="番外">
+                <span class="iconfont-archer">&#xe606;</span>
+                番外
+            </span>
+            <span class="sidebar-tag-name" data-tags="伦克">
+                <span class="iconfont-archer">&#xe606;</span>
+                伦克
+            </span>
+            <span class="sidebar-tag-name" data-tags="诡秘之主">
+                <span class="iconfont-archer">&#xe606;</span>
+                诡秘之主
+            </span>
+            <span class="sidebar-tag-name" data-tags="HP">
+                <span class="iconfont-archer">&#xe606;</span>
+                HP
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+        <span class="sidebar-category-name" data-categories="主明">
+            <span class="iconfont-archer">&#xe60a;</span>
+            主明
+        </span>
+        <span class="sidebar-category-name" data-categories="伦克">
+            <span class="iconfont-archer">&#xe60a;</span>
+            伦克
+        </span>
+        <span class="sidebar-category-name" data-categories="正义即正义">
+            <span class="iconfont-archer">&#xe60a;</span>
+            正义即正义
+        </span>
+        <span class="sidebar-category-name" data-categories="Dead Warrior">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Dead Warrior
+        </span>
+        <span class="sidebar-category-name" data-categories="序章">
+            <span class="iconfont-archer">&#xe60a;</span>
+            序章
+        </span>
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
         <script>
-            window.addEventListener('load', () => {
-                ScrollReveal({ delay: 250, reset: true, easing: 'cubic-bezier(0, 0, 0, 1)' })
-                ScrollReveal().reveal('.post-list-item .cover-img img')
-                ScrollReveal().reveal('.post-list-item, .card, .content p img, .content .block-large img', { distance: '60px', origin: 'bottom', duration: 800 })
-            })
-        </script>
-        
+    var siteMetaRoot = "/MyBlog/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "https://jasminecrow.github.io/MyBlog",
+        root: siteMetaRoot,
+        author: "Jasmine"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+    <!-- Check browser compatibility of CSS variables -->
+    <script>
+        if (browserSupportCSSVariables === undefined) {
+            var browserSupportCSSVariables = window.CSS && window.CSS.supports && window.CSS.supports('--a', 0);
+        }
+    </script>
+    <script>
+        if (browserSupportCSSVariables) {
+            var customFontName = 'SourceHanSerifSC-VF:n3,n4,n5,n7'
+            var customFontUrl = 'https://github.com/adobe-fonts/source-han-serif/raw/release/Variable/TTF/SourceHanSerifSC-VF.ttf'
+            if (!customFontName) {
+                console.log('Custom font name is not set or read failed');
+            }
+            if (!customFontUrl) {
+                console.log('Custom font url is not set or read failed');
+            }
+        } else {
+            console.error('Current browser doesn\'t support custom font.')
+        }
+    </script>
+    <script src="/MyBlog/scripts/customFontLoader.js" defer></script>
+
+        <!-- main func -->
+        <script src="/MyBlog/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+        <!-- mermaid -->
     </body>
 </html>
