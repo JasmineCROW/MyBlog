@@ -33,6 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // 切换排序方式
         button.setAttribute("data-order", currentOrder === "asc" ? "desc" : "asc");
-        button.textContent = currentOrder === "asc" ? "按 Top 值降序" : "按 Top 值升序";
+        button.textContent = currentOrder === "asc" ? "降序" : "升序";
     });
 });
