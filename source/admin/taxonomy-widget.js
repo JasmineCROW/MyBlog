@@ -15,9 +15,61 @@
     return;
   }
 
+  addStyles();
+
   const scriptUrl = document.currentScript && document.currentScript.src;
   const taxonomyUrl = new URL('taxonomy.json', scriptUrl || window.location.href).toString();
   const taxonomy = loadTaxonomy(taxonomyUrl);
+
+  function addStyles() {
+    if (document.getElementById('cms-taxonomy-widget-styles')) return;
+
+    const style = document.createElement('style');
+    style.id = 'cms-taxonomy-widget-styles';
+    style.textContent = `
+      .cms-taxonomy-card { background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; color: #1f2937; box-sizing: border-box; }
+      .cms-taxonomy-card * { box-sizing: border-box; }
+      .cms-taxonomy-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+      .cms-taxonomy-title { margin: 0; color: #111827; font-size: 16px; font-weight: 650; }
+      .cms-taxonomy-subtitle { margin: 4px 0 0; color: #6b7280; font-size: 13px; line-height: 1.5; }
+      .cms-taxonomy-help { margin: 0 0 14px; border: 1px solid #bfdbfe; border-radius: 8px; background: #eff6ff; color: #1e40af; padding: 10px 12px; font-size: 13px; line-height: 1.5; }
+      .cms-taxonomy-primary-button, .cms-taxonomy-secondary-button { border-radius: 7px; cursor: pointer; font-size: 13px; font-weight: 600; transition: background .15s ease, border-color .15s ease, color .15s ease; }
+      .cms-taxonomy-primary-button { border: 1px solid #2563eb; background: #2563eb; color: #ffffff; padding: 7px 10px; white-space: nowrap; }
+      .cms-taxonomy-primary-button:hover { border-color: #1d4ed8; background: #1d4ed8; }
+      .cms-taxonomy-secondary-button { border: 1px solid #d1d5db; background: #ffffff; color: #374151; padding: 7px 10px; }
+      .cms-taxonomy-secondary-button:hover { border-color: #93c5fd; background: #eff6ff; color: #1d4ed8; }
+      .cms-taxonomy-cascade { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+      .cms-taxonomy-separator { color: #9ca3af; font-size: 16px; }
+      .cms-taxonomy-menu { position: relative; }
+      .cms-taxonomy-menu summary { display: flex; align-items: center; gap: 7px; min-width: 148px; border: 1px solid #d1d5db; border-radius: 8px; background: #ffffff; color: #374151; cursor: pointer; list-style: none; padding: 9px 10px; font-size: 14px; user-select: none; }
+      .cms-taxonomy-menu summary::-webkit-details-marker { display: none; }
+      .cms-taxonomy-menu summary:hover { border-color: #93c5fd; background: #f8fbff; }
+      .cms-taxonomy-folder { position: relative; display: inline-block; width: 14px; height: 10px; border: 1.5px solid #60a5fa; border-radius: 2px; background: #dbeafe; flex: 0 0 auto; }
+      .cms-taxonomy-folder::before { content: ''; position: absolute; top: -4px; left: 1px; width: 6px; height: 4px; border: 1.5px solid #60a5fa; border-bottom: 0; border-radius: 2px 2px 0 0; background: #dbeafe; }
+      .cms-taxonomy-arrow { margin-left: auto; color: #6b7280; font-size: 12px; }
+      .cms-taxonomy-menu-list { position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; width: max-content; min-width: 208px; max-width: 320px; max-height: 230px; overflow-y: auto; margin: 0; padding: 6px; border: 1px solid #dbe3ef; border-radius: 8px; background: #ffffff; box-shadow: 0 10px 22px rgba(15, 23, 42, .12); }
+      .cms-taxonomy-menu-item { display: block; width: 100%; border: 0; border-radius: 6px; background: transparent; color: #374151; cursor: pointer; padding: 8px 9px; text-align: left; font-size: 14px; }
+      .cms-taxonomy-menu-item:hover, .cms-taxonomy-menu-item.is-selected { background: #eff6ff; color: #1d4ed8; }
+      .cms-taxonomy-current-path { margin: 13px 0 0; color: #4b5563; font-size: 13px; }
+      .cms-taxonomy-current-path strong { color: #1f2937; }
+      .cms-taxonomy-modal { position: fixed; z-index: 1000; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(15, 23, 42, .42); }
+      .cms-taxonomy-modal.is-open { display: flex; }
+      .cms-taxonomy-modal-panel { width: min(460px, 100%); border: 1px solid #e5e7eb; border-radius: 10px; background: #ffffff; box-shadow: 0 24px 48px rgba(15, 23, 42, .2); padding: 18px; }
+      .cms-taxonomy-modal-title { margin: 0 0 6px; color: #111827; font-size: 16px; font-weight: 650; }
+      .cms-taxonomy-modal-text { margin: 0 0 14px; color: #6b7280; font-size: 13px; line-height: 1.5; }
+      .cms-taxonomy-input { width: 100%; border: 1px solid #d1d5db; border-radius: 8px; background: #ffffff; color: #1f2937; outline: none; padding: 9px 10px; font-size: 14px; }
+      .cms-taxonomy-input:focus { border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96, 165, 250, .18); }
+      .cms-taxonomy-modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+      .cms-taxonomy-chip-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+      .cms-taxonomy-chip { border: 1px solid #d1d5db; border-radius: 999px; background: #ffffff; color: #4b5563; cursor: pointer; padding: 6px 10px; font-size: 13px; transition: background .15s ease, border-color .15s ease, color .15s ease; }
+      .cms-taxonomy-chip:hover { border-color: #93c5fd; background: #f8fbff; color: #1d4ed8; }
+      .cms-taxonomy-chip.is-selected { border-color: #60a5fa; background: #eff6ff; color: #1d4ed8; }
+      .cms-taxonomy-tag-entry { display: flex; gap: 8px; }
+      .cms-taxonomy-tag-entry .cms-taxonomy-input { flex: 1; }
+      @media (max-width: 560px) { .cms-taxonomy-heading { flex-direction: column; } .cms-taxonomy-primary-button { width: 100%; } .cms-taxonomy-menu summary { min-width: 0; } }
+    `;
+    document.head.appendChild(style);
+  }
 
   function loadTaxonomy(url) {
     const emptyTaxonomy = { categories: [], tags: [] };
@@ -59,39 +111,25 @@
     return path.join(' / ');
   }
 
-  function treeNode(node, path, selectedPath, onChange, depth) {
-    const currentPath = path.concat(node.name);
-    const isSelected = pathLabel(currentPath) === pathLabel(selectedPath);
-    const buttonStyle = {
-      display: 'block',
-      width: '100%',
-      padding: '5px 8px',
-      margin: '2px 0',
-      border: isSelected ? '2px solid #3b82f6' : '1px solid #d1d5db',
-      borderRadius: '4px',
-      background: isSelected ? '#eff6ff' : '#fff',
-      color: '#111827',
-      cursor: 'pointer',
-      textAlign: 'left',
-      fontSize: '14px'
-    };
-
-    return h('li', {
-      key: pathLabel(currentPath),
-      style: { listStyle: 'none', marginLeft: `${depth * 16}px` }
-    }, [
-      h('button', {
-        type: 'button',
-        style: buttonStyle,
-        onClick: () => onChange(currentPath)
-      }, `${node.children && node.children.length ? '▾ ' : '• '}${node.name}`),
-      node.children && node.children.length
-        ? h('ul', { style: { margin: 0, padding: 0 } }, node.children.map(child => treeNode(child, currentPath, selectedPath, onChange, depth + 1)))
-        : null
-    ]);
+  function folderIcon() {
+    return h('span', { className: 'cms-taxonomy-folder', 'aria-hidden': 'true' });
   }
 
-  function useNewCategory(inputId, onChange) {
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) modal.classList.remove('is-open');
+  }
+
+  function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+
+    modal.classList.add('is-open');
+    const input = modal.querySelector('input');
+    if (input) input.focus();
+  }
+
+  function commitNewCategory(inputId, modalId, onChange) {
     const input = document.getElementById(inputId);
     const path = normalizePath(input && input.value);
 
@@ -99,96 +137,143 @@
 
     onChange(path);
     input.value = '';
+    closeModal(modalId);
+  }
+
+  function categoryMenu(nodes, selectedPath, level, prefix, onChange) {
+    const selectedName = selectedPath[level];
+    const selectedNode = nodes.find(node => node.name === selectedName);
+    const label = selectedName || (level === 0 ? '选择一级分类' : '选择子分类');
+
+    const selector = h('details', { className: 'cms-taxonomy-menu', key: `menu-${level}-${pathLabel(prefix)}` }, [
+      h('summary', {}, [folderIcon(), h('span', {}, label), h('span', { className: 'cms-taxonomy-arrow' }, '⌄')]),
+      h('div', { className: 'cms-taxonomy-menu-list' }, nodes.map(node => h('button', {
+        key: node.name,
+        type: 'button',
+        className: `cms-taxonomy-menu-item${node.name === selectedName ? ' is-selected' : ''}`,
+        onClick: event => {
+          onChange(prefix.concat(node.name));
+          event.currentTarget.closest('details').removeAttribute('open');
+        }
+      }, node.name)))
+    ]);
+
+    if (!selectedNode || !selectedNode.children || selectedNode.children.length === 0) {
+      return [selector];
+    }
+
+    return [selector, h('span', { className: 'cms-taxonomy-separator', key: `separator-${level}` }, '/'), ...categoryMenu(selectedNode.children, selectedPath, level + 1, prefix.concat(selectedName), onChange)];
   }
 
   function CategoryTreeControl(props) {
     const selectedPath = normalizePath(props.value);
-    const inputId = `${props.forID || 'categories'}-new-path`;
+    const modalId = `${props.forID || 'categories'}-new-category-modal`;
+    const inputId = `${props.forID || 'categories'}-new-category-path`;
 
-    return h('div', { className: props.classNameWrapper }, [
-      h('p', { style: { margin: '0 0 8px' } }, '选择一个分类节点；子分类会自动保存完整层级路径。'),
-      h('ul', {
-        style: {
-          margin: '0 0 12px',
-          padding: 0,
-          maxHeight: '260px',
-          overflowY: 'auto'
+    return h('section', { className: `cms-taxonomy-card ${props.classNameWrapper || ''}` }, [
+      h('div', { className: 'cms-taxonomy-heading' }, [
+        h('div', {}, [
+          h('h3', { className: 'cms-taxonomy-title' }, '分类'),
+          h('p', { className: 'cms-taxonomy-subtitle' }, '选择文章所属分类，支持多级分类路径。')
+        ]),
+        h('button', {
+          type: 'button',
+          className: 'cms-taxonomy-primary-button',
+          onClick: () => openModal(modalId)
+        }, '+ 新建分类')
+      ]),
+      h('p', { className: 'cms-taxonomy-help' }, '分类数组表示父级到子级的唯一层级路径；选择子分类时会自动保留全部父级。'),
+      h('div', { className: 'cms-taxonomy-cascade' }, categoryMenu(taxonomy.categories, selectedPath, 0, [], props.onChange)),
+      h('p', { className: 'cms-taxonomy-current-path' }, [
+        h('strong', {}, '当前分类路径：'),
+        selectedPath.length ? pathLabel(selectedPath) : '未选择'
+      ]),
+      h('div', {
+        id: modalId,
+        className: 'cms-taxonomy-modal',
+        role: 'dialog',
+        'aria-modal': 'true',
+        'aria-labelledby': `${modalId}-title`,
+        onClick: event => {
+          if (event.target && event.target.id === modalId) closeModal(modalId);
         }
-      }, taxonomy.categories.map(node => treeNode(node, [], selectedPath, props.onChange, 0))),
-      h('label', { htmlFor: inputId, style: { display: 'block', marginBottom: '4px' } }, '新建分类路径'),
-      h('div', { style: { display: 'flex', gap: '8px' } }, [
+      }, h('div', { className: 'cms-taxonomy-modal-panel' }, [
+        h('h4', { id: `${modalId}-title`, className: 'cms-taxonomy-modal-title' }, '新建分类'),
+        h('p', { className: 'cms-taxonomy-modal-text' }, '输入完整分类路径，使用 / 分隔每一级。'),
         h('input', {
           id: inputId,
+          className: 'cms-taxonomy-input',
           type: 'text',
+          autoComplete: 'off',
           placeholder: '例如：主明 / 正义即正义 / 5嫉妒之章',
-          style: { flex: 1 },
           onKeyDown: event => {
             if (event.key === 'Enter') {
               event.preventDefault();
-              useNewCategory(inputId, props.onChange);
+              commitNewCategory(inputId, modalId, props.onChange);
             }
+            if (event.key === 'Escape') closeModal(modalId);
           }
         }),
-        h('button', {
-          type: 'button',
-          onClick: () => useNewCategory(inputId, props.onChange)
-        }, '新增并选择')
-      ]),
-      selectedPath.length > 0
-        ? h('p', { style: { margin: '8px 0 0', color: '#374151' } }, `当前分类：${pathLabel(selectedPath)}`)
-        : null
+        h('div', { className: 'cms-taxonomy-modal-actions' }, [
+          h('button', { type: 'button', className: 'cms-taxonomy-secondary-button', onClick: () => closeModal(modalId) }, '取消'),
+          h('button', { type: 'button', className: 'cms-taxonomy-primary-button', onClick: () => commitNewCategory(inputId, modalId, props.onChange) }, '确认并选择')
+        ])
+      ]))
     ]);
   }
 
-  function addTag(inputId, selectedTags, onChange) {
-    const input = document.getElementById(inputId);
-    const tag = String(input && input.value || '').trim();
-
+  function addTag(value, selectedTags, onChange) {
+    const tag = String(value || '').trim();
     if (!tag) return;
 
     onChange(normalizeTags(selectedTags.concat(tag)));
-    input.value = '';
   }
 
   function TagPickerControl(props) {
     const selectedTags = normalizeTags(props.value);
+    const availableTags = normalizeTags(taxonomy.tags.concat(selectedTags));
     const inputId = `${props.forID || 'tags'}-new-tag`;
-    const listId = `${inputId}-options`;
 
-    return h('div', { className: props.classNameWrapper }, [
-      h('p', { style: { margin: '0 0 8px' } }, '搜索已有标签，或输入新标签后按 Enter 添加。'),
-      h('div', { style: { display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '10px' } }, selectedTags.map(tag => h('button', {
-        key: tag,
-        type: 'button',
-        title: `移除标签：${tag}`,
-        style: {
-          border: '1px solid #93c5fd',
-          borderRadius: '999px',
-          background: '#eff6ff',
-          color: '#1d4ed8',
-          cursor: 'pointer',
-          padding: '3px 8px'
-        },
-        onClick: () => props.onChange(selectedTags.filter(item => item !== tag))
-      }, `${tag} ×`))),
-      h('div', { style: { display: 'flex', gap: '8px' } }, [
+    return h('section', { className: `cms-taxonomy-card ${props.classNameWrapper || ''}` }, [
+      h('div', { className: 'cms-taxonomy-heading' }, h('div', {}, [
+        h('h3', { className: 'cms-taxonomy-title' }, '标签'),
+        h('p', { className: 'cms-taxonomy-subtitle' }, '点击标签可选择/取消，已选标签会显示为蓝色。')
+      ])),
+      h('div', { className: 'cms-taxonomy-chip-list' }, availableTags.map(tag => {
+        const selected = selectedTags.includes(tag);
+
+        return h('button', {
+          key: tag,
+          type: 'button',
+          className: `cms-taxonomy-chip${selected ? ' is-selected' : ''}`,
+          onClick: () => props.onChange(selected ? selectedTags.filter(item => item !== tag) : selectedTags.concat(tag))
+        }, selected ? `${tag} ×` : tag);
+      })),
+      h('div', { className: 'cms-taxonomy-tag-entry' }, [
         h('input', {
           id: inputId,
+          className: 'cms-taxonomy-input',
           type: 'text',
-          list: listId,
-          placeholder: '搜索或新建标签',
-          style: { flex: 1 },
+          name: `${inputId}-value`,
+          autoComplete: 'off',
+          'aria-autocomplete': 'none',
+          placeholder: '输入新标签并按 Enter 添加',
           onKeyDown: event => {
-            if (event.key === 'Enter') {
-              event.preventDefault();
-              addTag(inputId, selectedTags, props.onChange);
-            }
+            if (event.key !== 'Enter') return;
+
+            event.preventDefault();
+            addTag(event.currentTarget.value, selectedTags, props.onChange);
+            event.currentTarget.value = '';
           }
         }),
-        h('datalist', { id: listId }, taxonomy.tags.map(tag => h('option', { key: tag, value: tag }))),
         h('button', {
           type: 'button',
-          onClick: () => addTag(inputId, selectedTags, props.onChange)
+          className: 'cms-taxonomy-secondary-button',
+          onClick: () => {
+            const input = document.getElementById(inputId);
+            addTag(input && input.value, selectedTags, props.onChange);
+            if (input) input.value = '';
+          }
         }, '添加标签')
       ])
     ]);
