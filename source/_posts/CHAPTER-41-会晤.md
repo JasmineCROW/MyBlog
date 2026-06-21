@@ -3,7 +3,7 @@ title: CHAPTER.41 会晤
 date: 2025-02-03 23:58:35
 categories: [主明, 正义即正义, 4愤怒之章]
 tags: [主明, P5R]
-top: 41
+top: false
 ---
 
 明智瞳孔地震，猛地从床上直起身子。

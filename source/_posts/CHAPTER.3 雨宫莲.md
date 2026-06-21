@@ -3,7 +3,7 @@ title: CHAPTER.3 雨宫莲
 date: 2024-11-20 00:37:40
 categories: [主明, 正义即正义, 0序章]
 tags: [主明, P5R]
-top: 3
+top: false
 ---
 
 “卢布朗……”明智收起手机，“是这里。”

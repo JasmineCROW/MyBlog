@@ -3,7 +3,7 @@ title: CHAPTER.16 美术馆
 date: 2024-11-22 00:33:00
 categories: [主明, 正义即正义, 2贪婪之章]
 tags: [主明, P5R]
-top: 16
+top: false
 ---
 
 “斑目一流斋。涩谷的破茅屋。美术馆。”

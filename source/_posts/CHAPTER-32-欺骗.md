@@ -3,7 +3,7 @@ title: CHAPTER.32 欺骗
 date: 2024-12-18 18:05:46
 categories: [主明, 正义即正义, 3暴食之章]
 tags: [主明, P5R]
-top: 32
+top: false
 ---
 
 “……死……死……死了……金城死了……”

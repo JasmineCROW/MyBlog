@@ -1,8 +1,7 @@
 const pagination = require('hexo-pagination');
 
-function pinnedOrder(post) {
-  const top = Number(post.top);
-  return Number.isFinite(top) && top > 0 ? top : 0;
+function isPinned(post) {
+  return post.top === true;
 }
 
 function postDate(post) {
@@ -14,15 +13,15 @@ hexo.extend.generator.register('index', function (locals) {
   const posts = locals.posts;
 
   posts.data = posts.data.slice().sort((a, b) => {
-    const aTop = pinnedOrder(a);
-    const bTop = pinnedOrder(b);
+    const aPinned = isPinned(a);
+    const bPinned = isPinned(b);
 
-    if (aTop && bTop) {
-      return bTop - aTop || postDate(b) - postDate(a);
+    if (aPinned && bPinned) {
+      return postDate(b) - postDate(a);
     }
 
-    if (aTop) return -1;
-    if (bTop) return 1;
+    if (aPinned) return -1;
+    if (bPinned) return 1;
 
     return postDate(b) - postDate(a);
   });

@@ -3,7 +3,7 @@ title: CHAPTER.37 梅吉多
 date: 2025-01-02 13:25:06
 categories: [主明, 正义即正义, 4愤怒之章]
 tags: [主明, P5R]
-top: 37
+top: false
 ---
  
 “……莲？你怎么了？”

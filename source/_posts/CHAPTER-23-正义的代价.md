@@ -3,7 +3,7 @@ title: CHAPTER.23 正义的代价
 date: 2024-11-23 02:18:40
 categories: [主明, 正义即正义, 3暴食之章]
 tags: [主明, P5R]
-top: 23 
+top: false
 ---
 
 “所以，那个雨宫莲到底是怎么回事？”

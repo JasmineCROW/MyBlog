@@ -3,7 +3,7 @@ title: CHAPTER.14 茅屋
 date: 2024-11-22 00:31:00
 categories: [主明, 正义即正义, 2贪婪之章]
 tags: [主明, P5R]
-top: 14
+top: false
 ---
 
 “斑目一流斋……啊，难怪我觉得这么熟悉，原来是那个画家。”

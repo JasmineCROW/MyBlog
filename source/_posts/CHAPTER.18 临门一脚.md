@@ -3,7 +3,7 @@ title: CHAPTER.18 临门一脚
 date: 2024-11-22 00:35:00
 categories: [主明, 正义即正义, 2贪婪之章]
 tags: [主明, P5R]
-top: 18
+top: false
 ---
 
 斑目一流斋个展前。

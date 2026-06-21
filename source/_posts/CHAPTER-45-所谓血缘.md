@@ -3,7 +3,7 @@ title: CHAPTER.45 所谓血缘
 date: 2025-05-04 23:54:41
 categories: [主明, 正义即正义, 4愤怒之章]
 tags: [主明, P5R]
-top: 45
+top: false
 ---
 
 波士顿的早上十点五分。明智木着脸按响了第三次门铃。

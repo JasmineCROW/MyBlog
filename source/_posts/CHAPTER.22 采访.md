@@ -3,7 +3,7 @@ title: CHAPTER.22 采访
 date: 2024-11-22 00:39:00
 categories: [主明, 正义即正义, 2贪婪之章]
 tags: [主明, P5R]
-top: 22
+top: false
 ---
 
 几天后，明智收到了一封邮件。

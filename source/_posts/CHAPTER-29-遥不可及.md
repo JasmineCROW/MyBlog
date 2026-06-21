@@ -3,7 +3,7 @@ title: CHAPTER.29 遥不可及
 date: 2024-12-02 00:13:51
 categories: [主明, 正义即正义, 3暴食之章]
 tags: [主明, P5R]
-top: 29
+top: false
 ---
 
 明智开始在网络上搜索金城的名字。

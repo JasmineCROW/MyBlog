@@ -3,7 +3,7 @@ title: CHAPTER.10 死亡特搜队
 date: 2024-11-21 00:42:40
 categories: [主明, 正义即正义, 1色欲之章]
 tags: [主明, P5R]
-top: 10
+top: false
 ---
 
 4月18日。早上10点。明智收到了新岛冴的消息。

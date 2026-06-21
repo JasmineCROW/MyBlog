@@ -3,7 +3,7 @@ title: CHAPTER.42 跟踪的尽头是DATING
 date: 2025-02-03 23:58:46
 categories: [主明, 正义即正义, 4愤怒之章]
 tags: [主明, P5R]
-top: 42
+top: false
 ---
 
 把调查一色若叶地址的事交给了双叶后，明智也开始了自己的计划。

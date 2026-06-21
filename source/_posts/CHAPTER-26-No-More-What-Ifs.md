@@ -3,7 +3,7 @@ title: CHAPTER.26 No More What Ifs
 date: 2024-11-23 02:21:37
 categories: [主明, 正义即正义, 3暴食之章]
 tags: [主明, P5R]
-top: 26
+top: false
 ---
 
 第二天放学后，明智先在车站的公共厕所里换上一身不起眼的黑色连帽衫，戴上口罩，将自己伪装成平平无奇的路人，来到涩谷大街。

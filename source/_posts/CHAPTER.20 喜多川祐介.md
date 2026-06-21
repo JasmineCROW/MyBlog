@@ -3,7 +3,7 @@ title: CHAPTER.20 喜多川祐介
 date: 2024-11-22 00:37:00
 categories: [主明, 正义即正义, 2贪婪之章]
 tags: [主明, P5R]
-top: 20
+top: false
 ---
 
 “老师他……前天还好好的。”
