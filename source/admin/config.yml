@@ -1,0 +1,39 @@
+backend:
+  name: github
+  repo: JasmineCROW/MyBlog
+  branch: main
+  base_url: https://your-oauth-proxy.example.com
+  auth_endpoint: auth
+
+media_folder: source/images/uploads
+public_folder: /MyBlog/images/uploads
+
+collections:
+  - name: posts
+    label: 文章
+    folder: source/_posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - label: 发布日期
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD HH:mm:ss"
+        date_format: "YYYY-MM-DD"
+        time_format: "HH:mm:ss"
+      - label: 分类
+        name: categories
+        widget: list
+        required: false
+        field: { label: 分类, name: category, widget: string }
+      - label: 标签
+        name: tags
+        widget: list
+        required: false
+        field: { label: 标签, name: tag, widget: string }
+      - { label: 摘要, name: excerpt, widget: text, required: false }
+      - { label: 置顶顺序, name: top, widget: number, value_type: int, required: false, default: 0 }
+      - { label: 正文, name: body, widget: markdown }
