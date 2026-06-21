@@ -37,16 +37,14 @@ collections:
         time_format: "HH:mm:ss"
       - label: 分类
         name: categories
-        widget: list
+        widget: category_tree
         required: false
-        hint: "可逐项输入分类；留空则不分类。"
-        field: { label: 分类, name: category, widget: string }
+        hint: "选择分类树中的节点，子分类会保存完整层级路径；也可输入新路径。"
       - label: 标签
         name: tags
-        widget: list
+        widget: tag_picker
         required: false
-        hint: "可逐项输入标签；留空则不添加标签。"
-        field: { label: 标签, name: tag, widget: string }
+        hint: "可搜索、多选已有标签，也可直接新建标签。"
       - { label: 摘要, name: excerpt, widget: text, required: false, hint: "可选；用于文章列表摘要。" }
       - { label: 是否置顶, name: top, widget: boolean, default: false, required: false, hint: "开启后显示在首页置顶区，并按发布时间从新到旧排列。" }
       - { label: 正文, name: body, widget: markdown, hint: "支持 Markdown 和图片上传。" }
