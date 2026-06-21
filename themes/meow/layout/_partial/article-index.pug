@@ -11,8 +11,9 @@ article.index-post-item
         | !{ markdown(__('article.top'))}
 
   .post-head-info
-    //- post's date info 文章日期相关信息
-    | !{ partial('_partial/post/date') }
+    .post-published-at
+      i.icon.fa-regular.fa-calendar-plus(title= __('datetime.published'))
+      time(datetime= date(post.date, 'YYYY-MM-DDTHH:mm:ss'))= date(post.date, 'YYYY-MM-DD HH:mm')
 
     //- post's categories info 文章分类
     | !{ partial('_partial/post/post-categories') }

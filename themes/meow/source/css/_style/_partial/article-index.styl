@@ -3,10 +3,18 @@
   width: 85%
 
   .index-post-item
-    margin-top: 10px
-    padding-bottom: 20px
-    border-bottom: 1px solid transparent
-    border-image: linear-gradient(to right, rgba(31, 18, 53, 0.1), rgba(31, 18, 53, 0.35), rgba(31, 18, 53, 0.1)) 1
+    margin-top: 14px
+    padding: 20px
+    border: 1px solid border-grey
+    border-radius: 10px
+    background: white
+    box-shadow: 0 2px 8px rgba(31, 18, 53, 0.08)
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease
+
+    &:hover
+      border-color: rgba(249, 173, 8, 0.5)
+      box-shadow: 0 8px 18px rgba(31, 18, 53, 0.14)
+      transform: translateY(-2px)
 
     .post-title-index
       display: flex
@@ -15,12 +23,15 @@
       justify-content: space-between
 
       h1
+        margin: 0
+
         a
           text-decoration: none
-          color: orange-middle
+          color: text-black
+          font-weight: bold
 
           &:hover
-            color: orange-fresh
+            color: orange-middle
           
           i
             margin-right: 5px
@@ -37,16 +48,23 @@
           white-space: nowrap
     
     .post-head-info
+      display: flex
+      flex-flow: row wrap
+      align-items: center
+      gap: 8px 14px
+      margin-top: 10px
       font-size: info-font-size
-      color: text-grey-light
-      // display: flex
-      // flex-flow: row nowrap
-      overflow: hidden
-      white-space: nowrap
-      
+
       div
-        margin-top: 5px
-        display: inline-block
+        margin-top: 0
+
+      .post-published-at
+        color: text-grey-light
+        font-size: info-font-size-smaller
+        white-space: nowrap
+
+        i
+          margin-right: 5px
     
     .read-more
       background-color: orange-low-saturation
@@ -85,8 +103,15 @@
 
 @media screen and (max-width: 768px)
   .index-post-item
+    padding: 16px
+
     h1
       font-size: article-title2-font-size
+
+    .post-head-info
+      align-items: flex-start
+      flex-flow: column nowrap
+      gap: 6px
   .post-excerpt[excerpt-simplify=true]
     h1,h2,h3,h4,h5,h6
       font-size: default-font-size-smaller

@@ -13,7 +13,6 @@
         - content= strip_html(post.content)
       
       span= truncate(content, {length: 75})
-    
-    .article-item-hover
-      span= date(post.date)
-      i.fa-solid.fa-paw
+
+    .article-item-date
+      time(datetime= date(post.date, 'YYYY-MM-DDTHH:mm:ss'))= date(post.date, 'YYYY-MM-DD HH:mm')
