@@ -35,6 +35,12 @@ jobs:
       - name: Build the Hexo site
         run: npm run build
 
+      - name: Verify generated GitHub Pages files
+        run: |
+          test -d ./public
+          test -s ./public/index.html
+          test "$(find ./public -type f | wc -l)" -gt 1
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
