@@ -37,6 +37,12 @@ jobs:
 
       - name: Verify generated GitHub Pages files
         run: |
+          pwd
+          ls -la
+          echo "Public directory:"
+          ls -la ./public || true
+          echo "Public file list:"
+          find ./public -maxdepth 3 -type f | head -50 || true
           test -d ./public
           test -s ./public/index.html
           file_count=$(find ./public -type f | wc -l)
