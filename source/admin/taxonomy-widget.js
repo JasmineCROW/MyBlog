@@ -52,6 +52,8 @@
       .cms-taxonomy-menu-item:hover, .cms-taxonomy-menu-item.is-selected { background: #eff6ff; color: #1d4ed8; }
       .cms-taxonomy-current-path { margin: 13px 0 0; color: #4b5563; font-size: 13px; }
       .cms-taxonomy-current-path strong { color: #1f2937; }
+      .cms-taxonomy-path-button { border: 0; border-radius: 5px; background: transparent; color: #2563eb; cursor: pointer; padding: 2px 4px; font-size: 13px; }
+      .cms-taxonomy-path-button:hover { background: #dbeafe; color: #1d4ed8; }
       .cms-taxonomy-modal { position: fixed; z-index: 1000; inset: 0; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(15, 23, 42, .42); }
       .cms-taxonomy-modal.is-open { display: flex; }
       .cms-taxonomy-modal-panel { width: min(460px, 100%); border: 1px solid #e5e7eb; border-radius: 10px; background: #ffffff; box-shadow: 0 24px 48px rgba(15, 23, 42, .2); padding: 18px; }
@@ -66,7 +68,13 @@
       .cms-taxonomy-chip.is-selected { border-color: #60a5fa; background: #eff6ff; color: #1d4ed8; }
       .cms-taxonomy-tag-entry { display: flex; gap: 8px; }
       .cms-taxonomy-tag-entry .cms-taxonomy-input { flex: 1; }
-      @media (max-width: 560px) { .cms-taxonomy-heading { flex-direction: column; } .cms-taxonomy-primary-button { width: 100%; } .cms-taxonomy-menu summary { min-width: 0; } }
+      .cms-taxonomy-date-row { display: grid; grid-template-columns: minmax(0, 1fr) 126px; gap: 10px; }
+      .cms-taxonomy-date-label { display: block; margin-bottom: 5px; color: #4b5563; font-size: 13px; font-weight: 600; }
+      .cms-taxonomy-date-input { width: 100%; min-height: 39px; border: 1px solid #d1d5db; border-radius: 8px; background: #ffffff; color: #1f2937; outline: none; padding: 8px 10px; font-size: 14px; }
+      .cms-taxonomy-date-input:focus { border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96, 165, 250, .18); }
+      .cms-taxonomy-date-actions { display: flex; gap: 8px; margin-top: 12px; }
+      .cms-taxonomy-date-format { margin: 10px 0 0; color: #6b7280; font-size: 12px; }
+      @media (max-width: 560px) { .cms-taxonomy-heading { flex-direction: column; } .cms-taxonomy-primary-button { width: 100%; } .cms-taxonomy-menu summary { min-width: 0; } .cms-taxonomy-date-row { grid-template-columns: 1fr; } }
     `;
     document.head.appendChild(style);
   }
@@ -109,6 +117,25 @@
 
   function pathLabel(path) {
     return path.join(' / ');
+  }
+
+  function selectedPathDisplay(selectedPath, onChange) {
+    if (selectedPath.length === 0) return '未选择';
+
+    const content = [];
+
+    selectedPath.forEach((name, index) => {
+      if (index > 0) content.push(h('span', { className: 'cms-taxonomy-separator', key: `path-separator-${index}` }, '/'));
+      content.push(h('button', {
+        key: `path-${index}`,
+        type: 'button',
+        className: 'cms-taxonomy-path-button',
+        title: `仅使用：${pathLabel(selectedPath.slice(0, index + 1))}`,
+        onClick: () => onChange(selectedPath.slice(0, index + 1))
+      }, name));
+    });
+
+    return content;
   }
 
   function folderIcon() {
@@ -186,7 +213,7 @@
       h('div', { className: 'cms-taxonomy-cascade' }, categoryMenu(taxonomy.categories, selectedPath, 0, [], props.onChange)),
       h('p', { className: 'cms-taxonomy-current-path' }, [
         h('strong', {}, '当前分类路径：'),
-        selectedPath.length ? pathLabel(selectedPath) : '未选择'
+        selectedPathDisplay(selectedPath, props.onChange)
       ]),
       h('div', {
         id: modalId,
@@ -279,6 +306,78 @@
     ]);
   }
 
+  function localDateTimeParts(value) {
+    const source = value instanceof Date ? value.toISOString() : String(value || '').trim();
+    const match = source.match(/^(\d{4}-\d{2}-\d{2})(?:[T\s](\d{2}:\d{2})(?::\d{2})?)?/);
+
+    if (match) return { date: match[1], time: match[2] || '' };
+
+    const parsed = new Date(source);
+    if (Number.isNaN(parsed.getTime())) return { date: '', time: '' };
+
+    return {
+      date: `${parsed.getFullYear()}-${String(parsed.getMonth() + 1).padStart(2, '0')}-${String(parsed.getDate()).padStart(2, '0')}`,
+      time: `${String(parsed.getHours()).padStart(2, '0')}:${String(parsed.getMinutes()).padStart(2, '0')}`
+    };
+  }
+
+  function formatDateTime(date, time) {
+    if (!date) return '';
+    return `${date} ${time || '00:00'}:00`;
+  }
+
+  function currentDateTime() {
+    const now = new Date();
+    const date = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const time = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+    return formatDateTime(date, time);
+  }
+
+  function LocalizedDateTimeControl(props) {
+    const value = localDateTimeParts(props.value);
+    const dateId = `${props.forID || 'date'}-date`;
+    const timeId = `${props.forID || 'date'}-time`;
+
+    return h('section', { className: `cms-taxonomy-card ${props.classNameWrapper || ''}` }, [
+      h('div', { className: 'cms-taxonomy-heading' }, h('div', {}, [
+        h('h3', { className: 'cms-taxonomy-title' }, '发布日期'),
+        h('p', { className: 'cms-taxonomy-subtitle' }, '设置文章公开显示的日期和时间。')
+      ])),
+      h('div', { className: 'cms-taxonomy-date-row' }, [
+        h('label', { htmlFor: dateId }, [
+          h('span', { className: 'cms-taxonomy-date-label' }, '日期'),
+          h('input', {
+            id: dateId,
+            className: 'cms-taxonomy-date-input',
+            type: 'date',
+            value: value.date,
+            autoComplete: 'off',
+            'aria-label': '发布日期，年 / 月 / 日',
+            onChange: event => props.onChange(formatDateTime(event.currentTarget.value, value.time))
+          })
+        ]),
+        h('label', { htmlFor: timeId }, [
+          h('span', { className: 'cms-taxonomy-date-label' }, '时间'),
+          h('input', {
+            id: timeId,
+            className: 'cms-taxonomy-date-input',
+            type: 'time',
+            value: value.time,
+            autoComplete: 'off',
+            'aria-label': '发布时间，时和分',
+            onChange: event => props.onChange(formatDateTime(value.date, event.currentTarget.value))
+          })
+        ])
+      ]),
+      h('div', { className: 'cms-taxonomy-date-actions' }, [
+        h('button', { type: 'button', className: 'cms-taxonomy-primary-button', onClick: () => props.onChange(currentDateTime()) }, '现在'),
+        h('button', { type: 'button', className: 'cms-taxonomy-secondary-button', onClick: () => props.onChange('') }, '清除')
+      ]),
+      h('p', { className: 'cms-taxonomy-date-format' }, '保存格式：年 / 月 / 日  --:--（例如 2026-06-21 14:30:00）')
+    ]);
+  }
+
   CMS.registerWidget('category_tree', CategoryTreeControl);
   CMS.registerWidget('tag_picker', TagPickerControl);
+  CMS.registerWidget('localized_datetime', LocalizedDateTimeControl);
 })(window, document);
