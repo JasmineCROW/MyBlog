@@ -39,7 +39,9 @@ jobs:
         run: |
           test -d ./public
           test -s ./public/index.html
-          test "$(find ./public -type f | wc -l)" -gt 1
+          file_count=$(find ./public -type f | wc -l)
+          echo "Generated file count: $file_count"
+          test "$file_count" -gt 1
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
