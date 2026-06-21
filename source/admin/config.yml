@@ -2,7 +2,7 @@ backend:
   name: github
   repo: JasmineCROW/MyBlog
   branch: main
-  base_url: https://your-oauth-proxy.example.com
+  base_url: https://jasminecrow-cms-auth.chenyuye-ycy.workers.dev
   auth_endpoint: auth
 
 media_folder: source/images/uploads
