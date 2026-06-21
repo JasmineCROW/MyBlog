@@ -6,7 +6,7 @@ article.index-post-item
         i.fa-solid.fa-paw
         | #{ post.title }
     
-    if post.sticky
+    if post.sticky || post.top > 0
       .post-top
         | !{ markdown(__('article.top'))}
 
