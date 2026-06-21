@@ -6,6 +6,12 @@
     <title>博客管理</title>
   </head>
   <body>
-    <script src="https://unpkg.com/decap-cms@^3/dist/decap-cms.js"></script>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script src="https://unpkg.com/decap-cms-app@3.14.1/dist/decap-cms-app.js"></script>
+    <script>
+      window.CMS.init();
+    </script>
   </body>
 </html>
