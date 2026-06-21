@@ -13,7 +13,7 @@ article.index-post-item
   .post-head-info
     .post-published-at
       i.icon.fa-regular.fa-calendar-plus(title= __('datetime.published'))
-      time(datetime= date(post.date, 'YYYY-MM-DDTHH:mm:ss'))= date(post.date, 'YYYY-MM-DD HH:mm')
+      time(datetime= date(post.date, 'YYYY-MM-DDTHH:mm:ss'))= date(post.date, 'YYYY-MM-DD')
 
     //- post's categories info 文章分类
     | !{ partial('_partial/post/post-categories') }
