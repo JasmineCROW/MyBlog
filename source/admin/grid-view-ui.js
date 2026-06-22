@@ -32,7 +32,9 @@
   function restoreCard(card) {
     if (card.dataset.cmsGridDecorated !== 'true') return;
 
-    const heading = card.querySelector('h2.cms-grid-post-heading');
+    const heading = Array.from(card.querySelectorAll('h2')).find(node =>
+      node.classList.contains('cms-grid-post-heading') || node.querySelector('.cms-grid-post-title')
+    );
     const originalTitle = card.dataset.cmsGridOriginalTitle;
 
     if (heading && originalTitle) {
