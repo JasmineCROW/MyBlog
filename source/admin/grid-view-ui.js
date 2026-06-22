@@ -86,11 +86,18 @@
       if (!isGridCard(card)) restoreCard(card);
     });
 
-    document.querySelectorAll(gridCardSelector).forEach(decorateCard);
+    const gridCards = Array.from(document.querySelectorAll(gridCardSelector)).filter(isGridCard);
+    const hasListCards = document.querySelector('li[class*="ListCard-card-card"]') !== null;
+
+    // Decap renders one view mode at a time. List View is a hard stop: no
+    // Grid styles are injected and no list nodes are inspected or modified.
+    if (gridCards.length === 0 || hasListCards) return;
+
+    addStyles();
+    gridCards.forEach(decorateCard);
   }
 
   function start() {
-    addStyles();
     reconcile();
 
     let scheduled = false;
