@@ -5,10 +5,11 @@ categories:
   - 伦克
   - Dead Warrior
 tags:
-  - 伦克
   - 诡秘之主
+  - 伦克
   - HP
-top: false
+  - 同人
+top: true
 ---
 “请留步，索罗亚斯德先生。”
 
