@@ -27,6 +27,9 @@ header
               a.top-menu-item(href= url_for(config.tag_dir))
                 //- i.fa-solid.fa-tags.fa-sm
                 span= __('menu.tags')
+            when "write"
+              a.top-menu-item.top-menu-write(href= url_for(theme.menu[item]))
+                span 写文章
             default
               a.top-menu-item(href= url_for(theme.menu[item]))
                 //- i.fa-solid.fa-paw.fa-sm
@@ -61,6 +64,9 @@ header
               a.menu-hidden-item(href= url_for(config.tag_dir))
                 i.fa-solid.fa-tags.fa-sm
                 span= __('menu.tags')
+            when "write"
+              a.menu-hidden-item.menu-hidden-write(href= url_for(theme.menu[item]))
+                span 写文章
             default
               a.menu-hidden-item(href= url_for(theme.menu[item]))
                 i.fa-solid.fa-paw.fa-sm

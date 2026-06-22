@@ -9,6 +9,9 @@
     when "tags"
       a.menu-item(href= url_for(config.tag_dir))
         span= __('menu.' + item)
+    when "write"
+      a.menu-item.menu-item-write(href= url_for(theme.menu[item]))
+        span 写文章
     default
       a.menu-item(href= url_for(theme.menu[item]))
         span= __('menu.' + item)

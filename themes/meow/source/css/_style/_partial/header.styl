@@ -69,6 +69,20 @@ header
     &:hover
       color: orange-middle
 
+  .top-menu-write
+    display: inline-block
+    margin-right: 14px
+    padding: 4px 11px
+    border: 1px solid orange-light
+    border-radius: 999px
+    line-height: 1.2
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease
+
+    &:hover
+      color: #ffffff
+      background-color: orange-fresh
+      border-color: orange-fresh
+
 .top-search
   display: inline-block
   cursor: pointer
@@ -166,6 +180,14 @@ header
 
           i
             animation: beat 1s infinite
+
+      .menu-hidden-write
+        color: orange-fresh
+        background-color: rgba(255, 255, 255, 0.85)
+
+        &:hover
+          color: #ffffff
+          background-color: orange-fresh
     
     .menu-hidden-blank
       flex: 1

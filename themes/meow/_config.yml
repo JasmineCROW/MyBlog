@@ -25,6 +25,7 @@ menu:
   archives:
   categories:
   tags:
+  write: admin/
 
 # search function 搜索功能
 search:
