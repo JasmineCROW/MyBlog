@@ -24,38 +24,34 @@
         flex: 0 0 auto;
         align-items: center;
         gap: 6px;
-        margin: 0 12px;
-        padding: 7px 11px;
-        border: 1px solid #dbe4ee;
+        margin: 0 10px;
+        padding: 6px 12px;
+        border: 1px solid #cbd5e1;
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.94);
-        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
+        background: #f8fafc;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
         color: #475569;
         font: 600 13px/1.2 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         text-decoration: none;
         white-space: nowrap;
-        transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+        transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 100ms ease;
       }
       #${linkId}:hover {
-        border-color: #f59e0b;
-        background: #fff7ed;
-        box-shadow: 0 3px 8px rgba(245, 158, 11, 0.16);
-        color: #c2410c;
+        border-color: #94a3b8;
+        background: #e2e8f0;
+        box-shadow: 0 2px 5px rgba(15, 23, 42, 0.12);
+        color: #334155;
+      }
+      #${linkId}:active {
+        box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.14);
+        transform: translateY(1px);
       }
       #${linkId}:focus-visible {
-        outline: 2px solid #fb923c;
+        outline: 2px solid #64748b;
         outline-offset: 2px;
-      }
-      #${linkId}.cms-return-home-link--floating {
-        position: fixed;
-        top: 14px;
-        left: 16px;
-        margin: 0;
-        z-index: 40;
       }
       @media (max-width: 640px) {
         #${linkId} { margin: 0 8px; padding: 6px 9px; }
-        #${linkId}.cms-return-home-link--floating { top: 10px; left: 10px; }
       }
     `;
     document.head.appendChild(style);
@@ -76,10 +72,13 @@
       return;
     }
 
-    if (document.getElementById(linkId)) return;
-
-    const link = document.createElement('a');
     const header = document.querySelector(headerSelectors);
+    if (!header) return;
+
+    const existingLink = document.getElementById(linkId);
+    const collectionLink = header.querySelector('a[href^="#/collections/"]');
+    const logo = header.querySelector('[class*="Logo"], a[href="#/"]');
+    const link = existingLink || document.createElement('a');
 
     link.id = linkId;
     link.dataset.cmsHomeLinkMounted = 'true';
@@ -87,11 +86,12 @@
     link.setAttribute('aria-label', '返回博客首页');
     link.innerHTML = '<span aria-hidden="true">←</span><span>返回首页</span>';
 
-    if (header) {
-      header.insertBefore(link, header.firstChild);
+    if (collectionLink) {
+      header.insertBefore(link, collectionLink);
+    } else if (logo) {
+      logo.insertAdjacentElement('afterend', link);
     } else {
-      link.classList.add('cms-return-home-link--floating');
-      document.body.appendChild(link);
+      header.insertBefore(link, header.firstChild);
     }
   }
 
