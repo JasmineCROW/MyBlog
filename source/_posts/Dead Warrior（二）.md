@@ -1,5 +1,6 @@
 ---
 title: Dead Warrior（二）
+top: false
 date: 2023-11-09 00:15:40
 categories: [伦克, Dead Warrior]
 tags: [伦克, 诡秘之主, HP]
