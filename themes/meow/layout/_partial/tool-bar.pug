@@ -23,7 +23,7 @@
     #tool-bar-more(style="display: none;")
       //- darkmode switch 深色模式开关
       if theme.darkmode.enable
-        #darkmode-switch( onclick= "darkmodeSwitch()", title= __('menu.darkmode') )
+        #darkmode-switch( onclick= "darkmodeSwitch(true)", title= __('menu.darkmode') )
           i.fa-solid.fa-circle-half-stroke
       
       //- increase or decrease font size of post 增大或减小文章字体

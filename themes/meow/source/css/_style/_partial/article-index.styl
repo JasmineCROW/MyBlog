@@ -1,20 +1,21 @@
 .index-posts
   margin: 0 auto
-  width: 85%
+  width: min(88%, 980px)
 
   .index-post-item
-    margin-top: 14px
-    padding: 20px
-    border: 1px solid border-grey
-    border-radius: 10px
-    background: white
-    box-shadow: 0 2px 8px rgba(31, 18, 53, 0.08)
+    position: relative
+    margin-top: 20px
+    padding: 28px 30px
+    border: 1px solid #dededb
+    border-radius: 16px
+    background: #ffffff
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.045)
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease
 
     &:hover
-      border-color: rgba(249, 173, 8, 0.5)
-      box-shadow: 0 8px 18px rgba(31, 18, 53, 0.14)
-      transform: translateY(-2px)
+      border-color: #a7a7a2
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.09)
+      transform: translateY(-3px)
 
     .post-title-index
       display: flex
@@ -27,21 +28,26 @@
 
         a
           text-decoration: none
-          color: text-black
+          color: #161616
           font-weight: bold
 
           &:hover
-            color: orange-middle
+            color: #7f1d1d
           
           i
             margin-right: 5px
       
       .post-top
-        padding: 3px 12px
-        border: 1px orange-middle dashed
-        border-radius: 15px
+        position: absolute
+        top: 0
+        right: 0
+        padding: 4px 10px
+        border: 1px solid #252525
+        border-radius: 999px
+        background: #ffffff
         text-align: center
-        color: orange-middle
+        color: #252525
+        font-size: info-font-size-smaller
 
         p
           margin: 0
@@ -59,7 +65,7 @@
         margin-top: 0
 
       .post-published-at
-        color: text-grey-light
+        color: #888888
         font-size: info-font-size-smaller
         white-space: nowrap
 
@@ -67,9 +73,9 @@
           margin-right: 5px
     
     .read-more
-      background-color: orange-low-saturation
-      padding: 3px 10px
-      border-radius: 20px
+      background-color: #1b1b1b
+      padding: 7px 14px
+      border-radius: 999px
       display: inline-block
       text-align: center
       margin: 10px 0
@@ -84,8 +90,12 @@
         font-size: info-font-size
 
       &:hover
-        background-color: yellow-normal
-        box-shadow: 1.5px 1.5px 2px shadow-grey
+        background-color: #ffffff
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12)
+        transform: translateY(-1px)
+
+        i, .read-more-link
+          color: #1b1b1b
     
     .post-tags
       font-size: info-font-size
@@ -103,7 +113,7 @@
 
 @media screen and (max-width: 768px)
   .index-post-item
-    padding: 16px
+    padding: 22px 20px
 
     h1
       font-size: article-title2-font-size

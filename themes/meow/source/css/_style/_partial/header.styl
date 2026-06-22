@@ -1,8 +1,10 @@
 header
-  background-color: #ffffff
+  background-color: rgba(250, 250, 248, 0.92)
   position: sticky
   top: 0
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.125)
+  border-bottom: 1px solid #dededb
+  box-shadow: none
+  backdrop-filter: blur(14px)
   z-index: 6
 
 .top-nav
@@ -34,14 +36,14 @@ header
         animation: fade 1.2s ease-in-out infinite
 
     #nav-title
-      font-size: 30px
+      font-size: 26px
       font-weight: bold
       text-decoration: none
-      color: orange-fresh
+      color: #151515
       margin-left: 5px
 
       &:hover
-        color: orange-middle
+        color: #7f1d1d
 
 #top-menu-hidden
   display: none
@@ -63,10 +65,10 @@ header
     align-items: center
     gap: 6px
     padding: 4px 11px
-    border: 1px solid orange-light
+    border: 1px solid #bdbdb9
     border-radius: 999px
     text-decoration: none
-    color: orange-fresh
+    color: #292929
     margin-right: 10px
     line-height: 1.2
     transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease
@@ -76,8 +78,8 @@ header
 
     &:hover
       color: #ffffff
-      background-color: orange-fresh
-      border-color: orange-fresh
+      background-color: #1a1a1a
+      border-color: #1a1a1a
 
 .top-search
   display: inline-block
@@ -88,9 +90,9 @@ header
       animation: fade 1s infinite
 
   #top-search-btn
-    padding: 2px 10px 2px 8px
-    background-color: transparent
-    border: 1px solid border-grey
+    padding: 5px 11px
+    background-color: #ffffff
+    border: 1px solid #bdbdb9
     border-radius: 70px
     font-size: info-font-size-larger
 
@@ -99,7 +101,28 @@ header
 
     span
       margin-left: 5px
-      color: icon-grey
+      color: #555555
+
+#theme-mode-switch
+  display: inline-flex
+  align-items: center
+  gap: 6px
+  margin-left: 9px
+  padding: 5px 11px
+  border: 1px solid #bdbdb9
+  border-radius: 999px
+  background: #ffffff
+  color: #292929
+  font-size: info-font-size
+  cursor: pointer
+  transition: background-color 160ms ease, color 160ms ease, transform 100ms ease
+
+  &:hover
+    background: #1a1a1a
+    color: #ffffff
+
+  &:active
+    transform: translateY(1px)
 
 @media screen and (max-width: 768px)
   #top-menu-btn
@@ -119,6 +142,13 @@ header
     #top-search-btn
       border-radius: 50%
       padding: 2px 5px
+
+  #theme-mode-switch
+    margin-left: 10px
+    padding: 4px 7px
+
+    span
+      display: none
 
   #top-menu-hidden
     z-index: 5
@@ -155,12 +185,12 @@ header
       .menu-hidden-item
         padding: 8px 35px
         margin: 8px 10px
-        border: 1px solid orange-light
+        border: 1px solid #bdbdb9
         border-radius: 999px
         text-decoration: none
         line-height: 1.5em
         font-size: header-item-font-size-smaller
-        color: orange-fresh
+        color: #292929
         background-color: rgba(255, 255, 255, 0.85)
         opacity: 1
         flex: 1
@@ -174,8 +204,8 @@ header
 
         &:hover
           color: #ffffff
-          background-color: orange-fresh
-          border-color: orange-fresh
+          background-color: #1a1a1a
+          border-color: #1a1a1a
 
           i
             animation: beat 1s infinite

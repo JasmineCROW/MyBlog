@@ -50,7 +50,7 @@ function toolToggle() {
   }
 }
 
-function darkmodeSwitch() {
+function darkmodeSwitch(closeTools) {
   'use strict';
   darkMode.toggleMode();
   // change comment theme synchronously 同步修改评论区主题
@@ -69,8 +69,23 @@ function darkmodeSwitch() {
       });
     }
   }
-  toolToggle();
+  syncThemeToggle();
+  if (closeTools) toolToggle();
 }
+
+function syncThemeToggle() {
+  'use strict';
+  var button = document.getElementById('theme-mode-switch');
+  if (!button) return;
+
+  var icon = button.querySelector('i');
+  var isDark = document.body.classList.contains('dm-dark');
+  button.setAttribute('aria-pressed', String(isDark));
+  button.title = isDark ? '切换到白天模式' : '切换到黑夜模式';
+  if (icon) icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+}
+
+document.addEventListener('DOMContentLoaded', syncThemeToggle);
 
 function sendGiscusMessage(message) {
   const iframe = document.getElementsByClassName('giscus-frame')[0];

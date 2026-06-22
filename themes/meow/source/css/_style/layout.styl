@@ -49,16 +49,18 @@ body
     user-select: none /* Standard syntax */
 
   .main
-    max-width: max-page-width
-    width: 95%
+    max-width: 1180px
+    width: min(94%, 1180px)
     margin: 0 auto
 
     .main-content
-      background-color: #ffffff
-      background-image: url($root-path + 'img/blog-background.png')
-      border-radius: 20px
-      margin: 0 auto
-      padding: 20px 0 40px
+      background-color: rgba(255, 255, 255, 0.82)
+      background-image: none
+      border: 1px solid #e2e2df
+      border-radius: 18px
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05)
+      margin: 12px auto 48px
+      padding: 34px 0 52px
 
 // Keep the front-end typography consistent even where the theme provides
 // component-specific font declarations. Font Awesome and code blocks retain

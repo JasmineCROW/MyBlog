@@ -13,8 +13,8 @@ author_pic: img/crow.png
 
 # background image/color 背景图片/颜色
 background:
-  type: 3 # 1: image 图片 | 2: color 颜色 | 3: gradient style 渐变
-  color: '#000000' # (css color name css颜色名称) 'MistyRose' | (color code 颜色代码) '#FFE4E1'
+  type: 2 # 1: image 图片 | 2: color 颜色 | 3: gradient style 渐变
+  color: '#f7f7f4' # (css color name css颜色名称) 'MistyRose' | (color code 颜色代码) '#FFE4E1'
   image_url: img/zhuming.jpg # image path 图片路径
   gradient: linear-gradient(to bottom right,#ffa751,#ffe259) # gradient css statement 渐变css语句
 
