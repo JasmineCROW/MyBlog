@@ -24,6 +24,22 @@ html
   
   scroll-behavior: smooth
 
+:root
+  --color-bg: #f7f7f4
+  --color-surface: #fafafa
+  --color-surface-dark: #111111
+  --color-text: #111111
+  --color-text-muted: #888888
+  --color-border: #d8d8d4
+  --color-link: #222222
+  --color-link-hover: #555555
+  --color-card-bg: #111111
+  --color-card-text: #ffffff
+  --color-card-muted: #a3a3a3
+  --color-accent-subtle: #efefec
+  --color-quote-bg: #f1f1f1
+  --color-quote-border: #222222
+
 body
   if hexo-config('background.type') == 1
     background: url($root-path + site-background-image)
@@ -39,7 +55,7 @@ body
   padding: 0
   font-size: default-font-size
   font-family: default-font-family
-  color: text-black
+  color: var(--color-text)
   position: relative
 
   if(! hexo-config('selectable'))
@@ -54,9 +70,9 @@ body
     margin: 0 auto
 
     .main-content
-      background-color: rgba(255, 255, 255, 0.82)
+      background-color: var(--color-surface)
       background-image: none
-      border: 1px solid #e2e2df
+      border: 1px solid var(--color-border)
       border-radius: 18px
       box-shadow: 0 14px 34px rgba(0, 0, 0, 0.05)
       margin: 12px auto 48px

@@ -18,9 +18,9 @@
   width: 80%
   height: 70%
   padding: 15px 20px
-  background-color: rgba(255, 255, 255, 0.95)
+  background-color: var(--color-surface)
   // box-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.125)
-  border: 1px solid rgba(209, 209, 209, 0.825)
+  border: 1px solid #d0d0cc
   border-radius: 20px
   overflow-y: auto
   overflow-x: hidden
@@ -31,7 +31,7 @@
   justify-content: space-between
   align-items: center
   font-size: article-title4-font-size
-  color: orange-middle
+  color: #111111
 
 .search-title
   font-weight: bold
@@ -43,9 +43,10 @@
 .search-close-btn
   margin-right: 5px
   cursor: pointer
+  color: #777777
 
   &:hover
-    animation: beat 1s infinite
+    color: #111111
 
 .search-box
   margin: 15px auto 10px
@@ -53,7 +54,7 @@
   flex-flow: row nowrap
   align-items: center
   padding-bottom: 20px
-  border-bottom: 1px solid rgba(209, 209, 209, 0.825)
+  border-bottom: 1px solid #d0d0cc
 
   i
     margin-right: 5px
@@ -64,9 +65,14 @@
   -ms-flex: 1
   font-size: default-font-size
   font-family: default-font-family
-  border: 1px solid text-black-light
-  border-radius: 15px
-  padding: 3px 8px
+  border: 1px solid #999999
+  border-radius: 999px
+  padding: 7px 12px
+  background: #ffffff
+  color: #111111
+
+  &::placeholder
+    color: #888888
 
 #search-count
   &:not([search-count-show])
@@ -79,7 +85,7 @@
     margin: 5px 0
 
     em
-      color: orange-middle
+      color: #333333
       font-weight: bold
       font-style: normal
   

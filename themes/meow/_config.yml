@@ -16,7 +16,7 @@ background:
   type: 2 # 1: image 图片 | 2: color 颜色 | 3: gradient style 渐变
   color: '#f7f7f4' # (css color name css颜色名称) 'MistyRose' | (color code 颜色代码) '#FFE4E1'
   image_url: img/zhuming.jpg # image path 图片路径
-  gradient: linear-gradient(to bottom right,#ffa751,#ffe259) # gradient css statement 渐变css语句
+  gradient: linear-gradient(to bottom right,#f7f7f4,#fafafa) # gradient css statement 渐变css语句
 
 # menu config 导航栏菜单项
 # archives/categories/tags will use the path in root config automatically 归档、分类以及标签页使用根目录配置中的路径
