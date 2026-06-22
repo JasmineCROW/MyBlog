@@ -60,6 +60,21 @@ body
       margin: 0 auto
       padding: 20px 0 40px
 
+// Keep the front-end typography consistent even where the theme provides
+// component-specific font declarations. Font Awesome and code blocks retain
+// their own font families so icons and syntax highlighting keep working.
+body,
+body :not(.fa-solid):not(.fa-regular):not(.fa-brands):not(.fa):not(code):not(pre):not(kbd):not(samp)
+  font-family: default-font-family !important
+
+body code,
+body code *,
+body pre,
+body pre *,
+body kbd,
+body samp
+  font-family: code-font !important
+
 @media screen and (max-width: 768px)
   body
     font-size: default-font-size-smaller
