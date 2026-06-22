@@ -162,10 +162,9 @@ font:
   # https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400..700&display=swap
   # https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap
   # https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300..700&display=swap
-  url_list:
-    - 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300..700&display=swap'
+  url_list: []
   # use fonts, please keep the content in double quotation marks and seperate each font with comma 使用字体，请用双引号将全部字体包裹起来，逗号分隔不同字体
-  font_family: "'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', Sans-serif, Serif"
+  font_family: "'Times New Roman', 'Source Han Serif SC', 'Noto Serif CJK SC', 'Songti SC', SimSun, serif"
 
 # toolbar configuration 悬浮工具栏配置
 tool_bar:

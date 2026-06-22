@@ -17,18 +17,19 @@ header
           case item
             when "archives"
               a.top-menu-item(href= url_for(config.archive_dir))
-                //- i.fa-solid.fa-box-archive.fa-sm
-                span= __('menu.archives')
+                i.fa-solid.fa-box-archive.fa-sm
+                span 归档
             when "categories"
               a.top-menu-item(href= url_for(config.category_dir))
-                //- i.fa-regular.fa-folder-open.fa-sm
-                span= __('menu.categories')
+                i.fa-regular.fa-folder-open.fa-sm
+                span 分类
             when "tags"
               a.top-menu-item(href= url_for(config.tag_dir))
-                //- i.fa-solid.fa-tags.fa-sm
-                span= __('menu.tags')
+                i.fa-solid.fa-tags.fa-sm
+                span 标签
             when "write"
               a.top-menu-item.top-menu-write(href= url_for(theme.menu[item]))
+                i.fa-solid.fa-pen-to-square.fa-sm
                 span 写文章
             default
               a.top-menu-item(href= url_for(theme.menu[item]))
@@ -55,17 +56,18 @@ header
             when "archives"
               a.menu-hidden-item(href= url_for(config.archive_dir))
                 i.fa-solid.fa-box-archive.fa-sm
-                span= __('menu.archives')
+                span 归档
             when "categories"
               a.menu-hidden-item(href= url_for(config.category_dir))
                 i.fa-regular.fa-folder-open.fa-sm
-                span= __('menu.categories')
+                span 分类
             when "tags"
               a.menu-hidden-item(href= url_for(config.tag_dir))
                 i.fa-solid.fa-tags.fa-sm
-                span= __('menu.tags')
+                span 标签
             when "write"
               a.menu-hidden-item.menu-hidden-write(href= url_for(theme.menu[item]))
+                i.fa-solid.fa-pen-to-square.fa-sm
                 span 写文章
             default
               a.menu-hidden-item(href= url_for(theme.menu[item]))
