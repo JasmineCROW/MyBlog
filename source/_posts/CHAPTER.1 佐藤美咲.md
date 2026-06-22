@@ -1,9 +1,14 @@
 ---
 title: CHAPTER.1 佐藤美咲
 date: 2024-11-20 00:35:40
-categories: [主明, 正义即正义, 0序章]
-tags: [主明, P5R]
-top: false
+categories:
+  - 主明
+  - 正义即正义
+  - 0序章
+tags:
+  - 主明
+  - P5R
+top: true
 ---
 
 4月9日，晚7点，银座。
