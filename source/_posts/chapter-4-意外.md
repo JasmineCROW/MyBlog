@@ -2,12 +2,12 @@
 title: CHAPTER.4 意外
 date: 2026-06-23 22:05:00
 categories:
+  - 原创
   - 雨中客
 tags:
-  - 悬疑
-  - 雨中客
   - 原创
   - BG
+  - 悬疑
 top: false
 ---
 “今天真是糟糕透了！”
