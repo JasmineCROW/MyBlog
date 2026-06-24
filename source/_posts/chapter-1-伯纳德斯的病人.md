@@ -2,11 +2,11 @@
 title: CHAPTER.1 伯纳德斯的病人
 date: 2026-06-23 21:59:00
 categories:
+  - 原创
   - 雨中客
 tags:
-  - 雨中客
-  - 原创
   - BG
+  - 原创
   - 悬疑
 top: false
 ---
