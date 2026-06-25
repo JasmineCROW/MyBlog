@@ -1,13 +1,11 @@
 (function (window, document) {
   'use strict';
 
-  const storagePrefix = 'meow-category-expanded:';
-
   function getDirectChild(element, selector) {
     return Array.from(element.children).find(child => child.matches(selector));
   }
 
-  function setExpanded(item, expanded, persist) {
+  function setExpanded(item, expanded) {
     const toggle = item.querySelector(':scope > .category-tree-row .category-tree-toggle');
     const childList = getDirectChild(item, '.category-list-child');
     if (!toggle || !childList) return;
@@ -16,9 +14,6 @@
     toggle.setAttribute('aria-expanded', String(expanded));
     toggle.setAttribute('aria-label', expanded ? '收起子分类' : '展开子分类');
 
-    if (persist) {
-      window.sessionStorage.setItem(storagePrefix + item.dataset.categoryKey, String(expanded));
-    }
   }
 
   function decorateList(list, depth) {
@@ -33,6 +28,7 @@
       item.dataset.categoryTreeReady = 'true';
       item.dataset.categoryDepth = String(depth);
       item.dataset.categoryKey = encodeURIComponent(link.getAttribute('href') || String(index));
+      if (childList) item.classList.add('is-collapsed');
 
       const row = document.createElement('div');
       row.className = 'category-tree-row';
@@ -48,7 +44,7 @@
         toggle.innerHTML = '<i class="fa-solid fa-chevron-right" aria-hidden="true"></i>';
         toggle.addEventListener('click', event => {
           event.preventDefault();
-          setExpanded(item, item.classList.contains('is-collapsed'), true);
+          setExpanded(item, item.classList.contains('is-collapsed'));
         });
         row.appendChild(toggle);
       } else {
@@ -63,8 +59,7 @@
 
       if (childList) {
         decorateList(childList, depth + 1);
-        const savedState = window.sessionStorage.getItem(storagePrefix + item.dataset.categoryKey);
-        setExpanded(item, savedState === 'true', false);
+        setExpanded(item, false);
       }
     });
   }

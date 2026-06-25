@@ -40,16 +40,6 @@ function gotoComment() {
   }
 }
 
-function toolToggle() {
-  'use strict';
-  var moreToolsContainer = document.getElementById('tool-bar-more');
-  if (moreToolsContainer.style.display == 'none') {
-    moreToolsContainer.style.display = 'block';
-  } else {
-    moreToolsContainer.style.display = 'none';
-  }
-}
-
 function darkmodeSwitch(closeTools) {
   'use strict';
   darkMode.toggleMode();
@@ -70,7 +60,6 @@ function darkmodeSwitch(closeTools) {
     }
   }
   syncThemeToggle();
-  if (closeTools) toolToggle();
 }
 
 function syncThemeToggle() {
@@ -122,5 +111,14 @@ function fontSizeDecrease() {
     }
     postContent.style.fontSize = sizeNum + 'px';
     localStorage.setItem('font-size', sizeNum);
+  }
+}
+
+function fontSizeReset() {
+  'use strict';
+  var postContent = document.querySelector('.post-content');
+  if (postContent) {
+    postContent.style.fontSize = '';
+    localStorage.removeItem('font-size');
   }
 }

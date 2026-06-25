@@ -1,22 +1,25 @@
 .tag-cloud
-  margin: 20px auto
+  margin: 24px auto
   display: flex
   justify-content: center
   flex-flow: row wrap
   align-items: baseline
+  gap: 10px 18px
 
-  a
-    margin: 5px 7px
-    padding: 4px 10px
-    border: 1px solid #d0d0d0
-    border-radius: 999px
-    color: #555555
+  .tag-cloud-link
+    margin: 0
+    padding: 2px 3px
+    border: 0
+    border-radius: 6px
+    color: var(--tag-light-color, #555555)
+    font-size: var(--tag-size, 1rem)
+    line-height: 1.35
     text-decoration: none
+    transition: color 160ms ease, transform 160ms ease
 
     &:hover
-      background: #111111
-      border-color: #111111
-      color: #ffffff
+      color: #111111
+      transform: translateY(-1px)
 
 .tag-list-container
   margin: 18px auto
@@ -29,16 +32,16 @@
 
   a
     margin: 5px 7px
-    padding: 4px 10px
-    border: 1px solid #d0d0d0
-    border-radius: 999px
+    padding: 2px 3px
+    border: 0
+    border-radius: 6px
     color: #555555
 
     &:hover
-      background: #111111
-      border-color: #111111
-      color: #ffffff
+      color: #111111
 
 .tag-count
   vertical-align: super
   font-size: superscript-font-size
+  margin-left: 3px
+  opacity: 0.72

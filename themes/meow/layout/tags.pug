@@ -6,10 +6,33 @@
   
   if theme.tags.tag_cloud
     .tag-cloud
-      if theme.tags.show_count
-        | !{ tagcloud(site.tags, {min_font:18, max_font:22, color:false, show_count:true, count_class:'tag-count'}) }
-      else
-        | !{ tagcloud(site.tags, {min_font:18, max_font:22, color:false, show_count:false}) }
+      -
+        const tags = site.tags.toArray();
+        const counts = tags.map(tag => tag.length || tag.count || 0);
+        const minCount = counts.length ? Math.min(...counts) : 0;
+        const maxCount = counts.length ? Math.max(...counts) : 0;
+        function tagWeight(tag) {
+          const count = tag.length || tag.count || 0;
+          if (maxCount === minCount) return 1;
+          return (count - minCount) / (maxCount - minCount);
+        }
+        function tagScale(weight, min, max) {
+          return min + (max - min) * weight;
+        }
+        function tagColor(weight, from, to) {
+          const channel = index => Math.round(tagScale(weight, from[index], to[index]));
+          return `rgb(${channel(0)}, ${channel(1)}, ${channel(2)})`;
+        }
+      each tag in tags
+        -
+          const weight = tagWeight(tag);
+          const fontSize = tagScale(weight, 0.95, 1.45).toFixed(2);
+          const lightColor = tagColor(weight, [156, 163, 175], [17, 17, 17]);
+          const darkColor = tagColor(weight, [113, 113, 122], [245, 245, 245]);
+        a.tag-cloud-link(href= url_for(tag.path), style=`--tag-size: ${fontSize}rem; --tag-light-color: ${lightColor}; --tag-dark-color: ${darkColor};`)
+          span.tag-cloud-name= tag.name
+          if theme.tags.show_count
+            span.tag-count= tag.length || tag.count || 0
 
   if theme.tags.tag_list
     .tag-list-container
