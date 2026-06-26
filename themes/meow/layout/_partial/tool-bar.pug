@@ -1,25 +1,18 @@
-#tool-bar
-  #tool-bar-main
-    //- TOC switch
-    if (is_post() && theme.toc.enable && !(undefined != page.toc && !page.toc))
-      #toc-toggle( onclick= "tocToggle()", title= __('menu.toc') )
-        i.fa-solid.fa-list-ul
+if is_post()
+  #tool-bar
+    #tool-bar-main
+      //- TOC switch
+      if theme.toc.enable && !(undefined != page.toc && !page.toc)
+        #toc-toggle( onclick= "tocToggle()", title= __('menu.toc') )
+          i.fa-solid.fa-list-ul
 
-    //- go to comment
-    if (is_post() && theme.comment.post_enable && page.comments) || (page.layout == 'about' && theme.comment.about_enable)
-      #go-to-comment( onclick= "gotoComment()", title= __('menu.comment') )
-        i.fa-regular.fa-message.fa-flip-horizontal
+      //- increase or decrease font size of post
+      if theme.tool_bar.setting_font_size
+        #font-size-increase( onclick= "fontSizeIncrease()", title= __('menu.font_size_increase') )
+          i.fa-solid.fa-plus
+        #font-size-decrease( onclick= "fontSizeDecrease()", title= __('menu.font_size_decrease') )
+          i.fa-solid.fa-minus
 
-    //- back to top button
-    #back-to-top( onclick= "scrollToTop()", title= __('navigation.back_to_top') )
-      i.fa-solid.fa-chevron-up
-
-  //- independent post font size controls
-  if is_post() && theme.tool_bar.setting_font_size
-    #font-size-controls
-      #font-size-decrease( onclick= "fontSizeDecrease()", title= __('menu.font_size_decrease') )
-        i.fa-solid.fa-minus
-      #font-size-reset( onclick= "fontSizeReset()", title="Reset font size" )
-        i.fa-solid.fa-font
-      #font-size-increase( onclick= "fontSizeIncrease()", title= __('menu.font_size_increase') )
-        i.fa-solid.fa-plus
+      //- back to top button
+      #back-to-top( onclick= "scrollToTop()", title= __('navigation.back_to_top') )
+        i.fa-solid.fa-chevron-up

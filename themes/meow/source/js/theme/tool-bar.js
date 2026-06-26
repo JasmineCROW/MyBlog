@@ -1,9 +1,12 @@
 window.onscroll = function () {
   'use strict';
+  var backToTop = document.getElementById('back-to-top');
+  if (!backToTop) return;
+
   if (window.scrollY > 200 || document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-    document.getElementById('back-to-top').style.display = 'block';
+    backToTop.style.display = 'flex';
   } else {
-    document.getElementById('back-to-top').style.display = 'none';
+    backToTop.style.display = 'none';
   }
 };
 
@@ -111,14 +114,5 @@ function fontSizeDecrease() {
     }
     postContent.style.fontSize = sizeNum + 'px';
     localStorage.setItem('font-size', sizeNum);
-  }
-}
-
-function fontSizeReset() {
-  'use strict';
-  var postContent = document.querySelector('.post-content');
-  if (postContent) {
-    postContent.style.fontSize = '';
-    localStorage.removeItem('font-size');
   }
 }
