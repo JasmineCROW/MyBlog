@@ -102,8 +102,41 @@
     }
   }
 
+  function collectionValue(value) {
+    if (!value) return value;
+
+    if (Array.isArray(value) || typeof value === 'string') return value;
+    if (typeof value.toJS === 'function') return value.toJS();
+    if (typeof value.toArray === 'function') return value.toArray();
+    if (typeof value.toObject === 'function') return value.toObject();
+
+    return value;
+  }
+
+  function entryFieldValue(props, fieldNames) {
+    const entry = props && props.entry;
+    if (!entry || typeof entry.getIn !== 'function') return undefined;
+
+    for (const fieldName of fieldNames) {
+      const value = entry.getIn(['data', fieldName]);
+      if (value !== undefined && value !== null) return value;
+    }
+
+    return undefined;
+  }
+
+  function fieldValue(props, fallbackNames) {
+    if (props && props.value !== undefined && props.value !== null) return props.value;
+    return entryFieldValue(props, fallbackNames);
+  }
+
   function normalizePath(value) {
-    const values = Array.isArray(value) ? value : typeof value === 'string' ? value.split('/') : [];
+    const rawValue = collectionValue(value);
+    const values = Array.isArray(rawValue)
+      ? rawValue
+      : typeof rawValue === 'string'
+        ? rawValue.split('/')
+        : [];
 
     return values
       .map(item => String(item || '').trim())
@@ -111,7 +144,13 @@
   }
 
   function normalizeTags(value) {
-    const values = Array.isArray(value) ? value : [];
+    const rawValue = collectionValue(value);
+    const values = Array.isArray(rawValue)
+      ? rawValue
+      : typeof rawValue === 'string'
+        ? rawValue.split(/\s*,\s*/)
+        : [];
+
     return Array.from(new Set(values.map(item => String(item || '').trim()).filter(Boolean)));
   }
 
@@ -193,7 +232,7 @@
   }
 
   function CategoryTreeControl(props) {
-    const selectedPath = normalizePath(props.value);
+    const selectedPath = normalizePath(fieldValue(props, ['categories', 'category']));
     const modalId = `${props.forID || 'categories'}-new-category-modal`;
     const inputId = `${props.forID || 'categories'}-new-category-path`;
 
@@ -257,7 +296,7 @@
   }
 
   function TagPickerControl(props) {
-    const selectedTags = normalizeTags(props.value);
+    const selectedTags = normalizeTags(fieldValue(props, ['tags']));
     const availableTags = normalizeTags(taxonomy.tags.concat(selectedTags));
     const inputId = `${props.forID || 'tags'}-new-tag`;
 
