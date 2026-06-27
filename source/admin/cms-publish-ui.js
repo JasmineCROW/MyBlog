@@ -3,26 +3,24 @@
 
   console.log('[cms-publish-ui] loaded');
 
-  const scriptName = 'cms-publish-ui';
   const editorRoutePattern = /#\/collections\/posts\/(?:new|entries\/)/;
   const newEntryPattern = /#\/collections\/posts\/new(?:$|[/?#])/;
   const existingEntryPattern = /#\/collections\/posts\/entries\//;
   const actionTextPattern = /(发布|已发布|Publish|Published|保存|Save|更新|Update)/i;
   const dropdownTextPattern = /(复制|Copy|Duplicate|发布，然后新建内容|发布，然后复制内容|Publish and create new|Publish and duplicate)/i;
-  const unsavedTextPattern = /(含未保存的修改|未保存|Unsaved|modified|changes)/i;
   const successTextPattern = /(已发布|已更新|发布成功|保存成功|更新成功|Published|Saved|Updated|Entry saved|Entry published)/i;
   const errorTextPattern = /(发布失败|保存失败|更新失败|失败|错误|Error|Failed|Unable)/i;
   const toastId = 'cms-publish-ui-toast';
 
   let pendingAction = null;
-  let toastTimer = null;
   let patchCounter = 0;
+  let toastTimer = null;
 
   function log(message, details) {
     if (details === undefined) {
-      console.log(`[${scriptName}] ${message}`);
+      console.log(`[cms-publish-ui] ${message}`);
     } else {
-      console.log(`[${scriptName}] ${message}`, details);
+      console.log(`[cms-publish-ui] ${message}`, details);
     }
   }
 
@@ -37,12 +35,12 @@
     };
   }
 
-  function visible(element) {
-    return Boolean(element && (element.offsetParent !== null || element.getClientRects().length > 0));
-  }
-
   function textOf(element) {
     return (element && element.textContent ? element.textContent : '').replace(/\s+/g, ' ').trim();
+  }
+
+  function visible(element) {
+    return Boolean(element && (element.offsetParent !== null || element.getClientRects().length > 0));
   }
 
   function isCustomAdminControl(element) {
@@ -55,6 +53,17 @@
     const style = document.createElement('style');
     style.id = 'cms-publish-ui-styles';
     style.textContent = `
+      .cms-publish-ui-label-button {
+        font-size: 0 !important;
+      }
+      .cms-publish-ui-label-button > * {
+        display: none !important;
+      }
+      .cms-publish-ui-label-button::after {
+        content: attr(data-cms-publish-ui-label);
+        font-size: 14px;
+        line-height: 1.2;
+      }
       .cms-publish-ui-update-button {
         border: 1px solid #fecaca !important;
         background: #fee2e2 !important;
@@ -67,7 +76,8 @@
         background: #fecaca !important;
         color: #7f1d1d !important;
       }
-      .cms-publish-ui-dropdown-trigger {
+      .cms-publish-ui-dropdown-trigger,
+      .cms-publish-ui-dropdown-menu {
         display: none !important;
         pointer-events: none !important;
       }
@@ -109,7 +119,7 @@
 
     window.clearTimeout(toastTimer);
     toastTimer = window.setTimeout(() => {
-      toast.remove();
+      if (toast.parentElement) toast.parentElement.removeChild(toast);
     }, 3200);
   }
 
@@ -138,7 +148,7 @@
     const text = textOf(button);
     if (!text || dropdownTextPattern.test(text)) return false;
     if (!actionTextPattern.test(text)) return false;
-    if (buttonLooksLikeCaret(button) && !/(发布|已发布|Publish|Published|保存|Save|更新|Update)/i.test(text)) return false;
+    if (buttonLooksLikeCaret(button) && !actionTextPattern.test(text)) return false;
 
     return true;
   }
@@ -165,7 +175,7 @@
   function primaryActionButton(state) {
     const buttons = candidateActionButtons();
 
-    if (state && state.isExistingEntry) {
+    if (state.isExistingEntry) {
       return (
         buttons.find(button => /(保存|Save|更新|Update)/i.test(textOf(button))) ||
         buttons.find(button => /(发布|Publish)/i.test(textOf(button)) && !/(已发布|Published)/i.test(textOf(button))) ||
@@ -175,52 +185,40 @@
     }
 
     return (
-      buttons.find(button => /(发布|Publish)/i.test(textOf(button))) ||
+      buttons.find(button => /(发布|Publish)/i.test(textOf(button)) && !/(已发布|Published)/i.test(textOf(button))) ||
       buttons.find(button => /(保存|Save|更新|Update)/i.test(textOf(button))) ||
       buttons.find(button => /(已发布|Published)/i.test(textOf(button))) ||
       null
     );
   }
 
-  function setButtonLabel(button, label) {
-    const walker = document.createTreeWalker(button, NodeFilter.SHOW_TEXT);
-    const textNodes = [];
-    let node = walker.nextNode();
-
-    while (node) {
-      if (node.nodeValue && node.nodeValue.trim()) textNodes.push(node);
-      node = walker.nextNode();
-    }
-
-    if (textNodes.length > 0) {
-      textNodes[0].nodeValue = label;
-      textNodes.slice(1).forEach(textNode => {
-        textNode.nodeValue = '';
-      });
-    } else {
-      button.textContent = label;
-    }
+  function setVisualButtonLabel(button, label) {
+    button.classList.add('cms-publish-ui-label-button');
+    button.setAttribute('data-cms-publish-ui-label', label);
   }
 
   function patchMainButton(button, state) {
     if (!button || !state.isEditor) return;
 
+    const label = state.isExistingEntry ? '更新' : '发布';
     button.classList.remove('cms-publish-update-button', 'cms-direct-update-button');
     button.classList.toggle('cms-publish-ui-update-button', state.isExistingEntry);
-    button.removeAttribute('data-cms-publish-dropdown-hidden');
+    button.classList.remove('cms-publish-ui-dropdown-trigger');
+    button.removeAttribute('data-cms-publish-ui-disabled');
     button.style.removeProperty('display');
     button.style.removeProperty('pointer-events');
-    setButtonLabel(button, state.isExistingEntry ? '更新' : '发布');
+    setVisualButtonLabel(button, label);
 
     if (button.dataset.cmsPublishUiActionReady !== 'true') {
       button.dataset.cmsPublishUiActionReady = 'true';
       button.addEventListener('click', () => {
+        const currentState = routeState();
         pendingAction = {
-          state: routeState(),
+          state: currentState,
           startedAt: Date.now()
         };
-        setButtonLabel(button, routeState().isExistingEntry ? '更新中...' : '发布中...');
-        window.setTimeout(removeDropdownMenus, 20);
+        setVisualButtonLabel(button, currentState.isExistingEntry ? '更新中...' : '发布中...');
+        window.setTimeout(hideDropdownMenus, 20);
       });
     }
   }
@@ -264,7 +262,7 @@
     });
   }
 
-  function removeDropdownMenus() {
+  function hideDropdownMenus() {
     const menuSelectors = [
       '[role="menu"]',
       '[role="listbox"]',
@@ -278,8 +276,13 @@
       const text = textOf(menu);
       if (!dropdownTextPattern.test(text)) return;
 
-      log('removed dropdown menu', text);
-      menu.remove();
+      log('hid dropdown menu', text);
+      menu.classList.add('cms-publish-ui-dropdown-menu');
+      menu.setAttribute('aria-hidden', 'true');
+      if (menu instanceof HTMLElement) {
+        menu.style.setProperty('display', 'none', 'important');
+        menu.style.setProperty('pointer-events', 'none', 'important');
+      }
     });
   }
 
@@ -295,8 +298,7 @@
 
     if (successTextPattern.test(text)) {
       const state = routeState();
-      const message = state.isExistingEntry ? '已更新' : '已发布';
-      showToast(message, false);
+      showToast(state.isExistingEntry ? '已更新' : '已发布', false);
       pendingAction = null;
       return;
     }
@@ -312,7 +314,7 @@
     const state = routeState();
     patchCounter += 1;
 
-    removeDropdownMenus();
+    hideDropdownMenus();
 
     if (!state.isEditor) return;
 
@@ -362,7 +364,7 @@
         event.stopPropagation();
         event.stopImmediatePropagation();
         disableDropdownTrigger(button);
-        removeDropdownMenus();
+        hideDropdownMenus();
       }, true);
     });
   }
