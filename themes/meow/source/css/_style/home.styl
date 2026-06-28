@@ -1,0 +1,368 @@
+.home-main
+  max-width: 1180px
+  width: min(94%, 1180px)
+
+  .home-main-content
+    margin: 28px auto 58px
+    padding: 0
+    border: 0
+    border-radius: 0
+    background: transparent
+    box-shadow: none
+
+.home-page
+  --crow-red: #7f1d1d
+  --crow-red-soft: #991b1b
+  --paper-warm: #f7f3ea
+  --ink-black: #111111
+  --ink-muted: #66615a
+  --line-soft: #ded8ce
+  color: var(--ink-black)
+
+.home-hero
+  display: grid
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr)
+  align-items: center
+  gap: 28px
+  min-height: 330px
+  padding: 42px clamp(26px, 5vw, 58px)
+  border: 1px solid var(--line-soft)
+  border-radius: 22px
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(247, 243, 234, 0.92)),
+    repeating-linear-gradient(90deg, rgba(17, 17, 17, 0.025) 0, rgba(17, 17, 17, 0.025) 1px, transparent 1px, transparent 10px)
+  box-shadow: 0 18px 42px rgba(30, 24, 18, 0.08)
+  overflow: hidden
+
+.home-kicker
+  margin: 0 0 12px
+  color: var(--crow-red)
+  font-size: 0.78rem
+  font-weight: 800
+  letter-spacing: 0.08em
+  text-transform: uppercase
+
+.home-hero-copy
+  position: relative
+  z-index: 1
+
+  h1
+    margin: 0
+    max-width: 620px
+    color: #101010
+    font-size: clamp(2.6rem, 6vw, 5.2rem)
+    line-height: 0.95
+    font-weight: 900
+
+.home-subtitle
+  margin: 22px 0 0
+  color: #191919
+  font-size: clamp(1.16rem, 2vw, 1.5rem)
+  font-weight: 700
+
+.home-description
+  margin: 10px 0 28px
+  color: var(--ink-muted)
+  font-size: 1rem
+  line-height: 1.8
+
+.home-start-button
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  min-height: 42px
+  padding: 0 20px
+  border: 1px solid #111111
+  border-radius: 999px
+  background: #111111
+  color: #ffffff
+  text-decoration: none
+  font-size: 0.95rem
+  font-weight: 800
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease, color 180ms ease
+
+  &:hover
+    border-color: var(--crow-red)
+    background: var(--crow-red)
+    color: #ffffff
+    transform: translateY(-2px)
+
+.home-hero-mark
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 250px
+
+  img
+    position: relative
+    z-index: 1
+    width: min(72%, 260px)
+    height: auto
+    filter: grayscale(1) contrast(1.08)
+    opacity: 0.92
+
+  &:before
+    content: ''
+    position: absolute
+    width: 220px
+    height: 220px
+    border: 1px solid rgba(127, 29, 29, 0.22)
+    border-radius: 50%
+
+  &:after
+    content: ''
+    position: absolute
+    right: 6%
+    bottom: 14%
+    width: 96px
+    height: 2px
+    background: var(--crow-red)
+    transform: rotate(-22deg)
+    opacity: 0.78
+
+.home-hero-feather
+  position: absolute
+  right: 14%
+  bottom: 18%
+  width: 86px
+  height: 24px
+  border-bottom: 2px solid rgba(127, 29, 29, 0.58)
+  border-radius: 50%
+  transform: rotate(-22deg)
+
+.home-grid
+  display: grid
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.36fr)
+  gap: 32px
+  align-items: start
+  margin-top: 34px
+
+.home-section-heading
+  display: flex
+  align-items: end
+  justify-content: space-between
+  gap: 18px
+  margin: 0 0 16px
+  padding-bottom: 12px
+  border-bottom: 1px solid var(--line-soft)
+
+  p
+    margin: 0
+    color: var(--crow-red)
+    font-size: 0.78rem
+    font-weight: 800
+    letter-spacing: 0.08em
+    text-transform: uppercase
+
+  h2
+    margin: 0
+    color: #111111
+    font-size: 1.12rem
+    font-weight: 800
+
+.home-sidebar
+  position: sticky
+  top: calc(50px + 24px)
+  display: flex
+  flex-direction: column
+  gap: 18px
+
+.home-side-card
+  padding: 20px
+  border: 1px solid var(--line-soft)
+  border-radius: 18px
+  background: rgba(255, 255, 255, 0.62)
+  box-shadow: 0 12px 30px rgba(30, 24, 18, 0.05)
+
+.home-side-heading
+  display: flex
+  align-items: center
+  gap: 9px
+  margin-bottom: 14px
+  color: var(--crow-red)
+
+  h2
+    margin: 0
+    color: #151515
+    font-size: 1.02rem
+    font-weight: 900
+
+.home-category-list,
+.home-archive-list
+  display: flex
+  flex-direction: column
+  gap: 8px
+
+.home-category-item
+  border: 1px solid #e6dfd5
+  border-radius: 12px
+  background: rgba(247, 243, 234, 0.55)
+  overflow: hidden
+
+  summary
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 12px
+    padding: 10px 12px
+    cursor: pointer
+    list-style: none
+    color: #202020
+    transition: color 180ms ease, background-color 180ms ease
+
+    &::-webkit-details-marker
+      display: none
+
+    &:after
+      content: '+'
+      color: #8a8580
+      font-weight: 800
+      transition: transform 200ms ease, color 180ms ease
+
+    &:hover
+      color: var(--crow-red)
+
+  &[open] summary
+    background: rgba(127, 29, 29, 0.06)
+
+    &:after
+      color: var(--crow-red)
+      transform: rotate(45deg)
+
+.home-category-name
+  min-width: 0
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  font-weight: 800
+
+.home-category-count,
+.home-archive-item span:last-child
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  min-width: 24px
+  padding: 2px 7px
+  border-radius: 999px
+  background: #eee8df
+  color: #5d5751
+  font-size: 0.75rem
+  font-weight: 800
+
+.home-category-link
+  display: block
+  max-height: 0
+  padding: 0 12px
+  color: var(--crow-red)
+  text-decoration: none
+  font-size: 0.86rem
+  overflow: hidden
+  transition: max-height 220ms ease, padding 220ms ease, color 180ms ease
+
+  &:hover
+    color: #111111
+
+.home-category-item[open] .home-category-link
+  max-height: 42px
+  padding: 0 12px 11px
+
+.home-tag-cloud
+  justify-content: flex-start
+  margin: 0
+  gap: 8px 14px
+
+  .tag-cloud-link:hover
+    color: var(--crow-red)
+    transform: translateY(-1px) scale(1.04)
+
+.home-archive-item
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 12px
+  padding: 9px 0
+  border-bottom: 1px solid rgba(222, 216, 206, 0.82)
+  color: #252525
+  text-decoration: none
+  transition: color 180ms ease, padding-left 180ms ease
+
+  &:last-child
+    border-bottom: 0
+
+  &:hover
+    color: var(--crow-red)
+    padding-left: 4px
+
+.home-page .reveal-item,
+.home-page .index-post-item
+  opacity: 0
+  transform: translateY(14px)
+  transition: opacity 520ms ease var(--reveal-delay, 0ms), transform 520ms ease var(--reveal-delay, 0ms)
+
+.home-page .reveal-item.is-visible,
+.home-page .index-post-item.is-visible
+  opacity: 1
+  transform: translateY(0)
+
+@media screen and (max-width: 900px)
+  .home-grid
+    grid-template-columns: 1fr
+
+  .home-sidebar
+    position: static
+    display: grid
+    grid-template-columns: repeat(3, minmax(0, 1fr))
+
+@media screen and (max-width: 768px)
+  .home-main
+    width: min(94%, 720px)
+
+    .home-main-content
+      margin-top: 18px
+
+  .home-hero
+    grid-template-columns: 1fr
+    gap: 18px
+    min-height: 0
+    padding: 28px 22px
+    border-radius: 18px
+
+  .home-hero-mark
+    min-height: 150px
+    order: 2
+
+    img
+      width: min(48%, 150px)
+
+    &:before
+      width: 138px
+      height: 138px
+
+  .home-hero-copy h1
+    font-size: clamp(2.35rem, 14vw, 3.8rem)
+
+  .home-grid
+    gap: 22px
+    margin-top: 24px
+
+  .home-sidebar
+    grid-template-columns: 1fr
+
+  .home-side-card
+    padding: 18px
+    border-radius: 16px
+
+@media (prefers-reduced-motion: reduce)
+  .home-start-button,
+  .home-category-item summary,
+  .home-category-link,
+  .home-archive-item,
+  .home-page .reveal-item,
+  .home-page .index-post-item
+    transition: none
+
+  .home-page .reveal-item,
+  .home-page .index-post-item
+    opacity: 1
+    transform: none

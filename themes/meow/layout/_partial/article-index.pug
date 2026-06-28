@@ -30,8 +30,8 @@ article.index-post-item
     
   //- read more button "阅读全文"按钮
   .read-more
-    i.fa-solid.fa-paw.fa-xs
-    a.read-more-link(href= url_for(post.path))= __('article.read_more')
+    a.read-more-link(href= url_for(post.path)) 阅读全文
+    i.fa-solid.fa-arrow-right.fa-xs
 
   //- post's tags info 文章标签
   | !{ partial('_partial/post/post-tags') }

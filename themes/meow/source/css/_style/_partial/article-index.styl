@@ -4,61 +4,65 @@
 
   .index-post-item
     position: relative
-    margin-top: 20px
-    padding: 28px 30px
-    border: 1px solid rgba(255, 255, 255, 0.08)
-    border-radius: 16px
+    margin-top: 22px
+    padding: 30px 32px
+    border: 1px solid rgba(255, 255, 255, 0.12)
+    border-radius: 18px
     background: var(--color-card-bg)
-    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16)
+    box-shadow: 0 14px 32px rgba(17, 17, 17, 0.16)
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease
 
     &:hover
-      border-color: rgba(255, 255, 255, 0.24)
-      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24)
-      transform: translateY(-3px)
+      border-color: rgba(255, 255, 255, 0.28)
+      box-shadow: 0 20px 40px rgba(17, 17, 17, 0.24)
+      transform: translateY(-4px)
 
     .post-title-index
       display: flex
       flex-flow: row nowrap
       align-items: baseline
       justify-content: space-between
+      padding-right: 54px
 
       h1
         margin: 0
+        font-size: clamp(1.42rem, 2vw, 2rem)
+        line-height: 1.22
 
         a
-          text-decoration: none
           color: var(--color-card-text)
-          font-weight: bold
+          font-weight: 900
+          text-decoration: none
 
           &:hover
-            color: #e5e5e5
-          
+            color: #f2d6d6
+
           i
-            margin-right: 5px
-      
+            display: none
+
       .post-top
         position: absolute
-        top: 0
-        right: 0
-        padding: 4px 10px
-        border: 1px solid rgba(255, 255, 255, 0.25)
+        top: 14px
+        right: 14px
+        padding: 3px 8px
+        border: 1px solid rgba(242, 214, 214, 0.35)
         border-radius: 999px
-        background: rgba(255, 255, 255, 0.06)
+        background: rgba(127, 29, 29, 0.22)
+        color: #f6e8e8
         text-align: center
-        color: #ffffff
-        font-size: info-font-size-smaller
+        font-size: 0.7rem
+        line-height: 1.2
 
         p
           margin: 0
           white-space: nowrap
-    
+
     .post-head-info
       display: flex
       flex-flow: row wrap
       align-items: center
       gap: 8px 14px
-      margin-top: 10px
+      margin-top: 12px
       font-size: info-font-size
 
       div
@@ -66,7 +70,7 @@
 
       .post-published-at
         color: var(--color-card-muted)
-        font-size: info-font-size-smaller
+        font-size: 0.82rem
         white-space: nowrap
 
         i
@@ -74,54 +78,79 @@
 
       .post-categories .post-category,
       .post-tags .post-tag
-        color: #b5b5b5
+        color: #b7b7b7
 
         &:hover
-          color: #ffffff
-    
+          color: #f2d6d6
+
     .read-more
-      background-color: #ffffff
-      padding: 7px 14px
+      display: inline-flex
+      align-items: center
+      gap: 7px
+      margin: 12px 0 8px
+      padding: 8px 15px
+      border: 1px solid rgba(255, 255, 255, 0.18)
       border-radius: 999px
-      display: inline-block
+      background-color: #f7f3ea
       text-align: center
-      margin: 10px 0
+      transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease
 
       i
-        margin-right: 3px
         color: #111111
+        transition: transform 180ms ease
 
       .read-more-link
-        text-decoration: none
         color: #111111
-        font-size: info-font-size
+        font-size: 0.9rem
+        font-weight: 800
+        text-decoration: none
 
       &:hover
-        background-color: #e5e5e5
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12)
+        border-color: rgba(255, 255, 255, 0.42)
+        background-color: #ffffff
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16)
         transform: translateY(-1px)
 
         i, .read-more-link
           color: #111111
-    
+
+        i
+          transform: translateX(2px)
+
     .post-tags
-      font-size: info-font-size
-      display: block
-      white-space: nowrap
+      display: flex
+      flex-flow: row wrap
+      gap: 2px 8px
       overflow: hidden
+      font-size: info-font-size
 
 .post-excerpt
-  margin: 1em 0
-  color: #e5e5e5
+  margin: 1.05em 0
+  color: #e8e8e4
+  line-height: 1.86
 
 .post-excerpt[excerpt-simplify=true]
   h1,h2,h3,h4,h5,h6
-    font-size: default-font-size
     margin: 1em 0
+    font-size: default-font-size
+
+.home-page
+  .index-posts
+    width: 100%
+
+    .index-post-item:first-child
+      margin-top: 0
 
 @media screen and (max-width: 768px)
+  .index-posts
+    width: 100%
+
   .index-post-item
     padding: 22px 20px
+    border-radius: 16px
+
+    .post-title-index
+      padding-right: 0
 
     h1
       font-size: article-title2-font-size
@@ -130,6 +159,13 @@
       align-items: flex-start
       flex-flow: column nowrap
       gap: 6px
+
   .post-excerpt[excerpt-simplify=true]
     h1,h2,h3,h4,h5,h6
       font-size: default-font-size-smaller
+
+@media (prefers-reduced-motion: reduce)
+  .index-posts .index-post-item,
+  .index-posts .index-post-item .read-more,
+  .index-posts .index-post-item .read-more i
+    transition: none

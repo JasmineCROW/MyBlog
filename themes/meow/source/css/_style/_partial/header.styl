@@ -1,49 +1,56 @@
 header
-  background-color: rgba(250, 250, 248, 0.92)
   position: sticky
   top: 0
-  border-bottom: 1px solid #dededb
-  box-shadow: none
-  backdrop-filter: blur(14px)
   z-index: 6
+  border-bottom: 1px solid rgba(33, 30, 27, 0.12)
+  background-color: rgba(247, 243, 234, 0.88)
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.65)
+  backdrop-filter: blur(14px)
 
 .top-nav
-  height: header-height
-  max-width: max-page-width
   display: flex
-  justify-content: space-between
   align-items: center
+  justify-content: space-between
+  gap: 20px
+  width: min(94%, 1180px)
+  max-width: 1180px
+  min-height: 58px
   margin: 0 auto
-  width: 90%
-  
 
 .nav-info
   display: flex
   align-items: center
+  min-width: 0
   font-weight: 1000
 
   div
+    display: inline-flex
+    align-items: center
     vertical-align: text-bottom
-    display: inline-block
 
     #nav-icon
-      width: 40px
-      height: 40px
+      display: inline-block
+      width: 34px
+      height: 34px
       margin: 0
-      display: inline
+      filter: grayscale(1) contrast(1.08)
 
       &:hover
         animation: fade 1.2s ease-in-out infinite
 
     #nav-title
-      font-size: 26px
-      font-weight: bold
-      text-decoration: none
+      margin-left: 9px
       color: #151515
-      margin-left: 5px
+      font-size: clamp(1.02rem, 2vw, 1.32rem)
+      font-weight: 900
+      line-height: 1
+      text-decoration: none
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
 
       &:hover
-        color: #555555
+        color: #7f1d1d
 
 #top-menu-hidden
   display: none
@@ -51,35 +58,42 @@ header
 .nav-ribbon
   display: flex
   align-items: center
+  justify-content: flex-end
+  gap: 8px
+  min-width: 0
 
 #top-menu-btn
   display: none
 
 .top-menu-expanded
-  display: inline-block
-  font-size: header-item-font-size
+  display: inline-flex
+  align-items: center
+  gap: 4px
+  min-width: 0
+  font-size: 0.9rem
   font-weight: 800
 
   .top-menu-item
     display: inline-flex
     align-items: center
     gap: 6px
-    padding: 4px 11px
-    border: 1px solid #bdbdb9
+    padding: 7px 9px
+    border: 1px solid transparent
     border-radius: 999px
-    text-decoration: none
     color: #292929
-    margin-right: 10px
     line-height: 1.2
-    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease
+    text-decoration: none
+    transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease
 
     i
       margin: 0
+      color: #7f1d1d
 
     &:hover
-      color: #ffffff
-      background-color: #1a1a1a
-      border-color: #1a1a1a
+      border-color: rgba(127, 29, 29, 0.18)
+      background-color: rgba(127, 29, 29, 0.08)
+      color: #7f1d1d
+      transform: translateY(-1px)
 
 .top-search
   display: inline-block
@@ -87,65 +101,90 @@ header
 
   &:hover
     i
-      animation: fade 1s infinite
+      color: #7f1d1d
 
   #top-search-btn
-    padding: 5px 11px
-    background-color: #ffffff
-    border: 1px solid #bdbdb9
-    border-radius: 70px
-    font-size: info-font-size-larger
-
-    // &:hover
-    //   box-shadow: 1.5px 1.5px 2px shadow-grey
+    display: inline-flex
+    align-items: center
+    gap: 6px
+    padding: 7px 10px
+    border: 1px solid rgba(33, 30, 27, 0.16)
+    border-radius: 999px
+    background-color: rgba(255, 255, 255, 0.58)
+    color: #222222
+    font-size: 0.9rem
 
     span
-      margin-left: 5px
-      color: #555555
+      color: #55514b
 
 #theme-mode-switch
   display: inline-flex
   align-items: center
   gap: 6px
-  margin-left: 9px
-  padding: 5px 11px
-  border: 1px solid #bdbdb9
+  padding: 7px 10px
+  border: 1px solid rgba(33, 30, 27, 0.16)
   border-radius: 999px
-  background: #ffffff
+  background: rgba(255, 255, 255, 0.58)
   color: #292929
-  font-size: info-font-size
+  font-size: 0.9rem
   cursor: pointer
-  transition: background-color 160ms ease, color 160ms ease, transform 100ms ease
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, transform 100ms ease
 
   &:hover
-    background: #1a1a1a
-    color: #ffffff
+    border-color: rgba(127, 29, 29, 0.22)
+    background: rgba(127, 29, 29, 0.08)
+    color: #7f1d1d
 
   &:active
     transform: translateY(1px)
 
+@media screen and (max-width: 940px)
+  .top-nav
+    width: 94%
+    gap: 12px
+
+  .top-menu-expanded
+    max-width: 48vw
+    overflow-x: auto
+    scrollbar-width: none
+
+    &::-webkit-scrollbar
+      display: none
+
+    .top-menu-item
+      flex: 0 0 auto
+
 @media screen and (max-width: 768px)
   #top-menu-btn
-    display: inline-block
-    width: 22px
-    height: 22px
-    margin-left: 15px
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    width: 34px
+    height: 34px
+    border: 1px solid rgba(33, 30, 27, 0.16)
+    border-radius: 999px
+    color: #222222
     font-size: info-font-size-larger
     cursor: pointer
-  
+
   .top-menu-expanded
     display: none
-  
+
   .top-search
     span
       display: none
+
     #top-search-btn
-      border-radius: 50%
-      padding: 2px 5px
+      justify-content: center
+      width: 34px
+      height: 34px
+      padding: 0
 
   #theme-mode-switch
-    margin-left: 10px
-    padding: 4px 7px
+    justify-content: center
+    width: 34px
+    height: 34px
+    padding: 0
 
     span
       display: none
@@ -153,63 +192,61 @@ header
   #top-menu-hidden
     z-index: 5
     position: fixed
-    top: header-height
+    top: 58px
     width: 100%
-    height: calc(100% - 50px)
+    height: calc(100% - 58px)
     margin: 0 auto
-    animation: show-menu 0.5s
-    background-color: rgba(255, 255, 255, 0.5)
-    backdrop-filter: blur(8px)
-    -webkit-backdrop-filter: blur(8px)
+    animation: show-menu 0.35s
+    background-color: rgba(247, 243, 234, 0.72)
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
     flex-direction: column
     font-weight: 1000
 
     &:not([menu-show])
-      animation: disable-menu 0.5s
+      animation: disable-menu 0.35s
 
     .menu-hidden-content
-      background-color: rgba(255, 255, 255, 0.5)
-      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.125)
       max-height: 80%
       overflow-y: auto
+      border-bottom: 1px solid rgba(33, 30, 27, 0.12)
+      background-color: rgba(247, 243, 234, 0.92)
+      box-shadow: 0 10px 24px rgba(17, 17, 17, 0.08)
 
       .menu-hidden-nav
-        width: 90%
         display: flex
         flex-flow: row wrap
         align-items: center
         justify-content: center
+        width: 90%
         margin: 0 auto
-        padding: 20px 0
+        padding: 18px 0
 
       .menu-hidden-item
-        padding: 8px 35px
-        margin: 8px 10px
-        border: 1px solid #bdbdb9
-        border-radius: 999px
-        text-decoration: none
-        line-height: 1.5em
-        font-size: header-item-font-size-smaller
-        color: #292929
-        background-color: rgba(255, 255, 255, 0.85)
-        opacity: 1
-        flex: 1
         display: flex
+        flex: 1 1 140px
         flex-flow: row nowrap
         align-items: center
         justify-content: center
+        margin: 7px
+        padding: 9px 18px
+        border: 1px solid rgba(33, 30, 27, 0.16)
+        border-radius: 999px
+        background-color: rgba(255, 255, 255, 0.72)
+        color: #292929
+        line-height: 1.5em
+        font-size: header-item-font-size-smaller
+        text-decoration: none
 
         i
           margin-right: 5px
+          color: #7f1d1d
 
         &:hover
-          color: #ffffff
-          background-color: #1a1a1a
-          border-color: #1a1a1a
+          border-color: rgba(127, 29, 29, 0.22)
+          background-color: rgba(127, 29, 29, 0.08)
+          color: #7f1d1d
 
-          i
-            animation: beat 1s infinite
-    
     .menu-hidden-blank
       flex: 1
       -webkit-flex: 1

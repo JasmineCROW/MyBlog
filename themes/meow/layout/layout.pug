@@ -10,11 +10,12 @@ html(lang= config.language)
     | !{ partial('_partial/header', null, {cache: false}) }
     
     //- blog's information display 博客信息展示
-    | !{ partial('_partial/blog-info', null, {cache: false}) }
+    if !is_home()
+      | !{ partial('_partial/blog-info', null, {cache: false}) }
 
     //- page's main part 页面主题部分
-    .main
-      .main-content !{ body }
+    .main(class=is_home() ? 'home-main' : '')
+      .main-content(class=is_home() ? 'home-main-content' : '') !{ body }
 
     //- toolbar float on screen 悬浮工具栏
     | !{ partial('_partial/tool-bar', null, {cache: false}) }

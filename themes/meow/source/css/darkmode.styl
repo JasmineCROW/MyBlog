@@ -191,13 +191,13 @@ body.dm-dark
     color: var(--tag-dark-color, #d4d4d4)
 
     &:hover
-      color: #f5f5f5
+      color: #f2b8b8
 
   .tag-list-container a
     color: #d4d4d4
 
     &:hover
-      color: #f5f5f5
+      color: #f2b8b8
 
   .article-item
     border-color: rgba(255, 255, 255, 0.08)
@@ -209,3 +209,100 @@ body.dm-dark
   .article-item-preview,
   .article-item-date
     color: #a1a1aa
+
+  .home-page
+    --crow-red: #b45353
+    --crow-red-soft: #f2b8b8
+    --paper-warm: #151515
+    --ink-black: #f5f5f5
+    --ink-muted: #a1a1aa
+    --line-soft: rgba(255, 255, 255, 0.1)
+    color: #f5f5f5
+
+  .home-main .home-main-content
+    background: transparent
+    box-shadow: none
+
+  .home-hero
+    border-color: rgba(255, 255, 255, 0.1)
+    background:
+      linear-gradient(135deg, rgba(28, 28, 30, 0.94), rgba(16, 16, 18, 0.96)),
+      repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.03) 0, rgba(255, 255, 255, 0.03) 1px, transparent 1px, transparent 10px)
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28)
+
+  .home-kicker,
+  .home-side-heading,
+  .home-section-heading p
+    color: #f2b8b8
+
+  .home-hero-copy h1,
+  .home-subtitle,
+  .home-section-heading h2,
+  .home-side-heading h2
+    color: #f5f5f5
+
+  .home-description
+    color: #a1a1aa
+
+  .home-start-button
+    border-color: #f5f5f5
+    background: #f5f5f5
+    color: #111111
+
+    &:hover
+      border-color: #b45353
+      background: #b45353
+      color: #ffffff
+
+  .home-side-card
+    border-color: rgba(255, 255, 255, 0.1)
+    background: rgba(24, 24, 27, 0.82)
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24)
+
+  .home-category-item
+    border-color: rgba(255, 255, 255, 0.08)
+    background: rgba(39, 39, 42, 0.62)
+
+    summary
+      color: #e5e5e5
+
+      &:after
+        color: #a1a1aa
+
+      &:hover
+        color: #f2b8b8
+
+    &[open] summary
+      background: rgba(180, 83, 83, 0.12)
+
+  .home-category-count,
+  .home-archive-item span:last-child
+    background: #27272a
+    color: #d4d4d8
+
+  .home-category-link
+    color: #f2b8b8
+
+    &:hover
+      color: #ffffff
+
+  .home-archive-item
+    border-bottom-color: rgba(255, 255, 255, 0.08)
+    color: #e5e5e5
+
+    &:hover
+      color: #f2b8b8
+
+  .home-tag-cloud .tag-cloud-link:hover
+    color: #f2b8b8
+
+  .home-hero-mark img
+    filter: grayscale(1) contrast(1.1) brightness(1.1)
+
+  .home-hero-mark:before
+    border-color: rgba(242, 184, 184, 0.22)
+
+  .home-hero-mark:after,
+  .home-hero-feather
+    background: #b45353
+    border-bottom-color: rgba(242, 184, 184, 0.58)

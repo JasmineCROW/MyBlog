@@ -1,12 +1,139 @@
-//- index menu bar 首页菜单栏
-//- .index-menu
-//-   | !{ partial('_partial/menu-index', null, {cache: true}) }
+-
+  const homePosts = page.posts.toArray();
+  const allTags = site.tags.toArray();
+  const allCategories = site.categories.toArray();
+  const allPosts = site.posts.sort('-date').toArray();
 
-//- posts list 文章列表
-.index-posts
-  - for (post of page.posts.toArray())
-    | !{ partial('_partial/article-index', {post: post}) }
+  const tagCounts = allTags.map(tag => tag.length || tag.count || 0);
+  const minTagCount = tagCounts.length ? Math.min(...tagCounts) : 0;
+  const maxTagCount = tagCounts.length ? Math.max(...tagCounts) : 0;
+  function tagWeight(tag) {
+    const count = tag.length || tag.count || 0;
+    if (maxTagCount === minTagCount) return 1;
+    return (count - minTagCount) / (maxTagCount - minTagCount);
+  }
+  function tagScale(weight, min, max) {
+    return min + (max - min) * weight;
+  }
+  function tagColor(weight, from, to) {
+    const channel = index => Math.round(tagScale(weight, from[index], to[index]));
+    return `rgb(${channel(0)}, ${channel(1)}, ${channel(2)})`;
+  }
 
-//- pagination function 分页功能
-.pagination
-  | !{ partial('_partial/pagination', {page: page}) }
+  const archiveMap = {};
+  allPosts.forEach(post => {
+    const year = post.date.year();
+    const month = post.date.month();
+    const key = `${year}-${month}`;
+    if (!archiveMap[key]) {
+      archiveMap[key] = { year, month, count: 0 };
+    }
+    archiveMap[key].count += 1;
+  });
+  const archiveItems = Object.keys(archiveMap)
+    .map(key => archiveMap[key])
+    .sort((a, b) => b.year - a.year || b.month - a.month)
+    .slice(0, 8);
+
+.home-page
+  section.home-hero.reveal-item
+    .home-hero-copy
+      p.home-kicker JasmineCrow
+      h1 JasmineCrow' Blog
+      p.home-subtitle 记录灵感与故事的地方
+      p.home-description 小说 · 随笔 · 同人 · 碎片记录
+      a.home-start-button(href="#latest-posts") 开始阅读
+    .home-hero-mark(aria-hidden="true")
+      img(src= url_for(theme.blog_pic), alt="")
+      .home-hero-feather
+
+  .home-grid
+    main.home-feed
+      .home-section-heading#latest-posts.reveal-item
+        p 最新文章
+        h2 Recent Notes
+
+      .index-posts
+        - for (post of homePosts)
+          | !{ partial('_partial/article-index', {post: post}) }
+
+      .pagination
+        | !{ partial('_partial/pagination', {page: page}) }
+
+    aside.home-sidebar
+      section.home-side-card.home-category-card.reveal-item
+        .home-side-heading
+          i.fa-regular.fa-folder-open
+          h2 分类
+        .home-category-list
+          - for (category of allCategories.sort((a, b) => (b.length || 0) - (a.length || 0)).slice(0, 8))
+            details.home-category-item
+              summary
+                span.home-category-name= category.name
+                span.home-category-count= category.length || category.count || 0
+              a.home-category-link(href= url_for(category.path)) 查看分类
+
+      section.home-side-card.home-tag-card.reveal-item
+        .home-side-heading
+          i.fa-solid.fa-tags
+          h2 标签云
+        .tag-cloud.home-tag-cloud
+          - for (tag of allTags)
+            -
+              const weight = tagWeight(tag);
+              const fontSize = tagScale(weight, 0.95, 1.45).toFixed(2);
+              const lightColor = tagColor(weight, [156, 163, 175], [17, 17, 17]);
+              const darkColor = tagColor(weight, [113, 113, 122], [245, 245, 245]);
+            a.tag-cloud-link(href= url_for(tag.path), style=`--tag-size: ${fontSize}rem; --tag-light-color: ${lightColor}; --tag-dark-color: ${darkColor};`)
+              span.tag-cloud-name= tag.name
+              if theme.tags.show_count
+                span.tag-count= tag.length || tag.count || 0
+
+      section.home-side-card.home-archive-card.reveal-item
+        .home-side-heading
+          i.fa-solid.fa-box-archive
+          h2 归档
+        .home-archive-list
+          - for (item of archiveItems)
+            -
+              const tempDate = new Date();
+              tempDate.setMonth(item.month);
+              const monthName = date(tempDate, 'MMMM');
+              const monthNum = date(tempDate, 'MM');
+              const archiveUrl = url_for(config.archive_dir) + '/' + item.year + '/' + monthNum;
+            a.home-archive-item(href= archiveUrl)
+              span #{item.year} · #{monthName}
+              span= item.count
+
+  script.
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var startButton = document.querySelector('.home-start-button');
+      if (startButton) {
+        startButton.addEventListener('click', function (event) {
+          var target = document.getElementById('latest-posts');
+          if (!target) return;
+          event.preventDefault();
+          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+        });
+      }
+
+      var revealItems = document.querySelectorAll('.home-page .reveal-item, .home-page .index-post-item');
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        revealItems.forEach(function (item) { item.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.12 });
+
+      revealItems.forEach(function (item, index) {
+        item.style.setProperty('--reveal-delay', Math.min(index * 45, 240) + 'ms');
+        observer.observe(item);
+      });
+    })();
