@@ -1,11 +1,15 @@
 -
   const isFirstHomePage = !page.current || page.current === 1;
   const homePosts = page.posts.toArray();
-  const pinnedPosts = homePosts.filter(post => post.top === true);
-  const regularPosts = homePosts.filter(post => post.top !== true);
   const allTags = site.tags.toArray();
   const allCategories = site.categories.toArray();
   const allPosts = site.posts.sort('-date').toArray();
+  const pinnedPosts = allPosts.filter(post => post.top === true);
+  const regularPosts = allPosts.filter(post => post.top !== true);
+  const postsPerPage = (config.index_generator && config.index_generator.per_page) || config.per_page || homePosts.length || 10;
+  const regularPageIndex = Math.max((page.current || 1) - 2, 0);
+  const pagedRegularPosts = regularPosts.slice(regularPageIndex * postsPerPage, (regularPageIndex + 1) * postsPerPage);
+  const fallbackLatestPosts = regularPosts.slice(0, postsPerPage);
 
   const tagCounts = allTags.map(tag => tag.length || tag.count || 0);
   const minTagCount = tagCounts.length ? Math.min(...tagCounts) : 0;
@@ -61,22 +65,18 @@
           .index-posts.home-pinned-posts
             - for (post of pinnedPosts)
               | !{ partial('_partial/article-index', {post: post}) }
-
-          if regularPosts.length
-            .home-section-heading.home-latest-heading.reveal-item
-              p 最新文章
-              h2 Recent Notes
-            .index-posts.home-latest-posts
-              - for (post of regularPosts)
-                | !{ partial('_partial/article-index', {post: post}) }
         else
           .home-section-heading#latest-posts.reveal-item
             p 最新文章
             h2 Recent Notes
 
-          .index-posts.home-latest-posts
-            - for (post of homePosts)
-              | !{ partial('_partial/article-index', {post: post}) }
+          if fallbackLatestPosts.length
+            .index-posts.home-latest-posts
+              - for (post of fallbackLatestPosts)
+                | !{ partial('_partial/article-index', {post: post}) }
+          else
+            .home-empty-state.reveal-item
+              p 暂时还没有文章。
 
         .pagination
           | !{ partial('_partial/pagination', {page: page}) }
@@ -131,9 +131,13 @@
         p 第 #{page.current} 页
         h2 More Notes
 
-      .index-posts
-        - for (post of homePosts)
-          | !{ partial('_partial/article-index', {post: post}) }
+      if pagedRegularPosts.length
+        .index-posts
+          - for (post of pagedRegularPosts)
+            | !{ partial('_partial/article-index', {post: post}) }
+      else
+        .home-empty-state.reveal-item
+          p 没有更多普通文章。
 
       .pagination
         | !{ partial('_partial/pagination', {page: page}) }
