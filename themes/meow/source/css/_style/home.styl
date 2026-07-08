@@ -162,11 +162,20 @@
     font-weight: 800
 
 .home-sidebar
-  position: sticky
-  top: calc(50px + 24px)
+  position: static
   display: flex
   flex-direction: column
   gap: 18px
+
+.home-latest-heading
+  margin-top: 28px
+
+.home-paged-feed
+  width: min(92%, 900px)
+  margin: 34px auto 0
+
+  .index-posts
+    width: 100%
 
 .home-side-card
   padding: 20px
@@ -310,7 +319,6 @@
     grid-template-columns: 1fr
 
   .home-sidebar
-    position: static
     display: grid
     grid-template-columns: repeat(3, minmax(0, 1fr))
 
