@@ -151,7 +151,10 @@
           var target = document.getElementById('latest-posts');
           if (!target) return;
           event.preventDefault();
-          target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+          var header = document.querySelector('header');
+          var headerHeight = header ? header.getBoundingClientRect().height : 0;
+          var targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 24;
+          window.scrollTo({ top: Math.max(targetTop, 0), behavior: reduceMotion ? 'auto' : 'smooth' });
         });
       }
 
