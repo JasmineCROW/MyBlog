@@ -24,7 +24,7 @@ if theme.blog_pic
   | !{ favicon_tag(theme.blog_pic) }
 
 //- link css 引入css
-| !{ css({href: 'css/style', id: 'dm-light'}) }
+link(rel="stylesheet", href=url_for('/css/style.css') + '?v=20260712-hero-devon', id="dm-light")
 //- icon library 图标库
 | !{ css('https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.2/css/all.min.css') }
 
