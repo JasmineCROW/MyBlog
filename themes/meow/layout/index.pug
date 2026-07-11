@@ -195,6 +195,18 @@
         });
       }
 
+      var homePage = document.querySelector('.home-page-first');
+      var hero = document.querySelector('.home-hero');
+      if (homePage && hero) {
+        var updateReadingLayer = function () {
+          var triggerPoint = Math.max(hero.offsetHeight * 0.62, window.innerHeight * 0.48);
+          homePage.classList.toggle('is-reading', window.pageYOffset > triggerPoint);
+        };
+        updateReadingLayer();
+        window.addEventListener('scroll', updateReadingLayer, { passive: true });
+        window.addEventListener('resize', updateReadingLayer);
+      }
+
       var revealItems = document.querySelectorAll('.home-page .reveal-item, .home-page .index-post-item');
       if (reduceMotion || !('IntersectionObserver' in window)) {
         revealItems.forEach(function (item) { item.classList.add('is-visible'); });

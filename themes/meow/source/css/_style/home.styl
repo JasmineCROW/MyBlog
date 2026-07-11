@@ -11,6 +11,7 @@ body .main.home-main
     box-shadow: none
 
 .home-page
+  position: relative
   --content-padding: clamp(24px, 3vw, 36px)
   --content-gap: 32px
   --content-max-width: 1180px
@@ -29,6 +30,24 @@ body .main.home-main
   *:after
     box-sizing: border-box
 
+.home-page-first
+  &:before
+    content: ''
+    position: fixed
+    inset: 0
+    z-index: 1
+    pointer-events: none
+    background: rgba(247, 243, 234, 0.5)
+    backdrop-filter: blur(0)
+    -webkit-backdrop-filter: blur(0)
+    opacity: 0
+    transition: opacity 260ms ease, backdrop-filter 260ms ease, -webkit-backdrop-filter 260ms ease
+
+  &.is-reading:before
+    opacity: 1
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
+
 .home-hero
   position: relative
   display: flex
@@ -42,8 +61,9 @@ body .main.home-main
   border-radius: 0
   background:
     linear-gradient(90deg, rgba(248, 250, 252, 0.9) 0%, rgba(248, 250, 252, 0.68) 36%, rgba(248, 250, 252, 0.16) 64%, rgba(248, 250, 252, 0.02) 100%),
-    url('../img/home-devon-rex-hero.png') center right / cover no-repeat,
+    url('../img/cover.png') center right / cover no-repeat,
     #f7f8f8
+  background-attachment: scroll, fixed, scroll
   box-shadow: none
   overflow: hidden
   isolation: isolate
@@ -80,7 +100,7 @@ body .main.home-main
 
 .home-hero-copy
   position: relative
-  z-index: 2
+  z-index: 3
   max-width: min(760px, 92vw)
 
 .home-typewriter
@@ -153,13 +173,19 @@ body .main.home-main
   max-width: var(--content-max-width)
   width: unquote('min(94%, var(--content-max-width))')
   position: relative
-  z-index: 2
+  z-index: 3
   margin: 0 auto
   padding-top: 74px
 
 .home-feed
   padding-inline: var(--content-padding)
   min-width: 0
+
+.home-feed,
+.home-sidebar,
+.home-paged-feed
+  position: relative
+  z-index: 3
 
 .home-section-heading
   display: flex
@@ -379,8 +405,9 @@ body .main.home-main
     padding-right: var(--content-padding)
     background:
       linear-gradient(180deg, rgba(248, 250, 252, 0.94) 0%, rgba(248, 250, 252, 0.72) 46%, rgba(248, 250, 252, 0.06) 100%),
-      url('../img/home-devon-rex-hero.png') 72% bottom / auto 58% no-repeat,
+      url('../img/cover.png') 72% bottom / auto 58% no-repeat,
       #f7f8f8
+    background-attachment: scroll, fixed, scroll
 
     &:before
       background:
@@ -413,6 +440,7 @@ body .main.home-main
   .home-category-link,
   .home-archive-item,
   .home-typewriter-cursor,
+  .home-page-first:before,
   .home-page .reveal-item,
   .home-page .index-post-item
     animation: none
