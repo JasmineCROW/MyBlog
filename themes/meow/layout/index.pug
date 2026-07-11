@@ -43,6 +43,7 @@
     .slice(0, 8);
 
 .home-page(class=isFirstHomePage ? 'home-page-first' : 'home-page-paged')
+  .home-background(aria-hidden="true")
   if isFirstHomePage
     section.home-hero.reveal-item
       .home-hero-copy
@@ -54,76 +55,77 @@
         p.home-description 小说 · 随笔 · 同人 · 碎片记录
         a.home-start-button(href="#latest-posts") 开始阅读
 
-    .home-grid
-      main.home-feed
-        if pinnedPosts.length
-          .home-section-heading#latest-posts.reveal-item
-            p 置顶文章
-            h2 Pinned Notes
+    .home-content-surface
+      .home-grid
+        main.home-feed
+          if pinnedPosts.length
+            .home-section-heading#latest-posts.reveal-item
+              p 置顶文章
+              h2 Pinned Notes
 
-          .index-posts.home-pinned-posts
-            - for (post of pinnedPosts)
-              | !{ partial('_partial/article-index', {post: post}) }
-        else
-          .home-section-heading#latest-posts.reveal-item
-            p 最新文章
-            h2 Recent Notes
-
-          if fallbackLatestPosts.length
-            .index-posts.home-latest-posts
-              - for (post of fallbackLatestPosts)
+            .index-posts.home-pinned-posts
+              - for (post of pinnedPosts)
                 | !{ partial('_partial/article-index', {post: post}) }
           else
-            .home-empty-state.reveal-item
-              p 暂时还没有文章。
+            .home-section-heading#latest-posts.reveal-item
+              p 最新文章
+              h2 Recent Notes
 
-        .pagination
-          | !{ partial('_partial/pagination', {page: page}) }
+            if fallbackLatestPosts.length
+              .index-posts.home-latest-posts
+                - for (post of fallbackLatestPosts)
+                  | !{ partial('_partial/article-index', {post: post}) }
+            else
+              .home-empty-state.reveal-item
+                p 暂时还没有文章。
 
-      aside.home-sidebar
-        section.home-side-card.home-category-card.reveal-item
-          .home-side-heading
-            i.fa-regular.fa-folder-open
-            h2 分类
-          .home-category-list
-            - for (category of allCategories.sort((a, b) => (b.length || 0) - (a.length || 0)).slice(0, 8))
-              details.home-category-item
-                summary
-                  span.home-category-name= category.name
-                  span.home-category-count= category.length || category.count || 0
-                a.home-category-link(href= url_for(category.path)) 查看分类
+          .pagination
+            | !{ partial('_partial/pagination', {page: page}) }
 
-        section.home-side-card.home-tag-card.reveal-item
-          .home-side-heading
-            i.fa-solid.fa-tags
-            h2 标签云
-          .tag-cloud.home-tag-cloud
-            - for (tag of allTags)
-              -
-                const weight = tagWeight(tag);
-                const fontSize = tagScale(weight, 0.95, 1.45).toFixed(2);
-                const lightColor = tagColor(weight, [156, 163, 175], [17, 17, 17]);
-                const darkColor = tagColor(weight, [113, 113, 122], [245, 245, 245]);
-              a.tag-cloud-link(href= url_for(tag.path), style=`--tag-size: ${fontSize}rem; --tag-light-color: ${lightColor}; --tag-dark-color: ${darkColor};`)
-                span.tag-cloud-name= tag.name
-                if theme.tags.show_count
-                  span.tag-count= tag.length || tag.count || 0
+        aside.home-sidebar
+          section.home-side-card.home-category-card.reveal-item
+            .home-side-heading
+              i.fa-regular.fa-folder-open
+              h2 分类
+            .home-category-list
+              - for (category of allCategories.sort((a, b) => (b.length || 0) - (a.length || 0)).slice(0, 8))
+                details.home-category-item
+                  summary
+                    span.home-category-name= category.name
+                    span.home-category-count= category.length || category.count || 0
+                  a.home-category-link(href= url_for(category.path)) 查看分类
 
-        section.home-side-card.home-archive-card.reveal-item
-          .home-side-heading
-            i.fa-solid.fa-box-archive
-            h2 归档
-          .home-archive-list
-            - for (item of archiveItems)
-              -
-                const tempDate = new Date();
-                tempDate.setMonth(item.month);
-                const monthName = date(tempDate, 'MMMM');
-                const monthNum = date(tempDate, 'MM');
-                const archiveUrl = url_for(config.archive_dir) + '/' + item.year + '/' + monthNum;
-              a.home-archive-item(href= archiveUrl)
-                span #{item.year} · #{monthName}
-                span= item.count
+          section.home-side-card.home-tag-card.reveal-item
+            .home-side-heading
+              i.fa-solid.fa-tags
+              h2 标签云
+            .tag-cloud.home-tag-cloud
+              - for (tag of allTags)
+                -
+                  const weight = tagWeight(tag);
+                  const fontSize = tagScale(weight, 0.95, 1.45).toFixed(2);
+                  const lightColor = tagColor(weight, [156, 163, 175], [17, 17, 17]);
+                  const darkColor = tagColor(weight, [113, 113, 122], [245, 245, 245]);
+                a.tag-cloud-link(href= url_for(tag.path), style=`--tag-size: ${fontSize}rem; --tag-light-color: ${lightColor}; --tag-dark-color: ${darkColor};`)
+                  span.tag-cloud-name= tag.name
+                  if theme.tags.show_count
+                    span.tag-count= tag.length || tag.count || 0
+
+          section.home-side-card.home-archive-card.reveal-item
+            .home-side-heading
+              i.fa-solid.fa-box-archive
+              h2 归档
+            .home-archive-list
+              - for (item of archiveItems)
+                -
+                  const tempDate = new Date();
+                  tempDate.setMonth(item.month);
+                  const monthName = date(tempDate, 'MMMM');
+                  const monthNum = date(tempDate, 'MM');
+                  const archiveUrl = url_for(config.archive_dir) + '/' + item.year + '/' + monthNum;
+                a.home-archive-item(href= archiveUrl)
+                  span #{item.year} · #{monthName}
+                  span= item.count
   else
     .home-paged-feed
       .home-section-heading.reveal-item
@@ -193,18 +195,6 @@
           var targetTop = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 24;
           window.scrollTo({ top: Math.max(targetTop, 0), behavior: reduceMotion ? 'auto' : 'smooth' });
         });
-      }
-
-      var homePage = document.querySelector('.home-page-first');
-      var hero = document.querySelector('.home-hero');
-      if (homePage && hero) {
-        var updateReadingLayer = function () {
-          var triggerPoint = Math.max(hero.offsetHeight * 0.62, window.innerHeight * 0.48);
-          homePage.classList.toggle('is-reading', window.pageYOffset > triggerPoint);
-        };
-        updateReadingLayer();
-        window.addEventListener('scroll', updateReadingLayer, { passive: true });
-        window.addEventListener('resize', updateReadingLayer);
       }
 
       var revealItems = document.querySelectorAll('.home-page .reveal-item, .home-page .index-post-item');
