@@ -44,6 +44,10 @@ script.
 if theme.reward.enable && is_post()
   | !{ js('js/theme/reward') }
 
+//- keep post navigation inside the category or tag used to enter the post
+if is_post() && theme.post_prev_next
+  | !{ js('js/theme/post-nav-context') }
+
 //- search function 搜索功能
 if theme.search.enable
   | !{ js('js/jquery-3.7.1.min') }

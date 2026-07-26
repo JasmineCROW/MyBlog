@@ -1,5 +1,12 @@
 .article-item
-  a.article-item-card(href= url_for(post.path))
+  -
+    var articleUrl = url_for(post.path)
+    if (is_category()) {
+      articleUrl += '?nav=category&term=' + encodeURIComponent(page.category)
+    } else if (is_tag()) {
+      articleUrl += '?nav=tag&term=' + encodeURIComponent(page.tag)
+    }
+  a.article-item-card(href= articleUrl)
     .article-item-title
       span= post.title
 

@@ -117,6 +117,9 @@ article.post
 
   if theme.post_prev_next || theme.reward.enable
     .post-end
+      if theme.post_prev_next
+        script#post-nav-context(type='application/json')!= post_nav_context(post)
+
       //- previous post link 链接上一篇文章
       .post-prev
         if theme.post_prev_next && post.prev
