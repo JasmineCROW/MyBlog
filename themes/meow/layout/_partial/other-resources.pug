@@ -44,6 +44,10 @@ script.
 if theme.reward.enable && is_post()
   | !{ js('js/theme/reward') }
 
+//- track post views with an explicit canonical path instead of a cross-site Referer
+if is_post() && theme.page_view.enable && theme.page_view.post_pv
+  | !{ js('js/theme/post-pageview') }
+
 //- keep post navigation inside the category or tag used to enter the post
 if is_post() && theme.post_prev_next
   | !{ js('js/theme/post-nav-context') }

@@ -84,6 +84,7 @@ page_view:
   enable: true
   site_pv: true # show site's page view 显示网站访问量信息
   post_pv: true # show post's page view 显示文章访问量信息
+  post_api: https://page-views-api.ratneshc.com # explicit-path post counter; site PV/UV still use Busuanzi
 
 # contact information, add item in 'name: url' format, stay blank if you don't want to show that item 联系方式，新增项请按'名称: 链接网址'配置，不需要显示的项目则置空
 # currently support icons of items below, any other links will be display in paw icon 目前支持以下网站图标，其他链接统一用猫爪图标显示

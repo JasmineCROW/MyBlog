@@ -1,6 +1,12 @@
 .pageview-post
   i.icon.fa-regular.fa-eye
-  span#busuanzi_container_page_pv
+  -
+    const postPageviewSite = String(config.url).replace(/^https?:\/\//, '').split('/')[0]
+    const postPageviewPath = url_for(post.path)
+  span#post-pageview-container(
+    data-api=theme.page_view.post_api
+    data-site=postPageviewSite
+    data-path=postPageviewPath)
     | #{ __('page_view.post_pv') }: 
-    span#busuanzi_value_page_pv
+    span#post-pageview-value
       i.fa-solid.fa-spinner
